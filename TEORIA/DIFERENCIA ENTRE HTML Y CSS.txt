@@ -1,0 +1,11 @@
+DIFERENCIA ENTRE HTML Y CSS:
+
+Ambos son lenguajes para programar webs. La diferencia principal de ambos es la siguiente:
+
+-HTML
+
+Cada navegador tendrá para cada elemento, siendo elemento cada línea de código, una apariencia distinta. Por ejemplo, Chrome tiene que la letra por defecto es Comic Sans mientras que Edge tiene Arial, o el color de letra es distinto.
+
+-CSS
+
+Podemos nosotros programar cual es la letra por defecto en TODOS los navegadores, para que la apariencia de nuestra web sea la misma en todos los navegadores. Luego es mucho mejor.
