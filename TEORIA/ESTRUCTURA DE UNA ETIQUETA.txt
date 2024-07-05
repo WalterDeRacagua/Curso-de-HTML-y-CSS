@@ -1,0 +1,37 @@
+ESTRUCTURA DE UNA ETIQUETA:
+
+Todos los elementos están definidos por etiquetas.
+
+Hemos llamado index al archivo .HTML porque cuando subimos una página web a un servidor, la mayoría de servidores que son compartidos, están hechos especialmente para la página que tienen que leer sea el index. El servidor buscará este archivo index HTML. Es un índice que posee el código que el servidor tiene que buscar.
+
+Las etiquetas siempre se abren de la siguiente forma:
+
+<tag> Contenido </tag> se necesita abrir y cerrar. Ahora veremos una gran cantidad de etiquetas.
+
+Veremos etiquetas más usadas.
+
+Por ejemplo, la etiqueta <b> </b> no se suele utilizar en HTML porque se utiliza para dar estilo, y eso no lo queremos hacer con HTML. EL estilo lo veremos con CSS. Pero a pesar de que podemos utilizar CSS para cambiar el estilo es muy importante usar las etiquetas de HTML de la forma correcta. 
+
+Si utilizamos de la forma correcta estas etiquetas aparecerán arriba a la hora de buscarlo.
+
+ESTRUCTURA BASICA DE UN HTML (html:5):
+
+<!DOCTYPE html> //Versión de html, tiene que estar SIEMPRE. No hace falta cerrarla.
+<html lang="en"> //Nos dice "en" -> English. Todo lo que esta dentro de ambas formara parte de la página web.
+<head> //Le dice a la página web un montón de cosas de información de la página.
+    <title>Document</title>// Titulo de la pestaña. Nos dice que aparecerá arriba en la pestaña como nombre.
+</head>
+<body>//Parte visible de la web
+    
+</body>
+</html> // Cierra html.
+
+PÁRRAFOS Y ENCABEZADOS:
+
+	- <p> </p> Etiqueta que describe un párrafo. Hace que haya más espacio entre arriba y el siguiente 	elemento de abajo.
+	- <h1> </h1> Etiqueta que describe el encabezado más importante. Solo se utiliza 1 VEZ. Para el 	posicionamiento web.
+	- <h2> </h2> El resto los podemos usar las veces que queramos
+	- <h3> </h3>
+	- <h4> </h4>
+	- <h5> </h5>
+	- <h6> </h6>
