@@ -107,3 +107,24 @@ Después le podemos pedir al usuario datos, utilizando:
 </form>
 
 Si ponemos que el tipo es text, se nos pondrá un JTextField de Java pero en HTML.
+
+Los inputs más comunes son:
+<input type="text">
+<input type="email">
+<input type="password">
+<input type="checkbox">
+<input type="radio">
+<input type="radio">
+<input type="file">
+<input type="submit">
+<input type="date">
+
+Además de la etiqueta "input", esta tiene una serie de atributos muy interesantes que debemos/podemos añadir:
+
+	-REQUIRED <input type="text" required> será obligatorio. Podemos poner en este atributo required un mínimo de dígitos o lo que queramos:
+	<input type="text" requiered minlength="3" name="username" placeholder="Nombre de usuario.">
+	-NAME "" <input type="text" name="username"> Este campo le dice al servidor como se llama el campo, para saber si este es correcto. Según el debe ser único.
+	-PLACEHOLDER <input type="text" name="username" placeholder="Nombre de usuario."> nos pone el campo que sea un texto gris que se borra al escribir algo. Nos identifica qué tenemos que poner.
+	-VALUE que es lo que recibe el servidor y el lenguaje de programación donde programemos, lo veremos más adelante.
+
+PD: No todos los inputs tienen placeholder.
