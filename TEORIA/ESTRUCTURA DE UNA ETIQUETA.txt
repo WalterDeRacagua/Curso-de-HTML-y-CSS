@@ -35,3 +35,30 @@ PÁRRAFOS Y ENCABEZADOS:
 	- <h4> </h4>
 	- <h5> </h5>
 	- <h6> </h6>
+
+LISTAS
+
+Dice que son muy importantes y que se utilizan prácticamente para todo.
+Dos tipos de listas:
+
+	-Ordered lists 
+	-Unordered lists.
+
+
+ORDERED LISTS
+
+Se debe escribir <ol> </ol> para declarar que lo que hay dentro son elementos de una lista.
+Para declarar los distintos elementos que pueda tener la lista hacemos uso de <li></li>
+
+UNORDERED LISTS
+
+Se debe escribir <ul></ul> para declarar que los elementos de dentro forman parte de una lista desordenada.
+Sirve por ejemplo para hacer barras de navegación.
+
+
+COMO CREAR UN SITIO WEB
+
+Una página web es distinto que un SITIO WEB. Un sitio web puede estar formado por varias páginas web interconectadas entre si.
+
+Para ello, necesitamos enlazarlos entre si. Utilizamos la etiqueta de enlace. La etiqueta es <a></a>.
+Además, dentro debemos utilizar <a href="https://www.youtube.com/@SergioCarrasquinho">Hola</a>
