@@ -62,3 +62,48 @@ Una página web es distinto que un SITIO WEB. Un sitio web puede estar formado p
 
 Para ello, necesitamos enlazarlos entre si. Utilizamos la etiqueta de enlace. La etiqueta es <a></a>.
 Además, dentro debemos utilizar <a href="https://www.youtube.com/@SergioCarrasquinho">Hola</a>
+
+¿Cómo podemos hacer que el enlace se abra en otra pestaña? Para eso tendremos que añadirle el atributo target:
+
+	- <a href="enlaces2.html" target="_blank">Segundo enlace(Enlace que se abrirá en otra pestaña)</a>
+
+Por defecto, si no ponemos target, se tiene target "_self" que te lo abre en la misma página.
+Ya veremos para que sirve parent y top supongo.
+
+Otro atributo útil de usar es title. Esto sirve para, si pasamos el ratón por encima nos sale información sobre cualquier etiqueta a la que queramos poner título.
+
+Poco uso, pero útil si por ejemplo la persona que está en nuestra página es ciega.
+
+ETIQUETAS DE BLOQUE VS ETIQUETAS DE LÍNEA.
+
+Para ver esto lo veremos con las imágenes en HTML.
+
+Las imágenes utilizan una etiqueta que se autocierra. Se utiliza la etiqueta <img> y NO es necesario cerrarla.
+<img src="Lista.jpg" alt="Imagen de la estructura de una página con unordered lists" title="Estructura página con listas">
+Donde src es la fuente o ruta donde esta la imagen, alt es el texto alternativo que guardaría en caso de que la imagen NO cargará y title es lo mismo de antes, nos dice qué es la imagen al pasar el ratón.
+
+
+RUTAS
+
+	-ABSOLUTAS: Nos da igual desde donde lo llamemos, donde tengamos la página o lo que sea que funciona.
+
+
+	-RELATIVAS: Funciona si estamos en la misma carpeta o sabemos donde esta y en que carpeta.
+
+Nosotros siempre debemos trabajar con las direcciones RELATIVAS para saber en todo momento donde estamos accediendo y demás. Usar ../ para volver una carpeta detrás.
+
+FORMULARIOS
+
+Una de las cosas más importantes de desarrollo web.
+
+Se utiliza la etiqueta form:
+
+<form action=""></form>
+
+Después le podemos pedir al usuario datos, utilizando:
+
+<form action="">
+            <input type="">
+</form>
+
+Si ponemos que el tipo es text, se nos pondrá un JTextField de Java pero en HTML.
