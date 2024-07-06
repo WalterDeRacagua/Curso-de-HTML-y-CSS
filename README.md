@@ -1,2 +1,3 @@
 # Curso-de-HTML-y-CSS
-En este repo voy a dejar toda la información/prácticas que haga sobre un curso de youtube de 24 horas.
+En este repositorio voy a dejar toda la información/prácticas que haga sobre un curso de youtube de 24 horas.
+Dejaré documentación, ejemplos realizados en Visual Studio Code, imagenes...
