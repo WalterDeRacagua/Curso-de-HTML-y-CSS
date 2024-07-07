@@ -1,0 +1,22 @@
+p{
+    color: red;
+    font-family: "Montserrat";
+    font-size:13px;
+    font-weight: 100;
+    font-style:italic ;
+    text-align:justify;
+    line-height:  1.4;
+    letter-spacing: 1px;
+    text-transform:capitalize ;
+}
+
+h1{
+    text-align: center;    
+}
+
+span{
+
+    text-decoration: underline;
+    color: blue;
+}
+

@@ -1,0 +1,179 @@
+CSS
+
+CSS no existe sin HTML. HTML va a ser la base sobre la que vamos a trabajar. CSS sirve para modificar elementos HTML.
+
+Tenemos 3 formas distintas de enlazar HTML y css:
+
+	1-Estilos en linea. Con el atributo style. Podmeos por ejemplo cambiar el color:
+<p style="color: red;">
+            Este es un parrafo aleatorio para desarrollar en css. Veremos que haremos
+        </p>
+Se llama así porque lo podemos hacer todo en una sola línea. Pero con esta opción realizamos 2 malas prácticas:
+
+	- Mezclamos código.
+	- No es correcto.
+	
+	2- Utilizar style NO como atributo, si no como etiqueta.
+<body>
+        <p >
+            Este es un parrafo aleatorio para desarrollar en css. Veremos que haremos
+        </p>
+        <style>
+            p{
+                color: red;
+            }
+            h1{
+                color: aqua;
+            }
+        </style>
+    </body>
+
+Aun asi esto NO se recomienda ya que estaría todo en el mismo archivo y se recomienda que esté en archivos distintos.
+
+	3-La mejor, la que todos utilizan. Utilizamos la etiqueta link en el head:
+  <head>
+        <title>
+            Enlazando CSS.
+        </title>
+        <link rel="stylesheet" href="">
+    </head>
+
+Donde rel viene de realtionship y le dice que el archivo que vas a vincular tiene una relación. En este caso stylesheet es una hoja de estilos, luego se vinculará a la hoja de estilos. href es la ruta. NO ES LO MISMO QUE SRC. Entonces creamos un nuevo ficherito que se llame styles.css (o el nombre que sea) y ponemos la misma propiedad que antes:
+p{
+    color: brown;
+}
+
+p porque es para TODOS los párrafos de HTML. Y se le llama SELECTOR.
+
+SELECTORES
+
+Forma que tenemos de seleccionar uno o varios elementos de un HTML. Pero en css para poder modificarlos. 3 formas:
+
+	1- SELECTOR ELEMENTS: Busca el nombre del elemento HTML que se llame así y modificarlo. Podríamos llamar a una etiqueta de una forma distinta y modificarla en css:
+
+HTML
+
+<NUEVOELEMENTO>
+            ajajajaja
+        
+</NUEVOELEMENTO>
+
+css
+
+NUEVOELEMENTO{
+    color: cadetblue;
+}
+
+PERO LO MEJOR ES NO CREAR NOSOTROS ETIQUETAS JAMÁS, ES UNA PRÁCTICA MALÍSIMA. NO SE HACE.
+
+Para conseguir que una sola palabra de un texto sea la que tenga las propiedades que queramos la podemos encerrar en la etiqueta span-> <span>Harina</span>.
+Si solo queremos seleccionar a un li para modificarlo (a uno en concreto y no a todos) podemos hacer uso de clases, la propiedad class="" (en HTML).
+
+Para hacer referencia a todos los elementos de clase correspondiente en css debemos de usar ."nombre_clase". Por ejemplo:
+
+<li class="faltante">Harina</li>
+
+.faltante{
+    
+}
+
+Ya veremos estrategias para saber cual es el mejor nombre a elegir para una clase.
+
+	2- SELECTOR ID: Se utiliza para seleccionar un elemento concreto en toda la página. Supongamos que queremos seleccionar un único elemento clave. Por ejemplo:
+
+<li id="ingrediente-secreto">
+                Jamón Ibérico de la Mauritania ibérica
+</li>
+
+Para referirnos a él en el css utilizaremos #. Por ejemplo:
+
+#ingrediente-secreto{
+    color: cadetblue;
+}
+
+NO ES una buena práctica que dos elementos tengan el mismo id, se podría hacer PERO NO ES UNA BUENA PRÁCTICA.
+
+Incluso tendremos problemas cuando trabajemos con JavaScript.
+
+
+Ahora veremos las propiedades del texto.
+
+PROPIEDADES DEL TEXTO:
+
+Con estas me refiero a otras además del color que ya la hemos visto.
+
+PD: Para el color, el rojo en un navegador es otro color distinto en otro navegador, por tanto ya veremos cómo trabajar con colores absolutos.
+
+Propiedades:
+
+	-font-family: font-family: sans-serif; también se puede entre comillas simples como ''. También podemos poner varias, de forma que si alguna tipografía no carga podemos poner otras para en el caso de que no cargue intente cargar las otras.
+
+	-font-size: font-size: 16px. 16 pixeles son lo default. Cambia el tamaño de la letra. Veremos también unidades de medida.
+
+	-font-weight: Es la anchura de la tipografía/letra.
+Esta tiene también como utilidad poder poner algo en negrita usando font-weight: bold; Es mejor que usar <b></b> en el archivo HTML. Si solamente quisiéramos resaltar una palabra, en vez de <b></b> es mejor usar <strong></strong> porque el navegador lo identifica como algo  muy importante. b no.
+Además, para cada tipo de tipografía o font-family el autor ha podido declarar menos Font-weights de las disponibles. Es decir, sans-serif por ejemplo solo tiene definidas la font-weight 700 y 200.700 y  escribir bold es lo mismo, bolder es el siguiente, por ejemplo 900.
+
+	-font-style: ; Nos define el estilo de la fuente. Italic es cursiva, normal es el valor por defecto, oblique también es cursiva pero un poco menos, en algunas tipografías no hay diferencia entre italic oblique. Además podemos definir el grado de inclinación de una letra. Lo normal es usar italic ya que poner normal no es necesario al ser por defecto.
+
+	-text-align: ; Donde se alinea el texto, left right center... igual que en el Word.
+
+	-text-decoration: ; decora el texto. Podemos ponerle un underline, que lo subraya, overline que lo subraya por arriba y line-through que tacha el texto. Por defecto es none.
+Para los enlaces a podemos quitarle el subrayado usando
+ 
+a{
+    text-decoration: none;
+}
+
+Ya haremos para quitarle el subrayado a los enlaces y que cuando pasemos el ratón por encima nos lo subraye para que podamos saber que es un enlace. Con los menús también si pasamos el ratón por una opción que se ponga de color azul por ejemplo.
+
+	-line height: El espaciado entre línea y línea. Si ponemos 1 deja poco espacio, si ponemos 2 deja algo más de espacio... le podemos poner 1.4 (valores decimales)(1.4 es un valor muy común). Sin utilizar pixeles.
+
+	-letter-spacing: Espacio entre las palabras/letras del texto. Lo podemos hacer con pixeles, por ejemplo: letter-spacing: 1px; Esto se suele usar con las etiquetas "button".
+
+	-text-transform: none; valor por defecto es none, pero si queremos que todo el texto sea mayúsculo le damos a uppercase. Minúscula lowercase. Capitalize pone a cada palabra la primera letra en mayúsculas.
+
+	-text-shadow: 0px 0px 4px #f99; Podemos ponerle sombra al texto. #f... es el color. Pero queda como el orto, ya vermos como usarla.
+
+
+Hay algunos más.
+
+TIPOGRAFÍAS EXTERNAS
+
+Como crear o traer tipografías que no están integradas en nuestro sistema a nuestra hoja de estilos para poder darle forma a nuestra web. Hay dos formas:
+
+	1. fonts.google.com. Supongamos que queremos elegir Montserrat, buscamos la selección que queremos copiamos el código en el head y ponemos en Font-family: Montserrat. (FÁCIL)
+
+	2. Más correcta. Configurar nuestras propias tipografías. Creamos un nuevo archivo que se llame fonts.css para configurar tipografías. Ponemos 
+
+1
+
+@font-face{
+	font-family: "Montserrat" (puede ser el nombre que queramos, lo correcto es que sea el mismo que la que descargamos)
+
+
+}
+
+2
+
+Descargamos en fonts.google.com, lo extraemos y nos debe aparecer una carpeta con tipografías, en este caso, para Montserrat se llama static. Nos llevamos esa carpeta al directorio donde tengamos el font.css. Después en font-face buscamos concretamente la tipografia y añadimos un format y ponemos el formato, en este caso ttf = "truetype":
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+Además, le decimos que el font-weight es de 400.
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+    font-weight:400;
+}
+
+Y así con más características. Podríamos definir más sobre la misma cambiando por ejemplo el font-weight u otras propiedades útiles. Luego los cambios también los tenemos que reflejar en styles.css para elegir entre las que hemos creado nosotros. Podemos ponerlas según el font weight buscando light, bold y después ajustar el font weight en el style para que vayamos cambiando de anchuras.
+
+
+BOX MODEL
+
+Es de los temas más importantes de la iniciación a css. Sobre el box model esta construido todo css. Porque todos son cajas, y tenemos que entender cómo funciona una caja, que tiene 4 propiedades principales. Cuando dominemos esas 4 propiedades principales vamos a poder hacer magia con css. Ahora empieza lo importante.
