@@ -176,4 +176,24 @@ Y así con más características. Podríamos definir más sobre la misma cambian
 
 BOX MODEL
 
-Es de los temas más importantes de la iniciación a css. Sobre el box model esta construido todo css. Porque todos son cajas, y tenemos que entender cómo funciona una caja, que tiene 4 propiedades principales. Cuando dominemos esas 4 propiedades principales vamos a poder hacer magia con css. Ahora empieza lo importante.
+Es de los temas más importantes de la iniciación a css. Sobre el box model esta construido todo css. Porque todos son cajas, y tenemos que entender cómo funciona una caja, que tiene 4 propiedades principales. Cuando dominemos esas 4 propiedades principales vamos a poder hacer magia con css. Ahora empieza lo importante. Modelo de caja, como se deberían de poner los elementos de HTML en una pagina web.
+
+Un elemento se considera una caja rectangular. En HTML todo se considera una caja. Y estas cajas se redimensionan, cambian sus tamaños, cómo interactúan entre si. 
+
+Propiedades:
+
+	1- CONTENIDO/CONTENT: Nucleo del BoxModel.
+	2- RELLENO/PADDING: espacio entre el contenido y el borde del elemento. Separa más el contenido del borde.
+	3- BORDE/ BORDER: Limita tanto al contenido como al relleno.
+	4- MARGEN/MARGIN: Espacio que hay fuera de la caja, fuera del borde. Separa los elementos de otras cajas. Pero no forma parte de la propia caja.
+
+En esto se basa CSS, todo son cajas.
+
+Puede ser que al aumentar el margen el contenido se haga más chiquitillo.
+
+1-Contenido tiene width y height
+2-Padding tiene padding, pero lo podremos configurar.
+3-Border tiene width y height
+4-Margin tiene margen simplemente.
+
+Para crear una cajita vacía en HTML usamos la etiqueta <div></div>
