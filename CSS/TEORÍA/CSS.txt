@@ -196,4 +196,184 @@ Puede ser que al aumentar el margen el contenido se haga más chiquitillo.
 3-Border tiene width y height
 4-Margin tiene margen simplemente.
 
-Para crear una cajita vacía en HTML usamos la etiqueta <div></div>
+Para crear una cajita vacía en HTML usamos la etiqueta <div></div>.
+
+A este div le tendremos que añadir distintas propiedades en Css. Le podemos poner background, width y height. Tienen que estar tanto width como height para que salgan. Por ejemplo:
+
+div{
+    background:red;
+    width: 200px;
+    height: 200px;
+
+}
+
+Width y height sirven para definir el ancho y la altura de cualquier elemento de HTML con css. Podemos usar además porcentajes para poder ajustarlo a cualquier tipo de pantalla.
+
+
+RELLENO Y MARGEN.
+
+Dos de las cosas que más importan a la hora de trabajar con BoxModel (cajas de HTML y CSS).
+
+Funcionan bastante parecido.
+
+Padding es el espacio que hay entre el contenido y el borde de una caja. Aumenta el tamaño de lo que hay alrededor del contenido pero adentro de los bordes. Si agregamos más padding el contenido va a estar más alejado de los bordes. El contenido se mantiene igual, mide lo mismo. Padding es común siempre. Es MEGA IMPORTANTE.
+
+Lo mejor siempre es trabajar con CLASES class= "" y no con selección de elementos de HTML.
+
+.formulario{
+    background: red;
+    padding: 10px;
+}
+.formulario_input{
+
+    padding:10px;
+}
+
+. porque eran clases. Se aplica el padding a cada clase. A esto se le llama short hand, porque hemos modificado el padding de arriba, abajo, izquierda y derecha a la misma vez.
+
+Pero podemos ajustar cada cosa de manera individual:
+
+.formulario{
+    background: red;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right:10px ;
+}
+
+Es lo mismo que poner padding: 10px;
+
+.formulario{
+     background: red;
+     padding: 20px 0 20px 30 px;
+}
+
+Este último lo que hace es que podamos ajustar el padding de arriba, derecha, abajo e izquierda (agujas del reloj) en una sola línea. Con 0 no hace falta poner la unidad de medida.
+
+
+.formulario{
+     background: red;
+     padding: 20px 10px;
+}
+
+Esto es que padding top y bottom tiene 20 pixeles y left y right 10.
+
+Un elemento puede pertenecer a dos class distintas de esta forma en HTML:
+
+ <input  class ="formulario_input formulario_submit" type="submit"value="Confirmar">
+
+El margen nos ayuda a separar CADA ELEMENTO del resto de elementos del página. MUY IMPORTANTE.
+
+.box{
+    background: red;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
+
+Los márgenes en el sentido vertical se superponen. Ver foto guardada. Se llama Margin Collapse. Y si tuvieran distintos márgenes el margen grande es el que queda.
+
+
+.box1{
+
+    background: red;
+    height: 150px;
+    width: 150px;
+    margin-bottom:20px ;
+}
+.box2{
+    background: red;
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+}
+
+En este caso se queda con margen de 20 no de 40. Ya que se superponen. Si fueran distintos, se quedaría con el más grande. NO SE SUMAN.
+
+ <body>
+        <div class="box1">   </div>
+        <div class="box2">   </div>
+</body>
+
+En este caso body es la caja padre y divs son dos elementos hijos de body y por tanto son elementos hermanos. En estos casos hacemos lo siguiente en la clase padre:
+
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+Esto es para que NO se superpongan ambos elementos y SI se sumen las distancias.
+
+Pero lo mejor es utilizar este colapso de márgenes a favor del desarrollo de nuestra página web.
+
+MINI EJERCICIO.
+Ver ejercicio de la carta1 en la carpeta de ejercicios.
+
+Es un ejercicio muy básico. Ya aprenderemos a entender a usar mejores colores, imágenes, sombras, unidades de medida...
+
+BORDES/BORDER
+
+Propiedades:
+
+Cambiar el tamaño (BORDER-WIDTH)
+Cambiar el estilo (BORDER-STYLE)
+Cambiar el color.
+
+También tenemos otra propiedad que nos permite modificar los bordes que son los redondeos.
+
+Redondear las esquinas de un elemento (BORDER-RADIUS)
+
+En el caso de la propiedad border-style siempre que se usa o casi siempre, se suele utilizar border-style: SOLID.
+
+Pero también hay más como dashed (con lineas), double, Groove (el segundo más chulo), dotted (con puntos), hidden (lo desaparece).
+
+La propiedad border-radius se da o en pixeles o porcentualmente.
+
+div{
+
+    border-width: 10px;
+    border-color: rgb(71, 255, 172);
+    border-style: solid;
+    border-radius: 10px;
+}
+
+Es distinto usar PORCENTAJES que usar PIXELES, probar las diferencias. Se redondea de maneras distintas. Es normal usar 4px para que tenga un mínimo de bordeado.
+
+La propiedad border remplaza las tres primeras:border-width: 10px; border-color: rgb(71, 255, 172); border-style: solid;.
+Se haría de la siguiente forma:
+
+div{
+
+    border: 10px solid blue;
+
+}
+
+En ese orden. Pero el border-radius lo tendríamos que poner en otra línea distinta.
+
+Podemos poner border-top: ; para que únicamente tenga borde arriba. Esta propiedad la utiliza mucho el. Y él estudio la carrera de desarrollo web. También border-left,right… y que cada uno sea distinto:
+
+
+div{
+    border-top: 5px, dashed, midnightblue;
+    border-right: 5px solid, gray;
+    border-bottom: 5px, dashed, midnightblue;
+    border-left: 5px solid, gray;
+}
+
+Igual para el border-radius.
+
+order-radius: 10px, 50px; Cambiaría esquina superior izquierda e inferior derecha con 10 px; inferior izquierda y superior derecha 50px. También podemos darle uno a cada uno. Probar todas las posibilidades de este vídeo. El usa mucho border top y border. 
+
+Podríamos personalizar un input de la siguiente manera:
+
+input{
+
+    margin: 5px;
+    padding: 6px 9px;
+    border: none;
+    border-top: 1px dashed black;
+    background: gainsboro;
+}
+
+

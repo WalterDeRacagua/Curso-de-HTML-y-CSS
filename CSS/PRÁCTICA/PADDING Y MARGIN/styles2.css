@@ -1,0 +1,28 @@
+/*
+.box{
+    background: red;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
+*/
+
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.box1{
+
+    background: red;
+    height: 150px;
+    width: 150px;
+    margin-bottom:10px ;
+}
+.box2{
+    background: red;
+    height: 150px;
+    width: 150px;
+    margin-top: 10px;
+}

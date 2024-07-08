@@ -1,0 +1,44 @@
+div{
+    background: red;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    
+}
+
+/*Aqui creamos un div otra vez. Normalmente no se hace esto pero es para centrarnos en concreto con los bordes.*/
+
+div{
+
+    border-width: 10px;
+    border-color: rgb(71, 255, 172);
+    border-style: solid;
+    border-radius: 10px;
+}
+
+/*Lo de arriba lo podríamos hacer en una sola línea con la propiedad border. ordern: anchura-estilo-color*/
+
+div{
+
+    border: 10px solid black;
+
+}
+
+/*Tambien lo podemos hacer para uno de los cuatro bordes: border-top,border-left, border-right,border-bottom y poner las tres propiedades en una linea para que cada borde sea distinto.*/
+
+div{
+    border-top: 5px, dashed, midnightblue;
+    border-right: 5px solid, gray;
+    border-bottom: 5px, dashed, midnightblue;
+    border-left: 5px solid, gray;
+    border-radius: 10px, 50px;
+}
+
+input{
+
+    margin: 5px;
+    padding: 6px 9px;
+    border: none;
+    border-top: 1px dashed black;
+    background: gainsboro;
+}

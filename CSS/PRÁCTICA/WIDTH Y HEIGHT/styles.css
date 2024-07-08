@@ -1,10 +1,9 @@
-.ingrediente-faltante{
-    color: red;
-}
-.ingrediente-secreto{
-    color:forestgreen ;
+input{
+    width: 80%;
+
 }
 
-#ingrediente-secreto{
-    color: cadetblue;
+form{
+    width: 500px;
+
 }

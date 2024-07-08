@@ -1,0 +1,47 @@
+.formulario{
+    background: red;
+}
+
+.formulario_input{
+
+    padding:90px, 102px;
+    background-color: black;
+    width:100%;
+    color:red;
+    margin:10px ;
+}
+
+.formulario_submit{
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: blue;
+    color: white;
+    width: 50%;    
+}
+
+/*
+.formulario{
+     background: red;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right:10px ;
+}
+
+.formulario{
+     background: red;
+     padding: 20px 0 20px 30 px;
+}
+
+Este último lo que hace es que podamos ajustar el padding de arriba, derecha, abajo e izquierda (agujas del reloj) en una sola línea. 
+
+
+.formulario{
+     background: red;
+     padding: 20px 10px;
+}
+
+Esto es que padding top y bottom tiene 20 pixeles y left y right 10
+
+*/
