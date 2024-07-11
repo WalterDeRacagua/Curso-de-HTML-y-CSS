@@ -376,4 +376,81 @@ input{
     background: gainsboro;
 }
 
+BOX SIZING
 
+Propiedad de CSS que normalmente la utilizamos para modificar el modelo de caja predeterminado. Básicamente el modelo de caja es cómo calculan los navegadores el total del tamaño de un elemento (esto incluye padding border content...)
+
+Ver foto con las distintas explicaciones de box sizing.
+
+Para ajustar en concreto el tamaño de la caja podemos hacer uso de la propiedad box-sizing.
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 10px;
+} 
+
+.box-default{
+    padding: 25px;
+    border: 10px solid black;
+}
+
+.box-new{
+
+    box-sizing: border-box;
+    padding: 25px;
+    border: 10px solid black;
+
+}
+
+En el primer caso NO usamos box-sizing y afecta directamente a cada parte de la caja, pero en el segundo caso solo afecta a la caja. Ver foto.
+
+En la foto vemos que el cuadrado de arriba solo afecta al contenido mientras que el de abajo a la caja. Eso es box-sizing.
+
+Usando border box el contenido se adapta al tamaño de caja que decimos.
+
+Si no ponemos nada se usa el content-box, en el cual ajustamos el tamaño del contenido. 
+
+Box-sizing mucho mejor, border-box.
+
+COLORES
+
+Ahora vamos a aprender a dar color, utilizar RGB hexadecimal, hsl…
+
+hsl tiene menos colores que RGB y que hexadecimal.
+
+
+RGB tiene 256 tipos de verde, 256 tipos de azul y 256 tipos de rojo. 16.777.216 colores.
+
+RGBA (ALPHA) SE ENCARGA DE MANEJAR LA OPACIADAD (CUANTO ROJO/VERDE/AZUL LE VAMOS A DAR AL COLOR)
+
+Empezamos por RGB. Tenemos que decidir cuánto rojo, cuanto azul y cuanto verde queremos para el color que vamos a formar. Por ejemplo, si queremos solo rojo:rgb(255, 0, 0);
+Si quisiéramos un violetita rgb(255, 0, 255) mucho rojo y azul y nada de verde...
+
+Para poder elegir un buen color podemos buscar rgba picker.
+
+Pero su favorito es hexadecimal.
+
+Para cada color tenemos 16 posibilidades 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f. Utilizamos # y decimos cuanto queremos de rojo, cuanto de verde y cuanto de azul. Para cada color tenemos dos números #000000 un total de 6. También se puede hacer solo con 3 valores, uno para el rojo otro para el verde y otro para el azul.
+
+RGB es más intuitivo, pero ambos son iguales.
+
+.box{
+
+    padding: 50px;
+    background:#44e;
+    margin: 20px;
+    text-align: center;
+    color: #0ff;
+    border-top: 2px solid #0ff;
+    border-top-width: 3px;
+    font-family: sans-serif;
+    font-weight: bold;
+
+}
+
+Fondos claros -> texto oscuro
+Fondos oscuros -> texto claro
+
+Probar con htmlcolorcodes 
