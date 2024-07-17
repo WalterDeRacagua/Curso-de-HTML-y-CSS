@@ -454,3 +454,219 @@ Fondos claros -> texto oscuro
 Fondos oscuros -> texto claro
 
 Probar con htmlcolorcodes 
+
+UNIDADES DE MEDIDA
+
+Forma que tenemos de medir cualquier cosa. Puede ser pixeles, porcentajes,rems,em...
+Es un error usar para todo los pixeles.
+
+La medida más basica de todas son los pixeles, es una medida absoluta, son aeas de luz de la pantalla. Se usa para el tamaño de imagenes, margeny padding.
+
+Pero también existen otro tipo de unidades e medida que son pt y picas, que se usan para cosas que queremos imprimir.
+
+h1{
+    margin: 0;
+    font-size: 18pt; /*pc en el caso de las picas*/
+}
+
+esto ni nos interesa. No se usan para absolutamente nada.
+
+Otra que si se usan un poco más son los milímetros los centímetros y las pulgadas.
+
+div{
+    background: #aeadaddf;
+    padding: 4cm;
+    font-family: sans-serif;
+    border-left: 2px solid #686768;
+}
+
+Importante también para imprimir. Para medidas que después en la vida real tienen un significado.
+
+También podemos poner mm y pulgadas -> in
+
+div{
+    background: #aeadaddf;
+    padding: 0.2in;
+    font-family: sans-serif;
+    border-left: 2px solid #686768;
+}
+
+IMPORTANTE: Únicamente utilizamos estas unidades de medida cuando sepamos que se van a IMPRIMIR lo que estemos haciendo. Se llaman medidas físicas. Un pixel es diferente en cada pantalla.
+
+También se pueden utilizar los centímetros, milímetros y las pulgadas cuando desarrollemos webs táctiles.
+
+Utilizar medidas absolutas es lo mejor en algunos casos, pero no para el diseño responsive (creo que es el que se adapta a los tipos de pantallas). Y aunque adaptemos a las distintas pantallas nuestros diseños con medidas ABSOLUTA, no se vaa ver bien. Vamos a pasar a unidades RELATIVAS.
+
+Las unidades relativas son unidades que dependen de otra unidad o valor. Son importantísimas para el responsive desing.
+La unidad relativa más común y conocida es el porcentaje. Cuando usamos el porcentaje, definimos el tamañ con respecto a su contenedor.
+
+p{
+    color: #434343;
+    background: #ee0000;
+    margin: 0;
+    width: 50%;
+}
+
+Aquí se adaptará al tamaño de la caja contenedora y ocupara el 50% del ancho que ocupa su caja contenedora. Es decir, los porcentajes definen algo respecto al tamaño contendor. Pero respecto al texto es bastante distinto.
+
+No podemos dar medidas del texto con porcentajes. SI pusiramos porcentajes en el font-size nos haría el porcentaje respecto al font-size de la caja contenedora, no respecto al tamaño de la caja contenedora. 
+
+
+div{
+    background: #aeadaddf;
+    padding: 0;
+    font-family: sans-serif;
+    border-left: 2px solid #686768;
+    width: 200px;
+    font-size: 400px;
+}
+
+h1{
+    margin: 0;
+    font-size: 40px;
+}
+
+La caja contenedora de h1 es div. SI por ejemplo nosotros pusieramosque h1 font-size: 10% lo haría sobre el font-size de su caja contenedora que en este caso es div. Por tanto, en este caso poner 10% y 40px sería lo mismo.
+
+Los porcentajes NO se suelen usar ni en márgenes ni en padding ni en webadas de esas.
+
+Después tenemos dos medidas más: em y rem.
+
+Para el dalto definir los tamaño en em es la mejor forma de hacerlo para muchas cosas.
+
+Un em va a valer lo mismo que un font-ize del elemento padre.
+Si hacemos esto:
+p{
+    color: #434343;
+    font-size: 1em;
+}
+
+Y su caja contenedora/padre tiene el siguiente font-size:
+
+div{
+    background: #aeadaddf;
+    padding: 0.2in;
+    font-family: sans-serif;
+    border-left: 2px solid #686768;
+    font-size: 30px;
+}
+
+p tendrá el mismo font-size que su caja contenedora. Es decir, aquí tendría 30 pixeles. Si pusiéramos 2em seria el doble 60pixeles. Coge el tamaño del font-size del contenedor padre, y multiplícalo por el valor del em.
+
+l rem hace los mismo que el em. Pero en vez de buscar al ELEMENTO PADRE, busca al ELEMENTO RAÍZ. En este caso, el elemento raíz es <html>:
+
+html{
+    font-size: 60px;
+}
+
+p{
+    color: #434343;
+    font-size: 0.5rem;
+}
+
+En este caso el font-size será de 30 pixeles.
+
+Por tanto, rem busca en la raíz que es HTML, y em busca en la caja padre, en este aso div. De momento, lo hemos utilizado para el font-size. SI no definimos un Font-size para la raiz los define el propio navegador; el valor por defecto suele ser de 16 pixeles.
+
+Si l elemento padre no tiene definido un font-size, va A BUSCAR AL ELEMENTO MÁS PADRE.
+
+Si por ejemplo la caja padre tenemos a div, y div no tiene un Font-size definido, va a buscar a la caja padre de div, en este ejemplo es body. En este caso ajustaría el em al size de body. Comobody NO tiene definido un font-size, iría al padre de body, en este caso es HTML. Como HTML SI tiene definido un Font-size, ajustaría el tamaño al Font-size de HTML y sería lo mismo hacer em que rem.
+
+Después tenemos las medidas del view-port.
+
+Si queremos por ejemplo que h1 tenga la mitad de alto de lo que tiene toda la ventana entera hacemos
+
+h1{
+    margin: 0;
+    font-size: 23px;
+    background-color: #ff0000;
+    height: 50vh;
+}
+
+donde vh significa viewport height. Se redimensiona la ventana si la achicamos o la agrandamos al tamaño del viewport. También se puede hacer con el width:
+
+h1{
+    margin: 0;
+    font-size: 23px;
+    background-color: #ff0000;
+    height: 80vh;
+    width: 50vw;
+}
+
+Luego, tenemos otra medida que es vmax y vmin que son el viewport máximo y el viewport mínimo. Hace el máximo entre vh y vw, y se queda con el máximo si es vmax y viceversa con vmin.
+
+Ex y ch no lo vamos a ver de momento.
+
+¿Cuándo usamos cada medida?
+
+Si queremos da tamaño a las tipografías, en y rem son ideales.
+
+Para layouts/capas o armar las dimensiones se usan porcentajes, em, rem o viewport height! esto para diseños responsive. 
+
+Si queremos que algo tenga un tamaño fijo podemos usar pixeles. Por ejemplo con imágenes. Para los bordes se usan pixeles.
+
+FONDOS
+
+No solamente le podemos dar color, si no que también podemos hacer muchas más cosas que en este apartado veremos.
+
+Nosotros para l color del fondo hemos venido utilizando el background, ya que engloba muchas posibilidades y en una de ellas se encuentra el color. Pero podemos usar el backgroun-color. Veremos que otras cosas podemos hacer con los fondos.
+
+body{   
+    background-color: #00ff00;
+}
+
+
+.box{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    background-color: #0006;
+    position:absolute;
+    top: 0;
+}
+
+En el background-color, con el ultimo nuerito podemos controlar la opacidad y que e pueda ver un fondo por ejemplo. En youtube, cuando vamos a subir un video nos sale de fondo nuestro canal como más oscuro y eso es por ese feto. 
+
+Otra propiedad que tenemos con background es background-image:
+
+.box{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    background-color: #000;
+    background-image: url("https://th.bing.com/th/id/OIP.Oyh47xp4Jb6imfmeJkeXxQHaEK?rs=1&pid=ImgDetMain");
+}
+
+Importante usar las comillas. Como se puede ver, la imagen NO sale al completo. Podemos hacer que se vea completo al amentar el tamaño de la caja en la que se encuentra. El elemento NO es una imagen, es una caja, pero hemos conseguido que el fondo del elemento, de la caja, sea una imagen.
+
+Vemos que la imagen no se adapta al tamaño del elemento, para eso tenemos la propiedad background-size. Hace que crezca como el tamaño del elemento. Podremos controlar la propiedad para que NO se repita la imagen.
+
+background-size: contain; esta propiedad obliga a que la imagen entre y se muestre una vez entera por lo menos una vez y la puede repetir.
+
+background-size: cover; Sirve para que la imagen se adapte y que NO se repita. Hace que la imagen se adapte a la resolución que tiene que tener.
+
+background-position: center; Nos sirve para que solo aparezca una parte de la imagen. También podemos usar pixeles para ajustar la imagen. Normalmente se usa center, top, bottom, left... 
+
+Si ponemos background-size: contain permitiendo que se reptan las imágenes, lo podemos evitar usando background-repeat: no-repeat y quitarle el color de fondo al elemento para que se vea la imagen bien.
+
+.box{
+    width: 400px;
+    height: 200px;
+    margin: 20px;
+    background-color: #00000000;
+    background-image: url("https://wallpapercave.com/wp/wc1787509.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+ambien podemos elegir que la imagen se repita en una dirección:.box{
+    width: 400px;
+    height: 200px;
+    margin: 20px;
+    background-color: #00000000;
+    background-image: url("https://wallpapercave.com/wp/wc1787509.jpg");
+    background-size: 40px;
+    background-position: center;
+    background-repeat: repeat-x;
+}
