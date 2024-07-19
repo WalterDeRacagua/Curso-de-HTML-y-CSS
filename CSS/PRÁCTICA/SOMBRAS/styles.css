@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}
+
+.box{   
+    width: 280px;
+    height: 530px;
+    background: #e2e2e2;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0 0 40px 0 #0007;
+    padding: 20px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #555;
+    text-align: center;
+}
+p{
+    list-style: none;
+    text-align: justify;
+    line-height: 1.4;
+    font-size:14px ;   
+    text-shadow:  0 0 4px #f007; 
+}
+
+img{
+    width: 160px;
+    filter: drop-shadow(0 0 3px #000f);
+}
+

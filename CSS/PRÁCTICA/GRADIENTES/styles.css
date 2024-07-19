@@ -1,0 +1,35 @@
+body{
+    background: #f00f;
+    margin: 0;
+}
+
+.box{
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(transparent, #000a);
+    background: radial-gradient(transparent 80%, #000a);
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-top: 6px solid #a00;
+}
+/*
+.box{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(red, transparent);
+    margin: 0;
+}
+Este uso que le hemos dado nois servía para poder explicar los gradientes. Vamos a ver cómo hacer una terjetita.
+
+*/
+
+
+
+h1{
+    margin: 0;
+    padding: 10PX;
+    text-align: center;
+    font-family: sans-serif;
+    color: #ffff;
+}

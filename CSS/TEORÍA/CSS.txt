@@ -660,7 +660,7 @@ Si ponemos background-size: contain permitiendo que se reptan las imágenes, lo 
     background-repeat: no-repeat;
 }
 
-ambien podemos elegir que la imagen se repita en una dirección:.box{
+tambien podemos elegir que la imagen se repita en una dirección:.box{
     width: 400px;
     height: 200px;
     margin: 20px;
@@ -669,4 +669,96 @@ ambien podemos elegir que la imagen se repita en una dirección:.box{
     background-size: 40px;
     background-position: center;
     background-repeat: repeat-x;
+}
+Suele trabajar con cover en background-size y contop en background position.
+
+También tenemos  background-attachment: fixed; que nos permite scrollear y que la imagen se siga viendo bien. Esto se suele utilizar en algunas páginas webs. Este efecto es muy común de utilizar.
+
+Lo que viene por defecto es scroll. 
+
+Claro, pero como con otras propiedades, ir poniendo una por una el color, luego el size, luego la position... de manera independiente es un poco "cansino". Podemos usar lo siguiente:
+
+background: image, position, size, repeat (si lo tuviéramos), attachment, color. Quedaría de esta forma:
+
+   background: url("https://wallpapercave.com/wp/wc1787509.jpg") top / cover fixed #00000000;
+
+MUY IMPORTANTE ACORDARNOS DE USAR LA BARRITA "/" PORQUE SI NO NO APARECERÍA LA IMAGEN!!
+
+GRADIENTES
+
+Color que comienza siendo uno pero que se va transformando a otro. Esta teoría también forma parte de los fondos. Es una especie de transición de colores.
+
+Para darle un gradiente a un fondo que originalmente tiene lo siguiente:
+
+.box{
+    width: 400px;
+    height: 400px;
+    background: #f00;
+}
+
+Para añadirle el gradiente, primero debemos comprender que existen distintos gradientes y que los usamos en la propiedad background:
+	
+	-linear-gradient(x,y) se trata de una función usual de programación que recibe dos parámetros, que son dos colores.
+Ejemplo: background: linear-gradient(red, #a0a); 
+Este linear-gradient se utiliza sobre todo con un último valor de "transparent".
+
+De esta forma se puede apreciar:body{
+    background: black;
+}
+
+.box{
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(red, transparent);
+    
+}
+
+transparent != White, comprobarlo con el fondo negro.
+
+Este es el principal uso de los gradientes, con el transparente. Para permitirnos tener una variación del color que tenemos.
+
+Los gradientes por lo general se utilizan para resaltar el texto.
+
+Si queremos que el efecto se haga de izquierda a derecha usamos to right:
+    background: linear-gradient(to right,transparent, #000a);
+
+También le podemos dar más colores.
+
+Luego tenemos el radial-gradient(transparent, #000) que focaliza en vez de arriba o abajo o derecha o izquierda, el centro. Como si fuera una mira de un arma.
+
+Por último, tenemos el conic-gradient, que hace un efecto extraño pero piola.
+
+PERO EL PRINCIPAL QUE SE USA ES EL LINEAR.
+
+SOMBRAS
+
+Son muy importantes en el diseño web porque le aportan realismo a cualquier elemento, incluso tridimensionales, mejoran la legibilidad...
+
+Hay tres 3 tipos de sombras:
+
+	-Sombra que le damos a una caja-> box-shadow.
+	-Sombra que le damos al texto-> text-shadow.
+	-Sombra que le damos a componentes->drop-shadow.
+
+ box-shadow: 20px 0px 50px 10px #000; donde 
+ box-shadow: horizontalmente a la derecha, verticalmente hacia abajo, desenfoque, volumen de la sombra, y el color.
+Podemos poner valores negativos para que, en vez de a la derecha, vaya a la izquierda, en vez de arriba, vaya abajo, etc...
+
+A los primeros valores generalmente se le pone 0. El 3 valor es el único que se suele modificar, ya que el cuarto es cuanto se extiende la sombra.
+
+Valores comunes: box-shadow: 0 0 40px 0 #0007;
+
+En cuanto al text-shadow tiene un formato PARECIDO al box-shadow, pero sin el cuarto valor:
+ text-shadow:  0 0 100px #0007; 
+
+Con imágenes si le aplicamos un box-shadow a una imagen sin fondo queda asquerosa. Para darle una sombra a una imagen con fondo transparente usamos lo siguiente:
+
+filter: drop-shadow(0 0 15px #000f);
+
+De forma que nos quedaría la imagen perfecta.
+
+
+img{
+    width: 160px;
+    filter: drop-shadow(0 0 3px #000f);
 }
