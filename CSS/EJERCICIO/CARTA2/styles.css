@@ -1,33 +1,46 @@
 body{
-    background-color: black;
+    background: #eee;
     font-family: sans-serif;
     color: white;
 }
 
 .card{
-    background: coral;
+    background: #03f;
     text-align: center;
     width: 300px;
     margin: auto;/*Nos lo coloca centrado*/
     margin-top: 20px;/*Para que haya más espaci arriba*/
+    padding: 10px 10px;
+    border-radius: 5%;
+    box-shadow: 0 0 15px 0 #000a;
 }
 
-h1{
+
+.card_title{
     font-size: 22px;
     padding:10px 0 0 0;/*Es como si solo fuera padding top*/
     margin: 0;
 }
 
-h2{
+.card_subtitle{
     font-size: 12px;
     font-weight: 100;
     letter-spacing: 2px;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.card_content{
+    font-size: 12px;
+    text-align: justify;
+    padding: 15px 10px;
+    padding-bottom: 0;
+    margin-bottom: 10px;
     
 }
 
-p{
-    font-size: 9px;
-    padding: 20px;
-    background: lightcoral;
-    text-align: justify;
+.card_image{
+    width: 100px;
+    border-radius: 30%;
+    filter: drop-shadow(0 0 3px #000a);
 }

@@ -762,3 +762,7 @@ img{
     width: 160px;
     filter: drop-shadow(0 0 3px #000f);
 }
+
+
+Después de esto hemos mejorado el ejercicio de la carta.
+Podemos añadirle más cosas pero con eso es suficiente, podemos añadir también más cartas, cambiar el nombre de sus clases, cambiar el color...
