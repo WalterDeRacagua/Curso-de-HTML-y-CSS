@@ -1,0 +1,69 @@
+HTML INTERMEDIO
+
+1.METAETIQUETAS COMENTARIOS E ICONOS
+-----------------------------------
+
+HTML es menos denso que CSS. Nosotros hemos visto ya bastante de HTML.
+
+Son tres conceptos muy distintos pero veremos cada uno de ellos detenidamente.
+
+Los comentarios son código que sirve para indicar pequeñas cosas, como ocurre en C++ con // o /**/. Solo lo lee el desarrollador.
+En CSS hemos descubierto que también se hace con /**/. Pero... ¿y HTML?
+En HTML se hace de la siguiente forma: <!---->
+Por ejemplo:  <!--Esto es un comentario, el primer comentario en CSS-->
+        <h1>Tiriririri, Mauricio Colmenero.</h1>
+
+Los favicons son los iconitos que aparecen arriba en las pestañas. 
+Para hacer uso de un favicon usamos esto justo debajo de head:
+ <link rel="icon" href=""...>
+
+Imagen debe de ser pequeñita. Se suele tener una imagen de 32X32 pixeles (o en su defecto de 64X64)
+
+Un ejemplo de Favicon es el siguiente:
+       <link rel="icon" href="/HTML/PRACTICA/ICONOS/icono/FaviconRM.png" type="image/png">
+
+El type es MUY RECOMENDABLE ponerlo porque así sabemos de qué tipo es la imagen. Y hace que vaya más rápido.
+
+Ahora vamos a ver los metaetiquetas/metatags (mejor en ingles).
+Son etiquetas que tienen la única finalidad que tiene es describir ciertos aspectos de nuestra página web. Ofrece información de nuestra web.
+En el HEAD van las metaetiquetas. Quien visita nuestra pagina web NO ve esas metaetiquetas. Pero da información para el CEO creo que se llama. El CEO (o como joraca se escriba), ayuda al posicionamiento de nuestra página en la web, en los motores de búsqueda.
+
+PD: <html lang="es"> indica al navegador EN QUÉ LENGUAJE/IDIOMA está escrita la página web.
+
+Las metaetiquetas que vienen por defecto en el head son las siguientes:
+
+<meta charset="UTF-8">: Le dice la codificación que va a utilizar. Este UTF-8 permite TODOS los caracteres de TODOS los idiomas del mundo. Ahora el navegador lo entiende por defecto. Pero lo ponemos por si acaso, por si hay gente que usa navegadores antiguos.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> name es el nombre de la meta-etiqueta y el contenido donde ponemos lo que queremos decir.
+Aquí trabajamos con el VIEWPORT, y decimos que width = al ancho del dispositivo que lee la pagina, esto hace que nuestra pagina esté adaptada a todo tipo de dispositivos: Tablet, móviles, computadoras... El initial scale es para el tema del zoom. Cuando carga la pagina por primera vez entra con zoom del 100%. TODO ESTO ES MUY IMPORTANTE PONERLO. VA A SER CLAVE.
+
+En cuanto a otras meta-etiquetas importantes tenemos la de descripción, que explica de lo que trata la página web.
+ <meta name="description" content="Esta pagina web se trata del Real Madrid, el club de mi vida y el que me la alegra.">
+La descripción debe ser de unos 100 caracteres a lo sumo (RECUERDA, los caracteres son las letras, NO las palabras)
+
+Otra meta-etiqueta importantísima es  <meta name="keywords" content=""> donde están las palabras clave que también ayudaran a posicionar mejor o peor nuestra página en la búsqueda. Ejemplo con una pagina del Real Madrid:<meta name="keywords" content="Real, real, Madrid, madrid, Real Madrid, real madrid, futbol, fútbol">
+
+Otra meta-etiqueta importante que sirve para saber quien es el autor de la pagina web es:
+ <meta name="author" content="Sergio Sánchez Carrasco">
+
+Otra meta-etiqueta importante podría ser    <meta name="robots" content=""> con la cual podemos decir al navegador una serie de cosas sobre nuestra página (a través de content por supuesto):
+	-content="nofollow": Para que NO la muestre al hacer la busqueda.
+	-content="nosnippet": Para que NO se muestre un fragmento de nuestra pagina en el navegador. Los fragmentos a los que me refiero son aquellos que google muestra de nuestra página sin que el usuario entre.
+	-content="noarchive" es para que no se almacene una copia de nuestra web en cache. Esto sirve para que
+si el usuario tarda 3s en hacer que toda la página le cargue, lo que hace google es guardar nuestra página para que el usuario cuando vuelva a entrar le tarde menos tiempo en cargar. esto hace que no la guarde en caché. Esta propiedad SIRVE si nuestra página es continuamente cambiante.
+	-content="noimageindex" las imagenes no indexan
+De todas estas que él ha dicho, no se recomienda usar ninguna SALVO en casos puntuales.
+
+Otra meta-etiqueta que tenemos es el <meta name="title" content="REAL MADRID.">. No se suele usar al tener un titulo pero no está demás
+
+Estos han sido los meta-tags más comunes.
+
+Después tenemos los Open-Gwrap-metatags que sirve para cuando pongamos los enlaces que se muestre un titulo o lo que sea. Los 3 siguientes son importantes:
+
+  <meta name="OG:title" content="Sergiosc">
+        <meta name="OG:image" content="">
+        <meta name="OG:description" content="">
+
+Otro muy importante es: <meta name="OG:url" content=""> que indica a la URL a la que hay que redireccionar.
+Para ver esto usamos el debugger de Facebook. Lo buscamos en el buscador y entramos a la web. También tenemos el postinspector de LinkedIn. SI lo queremos ver para cada red social o web buscamos metatags.io.Desde esta pagina podemos hacer que nos genere los 3 metatags más importantes sin tener nosotros que programarlos, para que se pueda ver en todas las plataformas.
+	
