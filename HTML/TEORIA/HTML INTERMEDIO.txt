@@ -66,4 +66,67 @@ Después tenemos los Open-Gwrap-metatags que sirve para cuando pongamos los enla
 
 Otro muy importante es: <meta name="OG:url" content=""> que indica a la URL a la que hay que redireccionar.
 Para ver esto usamos el debugger de Facebook. Lo buscamos en el buscador y entramos a la web. También tenemos el postinspector de LinkedIn. SI lo queremos ver para cada red social o web buscamos metatags.io.Desde esta pagina podemos hacer que nos genere los 3 metatags más importantes sin tener nosotros que programarlos, para que se pueda ver en todas las plataformas.
+
+
+2.TEXT AREAS
+---------------
+
+Es un input pero que nos deja escribir más cantidad de texto.
+
+Aquí Dalto recuerda que la etiqueta <div></div> sirve para dividir y ya la veremos más adelante.
+
+También recuerda que para adaptar el contenido al tamaño de la pantalla hacemos lo siguiente en CSS: 
+
+box-sizing: border-box;
+
+Además habla de una nueva propiedad de css que es el max-width para que se redimensione pero hasta cierto punto.
+  max-width: 600px;
+
+Para poner el text área necesitamos la siguiente etiqueta:
+ <textarea ></textarea>
+
+A este text-area le queremos dar las mismas propiedades de CSS que tiene el input. ¿Copiamos y pegamos? NO. Hacemos lo siguiente:
+
+input, textarea{
+    width: 100%;
+    /*Para que se adapte a la pantalla usamos lo siguiente*/
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #0001;
+    background: transparent;
+    color: #eee;
+}
+
+Para evitar que se pueda redimensionar podemos poner un min-width del 100%. Pero aun podríamos redimensionar a la derecha y cargarnos el layout de la caja. Para ello añadimos una nueva propiedad que sea resize: vertical; para que solo podamos redimensionar de arriba a abajo. Pero sigue sin convencernos. Vamos a coger el text-area y a modificarlo del manera individual. Nos quedaría tal que así:
+input, textarea{
+    width: 100%;
+    /*Para que se adapte a la pantalla usamos lo siguiente*/
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #0001;
+    background: transparent;
+    color: #eee;
+}
+
+
+textarea{
+    min-width: 100%;
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+    font-family: sans-serif;
+}
+
+Además, el text-area le podemos poner un placeholder, pero presenta una tipografía distinta al resto:
+ <textarea placeholder="Deja tu mensaje"></textarea> Si queremos que el text-area tenga la misma tipografía la tenemos que poner específicamente en el text-area. Es por eso que vemos que en text-area ponemos Fon-family sans-serif. Si no queremos que el text-area se pueda redimensionar ponemos resize:none;
+Se está implementando una nueva propiedad que es el form-sizing: content; para que el text-area se adapte al contenido. Será la mejor forma de usarlo.
+Luego tenemos una propiedad que es el readonly para que NO se pueda escribir en el text-area y solo salga info que pongamos nosotros: <textarea readonly placeholder="Deja tu mensaje...">FVCK</textarea> readonly es un booleano que NO necesita valor; solamente con ponerlos obtienen el valor de true, en este caso readonly= true; Luego tenemos disabled NO se puede hacer focus, no aparece el bordecito blanco, y no solo eso... Cuando mandemos el formulario, la información dentro del text área NO SE ENVIARÁ A LA BASE DE DATOS. Readonly si. También tenemos maxlength, que es para saber el número total de caracteres que podemos escribir en el text-area. En Twitter hace tiempo por ejemplo lo tenían puesto en 140 caracteres:  <textarea  maxlength="140" placeholder="Deja tu mensaje...">      FVCK</textarea>.
+También podemos hacer que, en vez de cambiar el min y maxheight al text área en css, añadir en HTML un propiedad llamada rows= "" para que pueda mostrar el número de líneas que nosotros queramos.
+
+3.LABELS
+-----------
 	
