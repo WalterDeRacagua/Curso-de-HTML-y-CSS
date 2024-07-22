@@ -129,4 +129,29 @@ También podemos hacer que, en vez de cambiar el min y maxheight al text área e
 
 3.LABELS
 -----------
+
+Es la manera que tenemos de etiquetar un elemento de input. Es decir, un campo en el cual le pedimos datos del usuario TIENE que estar etiquetado por un label. Mejoran la usabilidad para los ciegos por ejemplo y queda a veces más lindo. Ejemplo:
+
+  <div class="form_input">
+            <label >Nombre</label>
+            <input type="text" placeholder="Nombre 		    completo">
+</div>
+
+Si queremos que haya un espacio entre el label y el input, no se puede hacer poniendo un margin bottom al label. No deja. Para ello podemos hacer 2 cosas:
 	
+	-Poner a los inputs un margin-top.
+	-Poner al label un line-height:2;
+
+Para que el label no sea redundante con el placeholder de cada input, podemos poner como placeholder un ejemplo de cada campo. Podemos cambiar el color del texto que ponemos en cada input, pero ahora a él no le gusta.
+Si nosotros queremos que, al pichar en el label nos vaya directamente a su input, tenemos que ponerle un id a cada input y ponerle al label un for "id_element". Por ejemplo: <label for="correo">Email</label>
+            <input type="email" placeholder="ejemplo@gmail.com" id="correo">
+(Mirar carpeta de PRACTICA/LABELS)
+
+También podemos meter dentro del label el input sin poner el id ni el for y lo hace de manera directa.
+
+Para poder hacer unos términos que el usuario deba aceptar, podemos usar la propiedad checkbox de la etiqueta input. Para que se coloque al lado del label, tenemos que poner width: auto;
+
+4. SELECT, DATALIST Y OPTION
+-----------------------------
+
+Son nuevas formas de inputs.
