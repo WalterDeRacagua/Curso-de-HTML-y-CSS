@@ -154,4 +154,124 @@ Para poder hacer unos términos que el usuario deba aceptar, podemos usar la pro
 4. SELECT, DATALIST Y OPTION
 -----------------------------
 
-Son nuevas formas de inputs.
+Son nuevas formas de inputs. Seguimos con los formularios.
+
+Los SELECT son un tipo de campo de entrada que nos permite seleccionar una opción de entre varias opciones. Como una lista que se te despliega con muchas opciones al darle a una flechita.
+
+Los DATALIST donde nosotros escribimos algo y se nos autocompleta con opciones que predefinimos.
+
+El OPTION sirve tanto para el DATALIST como para el SELECT, para poner las distintas opciones a elegir entre las mismas.
+
+Dentro de SELECT ponemos las distintas OPTIONS. Ejemplo:
+
+ <select name="Servicios-para-usuario">
+                <option value="serv-1">Merchandising</option>
+                <option value="serv-2">Viajes</option>
+            </select>
+Importante que el SELECT tenga un nombre para saber que tipo de opciones ofrece.
+Importante también que el OPTION, cada uno tenga un value para cuando recibimos el código con JavaScript (por ejemplo) saber leer el dato.
+Si queremos que el SELECT tenga el mismo formato que el resto de campos, vamos a CSS y se lo ponemos:
+
+input,textarea,select{
+    width: 100%;/*Para poner label encima de input*/
+    /*Para que se adapte a la pantalla usamos lo siguiente*/
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #0001;
+    background: transparent;
+    color: #eee;
+    margin-top: 5px;
+}
+
+Es optimo cambiar el color del background a las distintas opciones para que salga como el resto. Queda así:
+
+       <!--SELECT Y OPTION EN HTML-->
+        <div class="form_input">
+            <label for="options">Opciones</label>
+            <select name="Servicios-para-usuario" id="options">
+                <option value="serv-1">Merchandising</option>
+                <option value="serv-2">Viajes</option>
+            </select>
+El DATALIST tiene una función muy parecida al SELECT, pero podemos escribir para acercarnos a la opción que nosotros queramos seleccionar. El modo de uso en HTML es extraño y es de la siguiente forma:
+ <!--DATALIST & OPTION-->
+        <div class="form_input">
+            <label >Tipo de usuario
+                <input list="referente" name="referente">
+                <datalist id="referente" name="type-of-user">
+                    <option value="user-1">Seguidor/a</option>
+                    <option value="user-2">Empresa</option>
+                    <option value="user-3">Otros</option>
+                </datalist>
+            </label>
+Necesitamos un input con una propiedad list="" en la que pongamos al id de la etiqueta datalist correspondiente. En este caso, si ponemos value="" al seleccionar una opción se autocompleta con el valor "value". Podemos poner el contenido como si fuera el código, el value, y el value ponemos el contenido que queremos que se muestre. O quitar el value. Si lo ponemos de la siguiente forma, sale más bonito:
+  <input list="referente" name="referente">
+                <datalist id="referente" name="type-of-user">
+                    <option value="Seguidor/a"></option>
+                    <option value="Empresa"></option>
+                    <option value="Otros"></option>
+                </datalist>
+Podemos poner en el contenido de la OPTION una descripción de la opción. Al servidor se le envía la opción del value también.
+
+5. FIELDSET Y LEGEND
+--------------------------
+
+Seguimos con los formularios. Son campos para los formularios. Son más que nada para organizar/agrupar los campos de los formularios. Ejemplo:
+ <fieldset>
+            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Apellidos">
+            <input type="number" placeholder="Edad">
+        </fieldset>
+Legend ofrece una descripción de la agrupación. Era como en Java cuando a las tablas las teníamos que poner como un título. Ejemplo:
+
+    <fieldset>
+            <legend>INFORMACIÓN DE CONTACTO</legend>
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Teléfono">
+        </fieldset>
+
+Hasta aquí hemos llegado a los formularios.
+
+6.DETAILS Y SUMMARY
+---------------------
+
+Proporcionan una funcionalidad nativa para poder crear despliegues sin necesidad de JavaScript. Crear contenidos desplegables.
+Aquí hemos cometido el error de utilizar el símbolo & en el nombre de la carpeta y no nos dejaba visualizar el contenido.
+
+Un ejemplo de details y summary es:
+ <details>
+        <summary>A tu mama le encanta</summary>
+        Ver mis vídeos.
+    </details>
+
+A estos se le puede dar estilo:
+
+body{
+    background: #333;
+    color: #ddd;
+}
+
+details{
+    background: transparent;
+    border: 1px solid #ddd;
+    font-family: sans-serif;
+}
+
+details[open]{
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+summary{
+    background: transparent;
+    border-bottom: 1px solid #ddd;
+    padding: 9px;
+}
+
+Donde details[open]{
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+implica el estilo que le damos cuando abrimos el summary. En este caso le ponemos un borde abajo, un fondo transparente y aumentamos la anchura del contenido.

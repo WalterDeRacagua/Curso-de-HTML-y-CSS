@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="descripcipn" content="Web sobre los Fieldsets">
+    <meta name="keywords" content="Fieldset, webs, formularios, formularios html, html">
+    <meta name="author" content="Sergio Sánchez Carrasco">
+    <meta name="robots" content="nosnippet">
+    <meta name="title" content="Fieldset">
+     <!--A PARTIR DE AQUI SON LAS OPEN GRAP METATAGS PARA REDES SOCIALES-->
+     <meta name="OG:title" content="Sergiosc">
+     <meta name="OG:image" content="">
+     <meta name="OG:description" content="Open grap para ver la descripcion">
+     <meta name="OG:url" content="url que debería tener.">
+     <title>FIELDSET</title>
+     <link rel="stylesheet" href="styles.css">
+     <link rel="icon" href="/HTML/PRACTICA/METATAGS, COMENTARIOS,ICONOS/ICONOS/icono/FaviconRM.png">
+</head>
+<body>
+    <form>
+        <h2>Formulario de contacto</h2>
+        <!--Información básica-->
+        <fieldset>
+            <legend>
+                INFORMACIÓN BÁSICA
+            </legend>
+            <div class="form_input">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" placeholder="Zacaria Gonzales" id="nombre">
+            </div>
+            <div class="form_input">
+                <label for="correo">Email</label>
+                <input type="email" placeholder="ejemplo@gmail.com" id="correo">
+            </div>
+            <div class="form_input">
+                <label for="">Asunto</label>
+                <input type="text" placeholder="Asunto del mensaje">
+            </div>
+        </fieldset>
+            <!--SELECT Y OPTION EN HTML-->
+            <div class="form_input">
+                <label for="options">Opciones</label>
+                <select name="Servicios-para-usuario" id="options">
+                    <option value="serv-1">Merchandising</option>
+                    <option value="serv-2">Viajes</option>
+                </select>
+            </div>
+            <!--DATALIST & OPTION-->
+            <div class="form_input">
+                <label >Tipo de usuario
+                    <input list="referente" name="referente">
+                    <datalist id="referente" name="type-of-user">
+                        <option value="Seguidor/a"></option>
+                        <option value="Empresa"></option>
+                        <option value="Otros"></option>
+                    </datalist>
+                </label>
+            </div>
+        
+        <!--TEXT-AREAS-->
+        <div class="form_input">
+            <label for="mensaje">Mensaje</label>
+            <textarea  rows="4" placeholder="Deja tu mensaje..." id="mensaje"></textarea>
+        </div>
+        <div class="form_input">
+            <label for="terminos">Acepto los terminos y condiciones</label>
+            <input type="checkbox" id="terminos" class="checkbox">
+        </div>
+    </form>
+</body>
+</html>
