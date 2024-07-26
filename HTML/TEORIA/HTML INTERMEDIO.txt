@@ -275,3 +275,236 @@ Donde details[open]{
 }
 
 implica el estilo que le damos cuando abrimos el summary. En este caso le ponemos un borde abajo, un fondo transparente y aumentamos la anchura del contenido.
+
+Esto es útil para hacer por ejemplo, una sección de preguntas frecuentes (FAQ). O para ocultar o mostrar información adicional también está bien.
+
+De momento no hacer esto:details[open]{
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+Porque no lo hemos visto.
+
+7.ENLACES (AVANZADO)
+----------------------
+
+Detrás de los enlaces hay un montón de cosas más que hacer de lo que ya hemos visto en HTML básico.
+
+Para poder poner un enlace a los términos y condiciones de una web, debemos hacer lo siguiente:<label for="terminos">Acepto los <a href="terms.html" target="_blank">terminos y condiciones</a></label>
+            <input type="checkbox" id="terminos" class="checkbox">
+
+Pero que pasaría si lo que enlazamos no esta en nuestro equipo y esta en otro lugar? Ahora lo veremos.
+
+Antes de hacer lo anterior vamos a ver los ids, para poder ir a cada apartado de los Términos y condiciones.
+
+Por ejemplo, mis términos tienen en el apartado 5 las modificaciones a los términos. ¿Qué pasa si yo quiero ir directamente a esa sección?
+
+Para eso, tendremos que poner a la parte donde queremos llegar un id para poder ir. Y al enlace de acceso a esa parte, en el href="" poner # y el id. Por ejemplo:
+
+ <a href="#modificaciones-terminos">Modificaciones de terminos</a>
+  <h2 id="modificaciones-terminos">
+
+Nos permite decidir a qué elemento vamos a ir.
+
+Si quisiéramos descargar como archivo las condiciones y los términos haremos lo siguiente.
+
+¿Y si queremos enviar al usuario a una web que desconocemos?
+
+ TÉRMINOS Y CONDICIONES GENERADOS EN
+            <a href="https://bebita.com">BEBITA.COM</a>
+
+Si lo quisiéramos abrir en target blank, podrían enviarnos a páginas web maliciosas sin tu quererlo. Para evitar eso, tenemos que poner lo siguiente:
+
+rel="noopener"
+
+De forma que quedaría de la siguiente manera:
+
+<a href="https://bebita.com" rel="noopener" target="_blank">BEBITA.COM</a>
+
+Así le quitamos acceso al archivo widnows.opener. FUNDAMENTAL ESTO SI QUEREMOS PONER EL TARGET BLANK.
+
+Pero hay una rel mejor que es:
+
+rel="noreferrer"
+
+No permite el acceso a Windows.opener, pero además tampoco tenga información de los encabezados, de forma que nunca sabrá de qué página vino. No sabrá de donde viene el usuario. MUY IMPORTANTE PONERLO.
+
+rel="nofollow"
+
+Para decirle a Google que no siga a los usuarios ni que tampoco indexe la página del enlace. Por ejemplo los enlaces de los usuarios de Twitter tienen un nofollow. Es imprescindible ponerlo también si los usuarios pueden añadir enlaces (redes sociales). Se puede poner los 3 a la vez:
+ <a href="https://bebita.com" rel="noopener noreferrer nofollow" target="_blank">BEBITA.COM</a>
+
+nopenner y noreferrer para todos los enlaces.
+
+Además, podemos añadir un correo de contacto para que el usuario pueda escribir un correo directamente. De esta forma:
+
+<a href="mailto:sesanc15@ucm.es">MANDAR UN MAIL A SERGIO</a>
+
+Este apartado ha servido para dar más seguridad a nuestra página, hacer que se posicione mejor tenga mejor rendimiento...
+
+8.TABLAS
+------------
+
+No se usan para muchas cosas A DÍA DE HOY. Es una forma de organizar datos en filas y columnas. Es muy parecido a cómo trabajan las hojas de trabajo de Excel, Word...
+
+Las tablas hace deacadas se usaban para todo. El único uso que se le dan a las tablas a día de hoy es el de mostrar datos tabulares. Cada celda forma parte de una fila y columna y tenemos la necesidad de hacer algo.
+
+La etiqueta para poner tablas es:
+<table></table>
+
+Las tablas se separan en una serie de etiquetas. 3 en concreto si no me equivoco. Tenemos:
+
+	- <tr></tr>: Arma una fila para la tabla, tr viene de table row.
+	- <td></td>: Arma una columna para nuestra tabla.
+
+Ejemplo:
+ <tr>
+     <td>
+           Membresía nivel 1.
+     </td>
+     <td>
+           Membresía nivel 2.
+     </td>
+</tr>
+
+Poniendo borde en css a las columnas podemos observar bien tabla.
+
+Además, las tablas necesitan un encabezado para poder saber qué información ponemos en cada columna de la tabla.
+Eso se consigue con la etiqueta table header <th> </th>:
+     <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Primer Apellido
+            </th>
+            <th>
+                Segundo Apellido
+            </th>
+        </tr>
+
+El header aparece centrado y bolder. Hay que hacerlo de esta forma si utilizamos tablas porque así nos ayuda a posicionar la misma. Cada etiqueta tiene su uso y es importante DARLE EL USO CORRECTO.
+
+Podemos poner encabezados NO solo para la primera fila de la tabla, sino que también para un SUBTOTAL DE UNA LISTA DE PRODUCTOS QUE HEMOS COMPRADO, por ejemplo. (Ver código de tablas).
+
+Pero trabajaremos de forma distinta con tablas más tarde, porque podemos querer que la columna de subtotal, el resultado, ocupe todas las columnas y no solo una. Por ejemplo, para resolver eso en nuestra práctica ponemos colspan="2" para que se extienda 2 columnas, la que ya ocupa y una más.
+
+    <table>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Cost
+            </th>
+            <th>
+                Units
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Banana
+            </td>
+            <td>
+                $2
+            </td>
+            <td>
+                10 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Apple
+            </td>
+            <td>
+                $2.5
+            </td>
+            <td>
+                14 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Watermelon
+            </td>
+            <td>
+                $5
+            </td>
+            <td>
+                1 
+            </td>
+        </tr>
+        <tr>
+            <th>
+                SUBTOTAL
+            </th>
+            <td colspan="2">
+                $50
+            </td>
+        </tr>
+    </table>
+
+Además, es importante clasificar filas y columnas en thead y tbody. Todas las etiquetas de headers de la tabla formaran parte del thead y se deberán poner dentro, y todo lo que forme parte del contenido deberá ponerse dentro del tbody. MUY IMPORTANTE. Además, el resumen de la tabla lo tenemos que poner en el tfoot, en el caso del ejemplo del subtotal por ejemplo SI deberíamos de ponerlo:
+   <tfoot>
+                <tr>
+                    <th>
+                        SUBTOTAL
+                    </th>
+                    <td colspan="2">
+                        $50
+                    </td>
+                </tr>
+            </tfoot>
+
+MUY IMPORTANTE poner todas las etiquetas theader, tbody y tfoot (este último opcional). La estructura será mucho mejor. Border radius para las tablas queda un poco feo.
+
+Para que no haya separación entre las celdas tenemos que ponerle a la tabla un border-spacing de 0:
+table{
+    width: 100%;
+    /*Para que todo pueda aparecer centrado. Y no solo los headers de la tabla*/
+    text-align: center;
+    padding: 10px 5px;
+    border-spacing: 0;
+}
+
+También podemos ponerle el boder-spacing que queramos. El le suele poner 12px.
+
+Se suele utilizar para cosas muy concretas. Pero NO tiene tanto uso a día de hoy, antes se usaba para todos.
+
+9.AUDIO Y VÍDEO 
+-----------------
+
+La tecnología flash era lo que se utilizaba anteriormente para el audio y para el vídeo. HTML se dio cuenta de que no podía depender de Flash para nada y además flash se volvió insegura.
+
+En HTML 5 se añadieron las etiquetas de video y las de audio. Permiten reproducir vídeo y audios. 
+
+Para poder reproducir un vídeo en una web y que se REPRODUZCA es muy importante poner lo siguiente:
+<video autoplay src="video.mp4"></video>
+autoplay para que se pueda reproducir automáticamente.
+Sin embargo, si únicamente ponemos esto el usuario al refrescar la página NO podrá volver a reproducirlo. Para ello tenemos que añadirle la propiedad CONTROLS:
+ <video  controls autoplay src="video.mp4"></video>
+Si además queremos que al actualizar la página el vídeo continúe, tenemos que ponerle la propiedad MUTED:
+ <video muted controls autoplay src="video.mp4"></video>
+Autoplay no funciona sin el muted. El texto que pongamos entre las etiquetas de vídeo es lo que va a aparecer si el navegador NO soporta el vídeo. Ese es el único caso.
+
+En el caso de que no cargue el vídeo el utiliza la etiqueta poster, donde carga una imagen. La imagen que él carga es, por ejemplo, la miniatura del vídeo. <video muted controls autoplay src="video.mp4" poster="">
+        Tu navegador NO soporta el vídeo.
+    </video>
+Y en poster pone la miniatura.
+Para audio es lo mismo, cambiamos vídeo por la etiqueta audio y únicamente se reproduciría el audio.
+
+Cuando queramos poner un vídeo, es mejor NO poner la etiqueta audio.
+
+En JavaScript se puede hacer magia con los vídeos. Si queremos que el vídeo se reproduzca en bucle debemos poner loop. y podemos eliminar el control para que el usuario no pueda parar ell vídeo.
+    <video muted loop controls autoplay src="video.mp4" poster="">
+
+Para poner subtitulos, podemos utilizar la etiqueta track.
+    <video muted loop controls autoplay src="video.mp4" poster="">
+        <track src="captions.vtt">
+        Tu navegador NO soporta el vídeo.
+    </video>
+Si queremos que aparezcan directamente los subtitulos, ponemos la propiedad de default. Le tenemos que decir el tipo de track, en este caso subitles y tenemos que poner la propiedad kind="subtitles" y después tenemos que decir el idioma, con srclang= "es" y poner label ="Español (España)" porque hablamos un español de España en nuestro caso:
+ <track src="captions.vtt" default kind="subtitles" srclang="es" label="Español (España)"> Pero tenemos que cargar el archivo vtt de los subtitulos. Para configurarlo usamos JavaScript y de otras formas.
+
+10.CARGA DIFERIDA/LAZY LOADING.
+---------------------------------

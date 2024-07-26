@@ -7,15 +7,25 @@ details{
     background: transparent;
     border: 1px solid #ddd;
     font-family: sans-serif;
+    padding: 9px;
+    font-size: 0.7em;
+    color: #aaa;
 }
-
+/*
 details[open]{
     border: 1px solid #ddd;
     font-weight: bold;
 }
-
+*/
 summary{
     background: transparent;
     border-bottom: 1px solid #ddd;
     padding: 9px;
+    font-size: 1em;
+    color: #eee;
+}
+
+ul{
+    /*Para que no cambie el contenido de dentro a bold también hacemos esto....*/
+    font-weight: 100;
 }

@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    color: #eee;
+    background: linear-gradient(to bottom, #222, #000);
+}
+
+h2{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 24px;
+    padding: 10px;
+    font-size: 1.4em;
+}
+
+form{
+    background: transparent;
+    padding: 20px 0;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 0 10px 0 #fff2;
+    margin-top: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.form_input{
+    padding: 6px 20px;
+}
+
+input,textarea,select{
+    width: 100%;/*Para poner label encima de input*/
+    /*Para que se adapte a la pantalla usamos lo siguiente*/
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #0001;
+    background: transparent;
+    color: #eee;
+    margin-top: 5px;
+}
+
+option{
+    /*Para que tenga el mismo color que el resto de campos*/
+    background: #333;
+    
+}
+
+textarea{
+    min-width: 100%;
+    resize: none;
+    font-family: sans-serif;
+}
+
+label{
+    font-size: 0.85em;
+    /*Para separarlo de su input...*/
+    /*line-height: 3;*/
+}
+
+.checkbox{
+    /*Para que el checkbox se ponga justo al lado del label.*/
+    width: auto;
+    height: 10px;
+}
+
+fieldset{
+    padding: 5px 10px 20px 10px;
+    border-radius: 10px;
+    border: 1px solid #666;
+    margin: 20px;
+}
+
+legend{
+    padding: 0 6px;
+    color: #666;
+}
+
+a{
+    /*Ideal para los fondos oscuros.*/
+    color: #69f;
+    text-decoration: none;
+}

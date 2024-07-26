@@ -80,3 +80,9 @@ legend{
     padding: 0 6px;
     color: #666;
 }
+
+a{
+    /*Ideal para los fondos oscuros.*/
+    color: #69f;
+    text-decoration: none;
+}
