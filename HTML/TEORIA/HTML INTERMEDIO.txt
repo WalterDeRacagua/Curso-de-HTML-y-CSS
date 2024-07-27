@@ -508,3 +508,93 @@ Si queremos que aparezcan directamente los subtitulos, ponemos la propiedad de d
 
 10.CARGA DIFERIDA/LAZY LOADING.
 ---------------------------------
+
+Es un concepto que habla de que el contenido va cargando en función de que el usuario va llegando a la sección correspondiente. Este concepto ya lo vimos en IS2 con los proxys. Lazy Loading carga la información de lo que el usuario está viendo en ese momento. Pero no carga lo que no está viendo para evitar cargas innecesarias y evitar lentitud. Funciona con elementos como imágenes:
+
+<img loading="lazy" src="/HTML/PRACTICA/METATAGS, COMENTARIOS,ICONOS/ICONOS/icono/FaviconRM.png">
+
+Tenemos que poner la propiedad loading="lazy" para conseguir este efecto. Le da prioridad al resto de cosas. SI lo utilizamos de forma peligrosa, puede hacer que el usuario este navegando y no le carguen los elementos. No usarlo hasta que no sea necesario dice.
+
+11. HTML OBSOLETO
+------------------
+
+En esta sección vamos a ver las etiquetas que están en desuso y que es mucho mejor rehuir de utilizarlas. No se recomiendan usarlas. Se volvieron innecesarias en consecuencia de los avances de HTML y en concesecuencia de que, muchas de ellas se pueden sustituir por funcionalidades de CSS las marcan en blanco. Son las siguientes:
+
+	-<font> </font>
+	-<center></center>
+	-<blink></blink>
+	-<big></big>
+	-<strike></strike> -> se sustituyo por del, que tacha la palabra. o <s></s>
+	-<tt></tt>-> se sustituyó por la etiqueta <code></code> que sirve para poner código de algún lenguaje de programación.
+	-<u></u>: no se usa, se usa en css. Sirve para subrayar.
+
+También, atributos que se suelen dar estilo a alguna etiqueta en HTML en vez de en css como para una tabla cellspaddin NO SE HACE, SE HACE DESDE CSS. Cualquier cosa para dar estilo debería hacerse desde CSS.
+
+Algunas que si se usan:
+	-<strong> </strong>: Para dar mucho énfasis en algo. Da importancia y para algo serio.
+	-<em> </em> para poner cursiva y darle énfasis pero no tanto como con strong.
+
+Para ver más etiquetas obsoletas de HTML buscar mdn HTML. Importante, porque también aparecen nuevas etiquetas y como usar cada etiqueta. 
+
+12. HTML SEMÁNTICO.
+---------------------
+
+Vamos a ver etiquetas semánticas. Significa utilizar etiquetas específicamente para dar un significado a la SECCIÓN que estamos creando de nuestra página web.
+
+Hemos usado las etiquetas div y span para dividir todo hasta ahora, pero eso NO es del todo correcto. Debemos de darle nombre a las partes en las que dividimos nuestro programa. Usar div y span es mucho peor que otras opciones que ahora veremos. 
+
+Para un encabezado completo, utilizamos la siguiente etiqueta:  
+<header>        
+</header>
+
+Normalmente contiene imágenes, logotipos, alguna barra de navegación...
+
+Para una barra de navegación, utilizamos la etiqueta <nav> </nav>
+
+Después de header, tenemos la etiqueta section, que hace referencia a una parte del contenido. Si se trata del contenido principal, por ejemplo, una receta, section lo tenemos que encerrar en la etiqueta main. En main se engloba el contenido que consideramos parte principal de nuestra web. Por ejemplo, en twitter el contenido principal son los tweets de los usuarios. Luego también tiene una barra de navegación y demás. Ejemplo:
+
+<main>
+        <section class="recipe-container">
+            
+        </section>
+    </main>
+
+Luego tenemos la etiqueta aside <aside> </aside> que hace referencia a una parte más secundaria de nuestra web, pero algo tiene que ver con el main.  Ejemplo:
+    <aside>
+        <section class="comments-container">
+
+        </section>
+    </aside>
+
+Además, el footer es la sección de abajo del todo en la cual se suele encontrar los derechos de autor, enlaces, términos y condiciones. Recomienda NO usar etiquetas por usar, que las etiquetas tengan algún sentido utilizarlas.
+Ver imagen disposición web. Más tarde con css podremos colocar cada cosa en su sitio. Lo veremos cuando hagamos webs.
+
+13. ACCESIBILIDAD WEB
+------------------------
+
+Consiste en realizar páginas web que sean adaptadas PARA TODOS. Luego esta sección es de vital importancia. Para ciegos, sordos... Luego es reimportante. En Europa hay leyes sobre esto, de hacer páginas web que se adapten a todos. Al hacer estas prácticas intentas darle mucho más sentido a todo. Este concepto ayuda a que tengamos más cosas en cuenta, tener impacto social y además cumplir con la ley, impacto económico, porque más gente entra a nuestra página. Mejor posicionamiento en buscadores.
+
+Ver imagen en la que explico cómo es el proceso para una persona con una discapacidad visual en una pagina web.
+
+Tenemos que crear un BUEN CÓDIGO HTML para hacer más accesible y que el navegador pueda CREAR un MEJOR DOM/DOC para las personas con discapacidades. También tiene un poco que ver CSS.
+
+Lo primero que debemos de hacer es activar el lector de pantalla.
+
+Importante para las imágenes añadirle un texto alternativo: 
+<img src="/HTML/PRACTICA/METATAGS, COMENTARIOS,ICONOS/ICONOS/icono/FaviconRM.png" alt="Escudo del Real Madrid"> con la especificación de lo que hay en la imagen.
+
+Para los enlaces tenemos que poner la propiedad aria-label="" con la descripción correspondiente:
+ <a href="index.html" aria-label="Ir a la pagina web principal"> HOME</a>.
+
+Si ponemos <nav></nav> el lector de pantalla va a reconocer que se trata de una barra de navegación.
+
+ <h1 aria-label="Titulo principal">TITULO</h1>
+
+Con aria label podemos modificar incluso los campos de los ejercicios de los formularios. Una página web debería de poder ser navegable solo con la letra "tab" y "enter" para este tipo de personas con problemas.
+
+También podemos adjudicar roles para los ids de las etiquetas. Por ejemplo role="slider" para deslizar imágenes. Podemos ir a la web oficial de HTML buscar roles HTML y ver cuales son todos los roles. Y podemos ver aquellos que NO tienen ningún tipo de etiqueta especial.
+ <div id="slider" role="slider">
+
+IMPORTANTE: VER VÍDEO DE CÓMO HACER PÁGINAS WEBS INCLUSIVAS DE SOY DALTO. TAMBIÉN VER COMO SUBIRLO A UN SERVIDOR WEB. Y DESPUÉS EL CURSO DE JS.
+
+Usar en inspeccionar-> + -> Lighthouse para comprobar el SEO, rendimiento y la ACCESIBILIDAD. Sobre todo que tenga las cosas básicas. ACORDARNOS de la accesibilidad. Usar aria-label, aria-value… mirar webs. 
