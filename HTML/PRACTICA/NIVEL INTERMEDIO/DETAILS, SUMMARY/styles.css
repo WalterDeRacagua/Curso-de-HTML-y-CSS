@@ -11,12 +11,12 @@ details{
     font-size: 0.7em;
     color: #aaa;
 }
-/*
+
 details[open]{
     border: 1px solid #ddd;
     font-weight: bold;
 }
-*/
+
 summary{
     background: transparent;
     border-bottom: 1px solid #ddd;
