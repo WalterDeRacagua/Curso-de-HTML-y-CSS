@@ -41,12 +41,12 @@ input, textarea{
     box-shadow: 0 0 15px 0 #0001;
     background: transparent;
     color: #eee;
+    font-family: inherit;
 }
 
 
 textarea{
     min-width: 100%;
     resize: none;
-    font-family: sans-serif;
    
 }

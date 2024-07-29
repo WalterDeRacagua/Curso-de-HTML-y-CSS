@@ -1,0 +1,26 @@
+body{
+    color: brown;
+    font-family: sans-serif;
+}
+
+div{
+    width: 50%;
+}
+
+h1{
+    /*Si queremos que lo herede ponemos inherit*/
+    color: inherit;
+    width: inherit;
+    /*Si no queremos que lo herede ponemos initial*/
+    color: initial;
+    /*revert intenta encontrar el estilo del usuario.
+    Si por ejemplo el usuario se descarga un plug-in 
+    de Chrome, va a se valor:*/
+    color: revert;
+    /*unset esta explicado en las diapos*/
+    color: unset;
+}
+
+p{
+    color: #00f;
+}

@@ -1,0 +1,49 @@
+/*
+Para un elemento completo
+img[src ="FaviconRM.png"]{
+    width: 100%;
+}
+*/
+
+/*Para seleccionar elementos que terminan en png...*/
+/*SELECTOR POR ATRIBUTO*/
+img[src$=".png"]{
+    width: 100%;
+}
+
+
+/*Para elementos que empiezan por algo
+img[src^="FaviconRM"]{
+    width: 50%;
+}
+*/
+
+/*SELECTOR POR DESCENCIENTE*/
+ul li{
+    color: #666;    
+}
+
+/*SELECTOR POR HIJO DIRECTO*/
+li > em{
+    color: #f00;
+}
+/*Podemos darle el estilo solamente tambien al strong
+ul strong{
+    color: #f00;
+}
+*/
+
+/*SELECTOR ADYACENTE*/
+h1 + p{
+    color: #00f;
+}
+
+/*SELECTOR DE HERMANOS GENERALES*/
+h1 ~ p{
+    color: #00f;
+}
+
+/*SELECTOR DE MULTIPLES ELEMENTOS*/
+h1,p{
+    color: #000;
+}

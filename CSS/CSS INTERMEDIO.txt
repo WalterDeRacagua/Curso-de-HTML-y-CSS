@@ -1,0 +1,142 @@
+CSS INTERMEDIO
+----------------
+
+1.SELECTORES AVANZADOS
+-----------------------
+Debemos saber cómo dar estilo a los elementos. Pero la otra parte de css, además de dar estilo, consiste en saber SELECCIONAR aquello que queremos modificar. Hay muchas formas en las que podemos tener problemas a la hora de seleccionar elementos en CSS. Saber seleccionar elementos en momentos específicos, en algunos estados, o elementos hijos, hermanos...
+
+1-DAR ESTILO POR ATRIBUTO
+
+Por ejemplo, seleccionar a una etiqueta que, como atributo tenga el src de una imagen concreta:img[scr="FaviconRM.png"]{
+    width: 100%;
+}
+
+Si queremos por ejemplo seleccionar todas las que tengan .png como extensión lo podemos hacer poniendo el simbolo del dollar $ justo después del atributo de la siguiente manera:
+
+img[src$=".png"]{
+    width: 100%;
+}
+
+Si queremos aplicar una propiedad a un atributo que empieza de cierta forma usamos ^ :
+img[src^="FaviconRM"]{
+    width: 50%;
+}
+
+2-SELECTORES DESCENDENTES
+
+Si por ejemplo queremos que una propiedad afecte a todas las etiquetas que estén dentro de una etiqueta concreta. Por ejemplo, que el color de letra rojo a los list ítems <li> sea para aquellos li que forman parte de una unordered list <ul>:
+
+ul li{
+    color: #f00;
+}
+
+Con esto decimos que li tiene que estar adentro de ul. 
+
+Pero si queremos estilo solamente a los hijos y NO a los nietos (no a todos los elementos que estén dentro). Para ello, tenemos que poner el símbolo >:
+
+ul > li{
+    color: #f00;
+}
+
+Aunque en ese caso CREO que también afecta a los nietos. Ahí se ha confundido.
+
+
+3-SELECTOR (DE HERMANO) ADYACENTE
+
+Selecciona el elemento que está a continuación mía. Únicamente seleccionamos al elemento de JUSTO DESPUÉS. Para ello hacemos uso de +:
+
+h1 + p{
+    color: #00f;
+}
+
+
+4-SELECTOR DE HERMANOS GENERALES
+
+Si queremos darle estilo a todas las etiquetas que se encuentren después de cierta etiqueta tenemos que usar el símbolo ~ de la siguiente forma:
+
+h1 ~ p{
+    color: #00f;
+}
+
+Se estilizan los <p> que se encuentren después de la etiqueta h1 en este caso.
+
+5- SELECTOR DE MÚLTIPLES ELEMENTOS
+
+Para estilizar elementos con cierta etiqueta; ya lo hemos visto anteriormente:
+
+h1,p{
+    color: #000;
+}
+
+
+2-HERENCIA
+------------
+
+Concepto de POO. Algunas propiedades pueden heredarse y otras NO pueden. Eso es la herencia. Si por ejemplo el body tiene la siguiente propiedad:
+
+body{
+    color: brown;
+}
+
+Todos los elementos sin estilo que se encuentren dentro de la etiqueta body heredarán esa propiedad. En concreto, el color SI se puede heredar.
+
+Sin embargo, hay otras propiedades como puede ser el width que NO se heredan.
+
+div{
+    width: 50%;
+}
+
+En este caso, no haría efecto a los elementos de dentro del div.
+
+Pero podemos modificar el comportamiento de la herencia en CSS.
+
+Si queremos que un elemento herede una propiedad de su padre podemos hacer lo siguiente con algunas características (usar INHERIT->HEREDA):
+
+h1{
+    color: inherit;
+}
+
+inherit es el valor por defecto. Pero si h1 tiene un color distinto, usa el color definido en h1 en vez de el del padre que heredaría.
+
+Como widht no es una propiedad heredable podemos hacer que h1 la herede poniéndolo nosotros de la siguiente forma:
+
+h1{
+    color: inherit;
+    width: inherit;
+}
+
+Si por ejemplo tenemos el h1 dentro de un div, y no le hemos puesto width a div, a pesar de que no se lo hayamos definido, seguiría heredando el width predefinido de div.
+
+Si lo que queremos hacer es que h1 NO herede el color por ejemplo, o cualquier otra propiedad, lo que tenemos que hacer es usar initial:
+
+h1{
+    /*Si queremos que lo herede ponemos inherit*/
+    color: inherit;
+    width: inherit;
+    /*Si no queremos que lo herede ponemos initial*/
+    color: initial;
+}
+
+Reestablece el valor al valor por defecto.
+Luego tenemos unset que lo que hace es que si el valor por defecto era inherit, lo vuelve a inherit, pero si era otro, lo deja en initial.
+
+Normalmente initial, unset y demás NO se utiliza. Inherit se utiliza por ejemplo en los text-areas o las etiquetas del formulario. Usar la herencia de una manera correcta, como hemos hecho en la carrera.
+
+
+input, textarea{
+    width: 100%;
+    /*Para que se adapte a la pantalla usamos lo siguiente*/
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #0001;
+    background: transparent;
+    color: #eee;
+    font-family: inherit;
+}
+
+Así definimos la Font-family una sola vez para todos los elementos!
+
+3. CASCADA Y ESPECIFIDAD
+-------------------------
