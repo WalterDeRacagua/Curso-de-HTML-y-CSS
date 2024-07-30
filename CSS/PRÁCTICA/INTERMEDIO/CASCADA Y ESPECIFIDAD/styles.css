@@ -1,0 +1,14 @@
+#titulo{
+    color: #0f0;
+    font-family: sans-serif;
+}
+
+body .titulo{
+    color: #f00 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    color: #00f !important;
+}
+
