@@ -219,3 +219,74 @@ La especifidad es:Especificidad del selector: (0, 1, 1), es más específico que
 
 4. PSEUDOCLASES
 -----------------
+
+Nos permiten seleccionar un estado específico de un elemento que seleccionamos.
+Son palabras clave, que nos permiten seleccionar un estado específico de un elemento.
+
+Una de las pseudoclases más comunes es :hover. El estado que selecciona es el que cuando tenemos el ratón/cursor encima del elemento:
+
+h1{
+    color: #48e;
+    font-family: sans-serif;
+    margin: 30px;
+}
+
+h1:hover{
+    color:#000;
+}
+
+En este caso, al pasar el ratón por encima, el color del h1 será negro. hover es el más utilizado.
+
+También tenemos :active: define el color de un elemento cuando le damos al click.
+
+Estas dos son las más usadas.
+
+Si tenemos una lista de elementos de unordered list, con 4 list ítems, si queremos cambiar el color del primer li podemos hacer uso de la pseudoclase :first-child:
+
+li:first-child{
+    color: #f00;
+}
+
+Solo cambia el primer li. Para cambiar el último:
+
+/*SELECCIONANDO EL ÚLTIMO LI*/
+li:last-child{
+    color: #00f;
+}
+
+Para seleccionar cualquier hijo que NO sea ni el primero ni el último tenemos que hacer uso de nth-child(enesimo):
+
+/*SELECCIONANDO EL ENESIMO LI*/
+li:nth-child(2){
+    color: #f00;
+}
+
+También podemos modificar todos los elementos li que ocupan posiciones pares, posiciones impares...
+
+/*SELECCIONAMOS LOS ELEMENTOS PARES (o de dos en dos)*/
+li:nth-child(2n){
+    color: brown;
+}
+
+Esto último es muy utilizado para tablas.
+
+Si por ejemplo ponemos otro elemento entre los li que no es un li (p.ej un span), con nth-child, si queremos seleccionar el segundo li tenemos que usar nth-child(3) porque cuenta el span como un elemento a pesar de que NO podamos modificarlo. 
+Para seguir el orden normal de los elementos usamos nth-on-type():
+/*SELECCIONAMOS EL SEGUNDO ELEMENTO DE TIPO LI*/
+/*EN ESTE CASO TENEMOS UN SPAN, SI PUSIERAMOS nth-child(2) no funciona, tendríamos que poner 3 */
+li:nth-of-type(2){
+    
+}
+
+Si ponemos ul li es menos especifico que si ponemos la clase .lista li. Ahí si que nos deja cambiarlo:
+/*SELECCIONAMOS TODOS LOS LI DEL UL*/
+.lista li{
+    color: #fff;
+}
+
+Otra pseudoclase utilizada es :not(). Si no queremos darle una propiedad a un elemento li concreto, a este le ponemos una clase y hacemos lo siguiente:
+
+/*SELECCIONAR TODOS LOS LI MENOS EL 4º*/
+.lista li:not(.elem-4){
+    color: #fff;
+}

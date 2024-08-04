@@ -1,0 +1,60 @@
+h1{
+    color: #48e;
+    font-family: sans-serif;
+    margin: 30px;
+}
+
+/*CUANDO PASAMOS EL RATÓN POR ENCIMA DEL ELEMENTO*/
+h1:hover{
+    color: #000;
+    background: #777;
+}
+
+/*CUANDO HACEMOS CLICK EN UN ELEMENTO*/
+h1:active{
+    background: #999;
+    color: #fff;
+}
+
+ul{
+    background: #999;
+    padding: 0;
+}
+
+/*SELECCIONANDO EL PRIMER LI*/
+li:first-child{
+    color: #f00;
+}
+
+/*SELECCIONANDO EL ENESIMO LI*/
+li:nth-child(2){
+    color: #0f0;
+}
+
+
+/*SELECCIONANDO EL ÚLTIMO LI*/
+li:last-child{
+    color: #00f;
+}
+
+/*SELECCIONAMOS LOS ELEMENTOS PARES*/
+li:nth-child(2n){
+    color: brown;
+    background: #fff;
+}
+
+/*SELECCIONAMOS EL SEGUNDO ELEMENTO DE TIPO LI*/
+/*EN ESTE CASO TENEMOS UN SPAN, SI PUSIERAMOS nth-child(2) no funciona, tendríamos que poner 3 */
+li:nth-of-type(2){
+    
+}
+
+/*SELECCIONAMOS TODOS LOS LI DEL UL*/
+.lista li{
+    color: #ff0;
+}
+
+/*SELECCIONAR TODOS LOS LI MENOS EL 4º*/
+.lista li:not(.elem-4){
+    color: #fff;
+}
