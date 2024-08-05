@@ -1,0 +1,42 @@
+div{
+    padding: 20px;
+}
+
+h1::first-letter{
+    color: #f00;
+    font-size: 3em;
+    letter-spacing: -10px;
+}
+
+div::first-line{
+    color: #f0f;
+    font-weight: bold;
+}
+
+h1::selection{
+    background: #0ff;
+}
+
+div::selection{
+    background: #f00;
+    color: #fff;
+}
+
+input::placeholder{
+    color: #00f;
+    background: #000;
+}
+
+li::marker{
+    color: #f00;
+}
+
+li::before{
+    content: 'Elemento: ';
+    color: #f00;
+}
+
+li::after{
+    content: ' despues';
+    color: #00f;
+}

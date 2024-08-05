@@ -1,3 +1,8 @@
+/*Pseudoclase para el directorio raíz*/
+:root{
+
+}
+
 h1{
     color: #48e;
     font-family: sans-serif;
@@ -57,4 +62,41 @@ li:nth-of-type(2){
 /*SELECCIONAR TODOS LOS LI MENOS EL 4º*/
 .lista li:not(.elem-4){
     color: #fff;
+}
+
+div{
+    border: 2px solid #000;
+}
+
+/*SELECCIONAR ELEMENTO SOLO CUANDO ESTE VACÍO*/
+div:empty{
+    background: #0f0;
+    padding: 30px;
+    border: none;
+}
+
+/*Cuando el input es de tipoi checkbox*/
+input[type="checkbox"]{
+    margin: 50px;
+}
+
+/*PARA COMPROBAR QUE EL CHECKBOX ESTE SELECCIONADO*/
+input[type="checkbox"]:checked{
+    margin: auto;
+}
+
+/*SELECCIONANDO ENLACES NO VISITADOS*/
+a:link{
+    color: red;
+}
+
+/*SELECCIONANDO ENLACES VISITADOS*/
+a:visited{
+    color: #0f0;
+}
+
+/*Para algo que no es valido*/
+/*En este caso el email no es valido*/
+input:invalid{
+    color: red;
 }

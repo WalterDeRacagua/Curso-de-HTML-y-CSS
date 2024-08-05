@@ -290,3 +290,307 @@ Otra pseudoclase utilizada es :not(). Si no queremos darle una propiedad a un el
 .lista li:not(.elem-4){
     color: #fff;
 }
+
+Para seleccionar un elemento SOLAMENTE en el caso de que esté vacío, utilizamos la pseudo-clase :empty. Para que esté vacía la etiqueta div no podemos dejar espacio:
+
+<div></div>
+
+/*SELECCIONAR ELEMENTO SOLO CUANDO ESTE VACÍO*/
+div:empty{
+    background: #0f0;
+    padding: 30px;
+}
+
+Esta propiedad es útil, si por ejemplo queremos que haga algo cuando este vacío.
+
+Después tenemos la pseudo-clase root. Selecciona al elemento raíz. Las propiedades del elemento raíz que sean heredables las heredaran el resto según la especificidad. Este en teoría él no lo utiliza mucho.
+
+Podemos cambiar a un input según el estado. Cambiar por ejemplo un checkbox:
+/*Cuando el input es de tipoi checkbox*/
+input[type="checkbox"]{
+    margin: 50px;
+}
+
+/*PARA COMPROBAR QUE EL CHECKBOX ESTE SELECCIONADO*/
+input[type="checkbox"]:checked{
+    margin: auto;
+}
+
+De está forma, si el checkbox está marcado tendrá margin auto, sino margin de 30px.
+
+Si queremos modificar un enlace que NO ha sido modificado usamos para la etiqueta a la pseudoclase :link.
+
+/*SELECCIONANDO ENLACES NO VISITADOS*/
+a:link{
+    color: red;
+}
+
+Si queremos modificar un enlace que YA HA SIDO VISITADO, usamos la pseudoclase :visited
+
+/*SELECCIONANDO ENLACES VISITADOS*/
+a:visited{
+    color: #0f0;
+}
+
+Para ver más pseudoclases, buscar mdn pseudoclases en el buscador de Google.
+
+Una importante también es :focus. Buscarlo en la web que nombro arriba.
+
+Otro es invalid, que si un input no tiene info valida por ejemplo, cambia el texto de color...:
+/*Para algo que no es valido*/
+/*En este caso el email no es valido*/
+input:invalid{
+    color: red;
+}
+
+También está el :valid	
+
+5. IS, WHERE, HAS
+--------------------
+
+Son pseudoclases que han salido hace poco. SI hacemos lo siguiente:
+
+section .elemento1,
+section .elemento2,
+section .elemento3{
+    color: #f00;
+}
+
+Conseguimos que, los elementos que tengan dichas clases, tengan la tipografía de ese color. Pero... ¿cómo podemos hacer esto más fácil? De la siguiente forma:
+
+section :is(.elemento1, .elemento2, .elemento3){
+    color: blue;
+}
+
+Esto es análogo a lo de arriba. Es necesario dejar espacio entre section y : (es cierto que no es necesario poner section la verdad).
+
+Usar where es menos específico que usar is y lo primero. Is cambia la especificidad y where NO la cambia.
+
+En cuanto a has es una pseudoclase que se da al elemento padre, y si se pone sin espacio padre:has.
+
+Comprueba que una etiqueta tenga un elemento o clase concreta para que ocurra algo.
+
+/*HAS*/
+/*NO HAY QUE DEJAR ESPACIO. EN ESTE CASO SI LA SECCION CONTIENE EL ELEMENTO 1 LE DAMOS EL BG NEGRO*/
+section:has(.elemento1){
+    background: #000;
+}
+
+Podemos combinar conocimientos y hacer lo siguiente:
+
+/*COMBINANDO CONOCIMIENTOS PODEMOS HACER LO SIGUIENTE*/
+/*VAMOS A MODIFICAR EL UL QUE CONTENGA DESPUÉS UN DIV*/
+ul:has(+div){
+    background: #000;
+}
+
+En el caso de que a ul le siga un div, modificamos el ul.
+
+Podemos hacer lo siguiente también:
+
+/*PODEMOS HACER ESTO PARA MODIFICAR EL COLOR DEL LABEL EN EL CASO DE QUE EL INPUT SEA VALID O TAMBIÉN INVALID.*/
+label:has(input:valid){
+    color: #0f0;
+}
+
+Y para poder cambiar también el input podemos hacer lo siguiente:
+/*RECOMIENDA DARLE A LOS INPUT COLOR:INHERIT PARA PODER HACER QUE HEREDE DE LABEL EL COLOR Y SI ES CORRECTO SE PONDRÁ VERDE Y SI NO ROJO*/
+input{
+    color: inherit;
+}
+
+
+6.PSEUDO-ELEMENTOS
+--------------------
+
+Para cambiar el estilo de elementos como por ejemplo un placeholder, o los puntos de una unordered list… usamos los pseudo-elementos.
+
+Los pseudo-elementos representan partes especificas de elementos.
+
+Para representar los pseudo-elementos usamos :: dos dobles puntos.
+
+El primer pseudo-elemento que tenemos es h1::first-letter, selecciona la primera letra del h1
+
+h1::first-letter{
+    color: #f00;
+    font-size: 3em;
+    letter-spacing: -10px;
+}
+
+Si queremos únicamente modificar la primera línea de un elemento hacemos ::first-line.
+
+div::first-line{
+    color: #f0f;
+}
+
+Modificaremos la primera linea de todos los divs.
+
+Si por ejemplo queremos cambiar el fondo de un elemento que NOSOTROS SELECCIONAMOS CON EL RATÓN, HACEMOS LO SIGUIENTE:
+
+h1::selection{
+    background: #0ff;
+}
+
+ver vídeo que he guardado.
+
+Los pseudo-elementos tienen sus dificultades. No podemos darle margin, o padding o display por ejemplo. Hay que tener en cuenta estás consideraciones.
+
+Para modificar el placeholder, podemos hacer lo siguiente:
+
+input::placeholder{
+    color: #00f;
+}
+
+Para cambiar de los li el circulito de su izquierda podemos hacer lo siguiente:
+
+li::marker{
+    color: #f00;
+}
+
+Si queremos poner un texto antes de un elemento, en este caso un li hacemos uso de ::before:
+
+li::before{
+    content: 'texto antes';
+}
+
+Si queremos hacer cualquier cosa DESPUÉS de un elemento, en este caso un li, podemos hacer lo siguiente:
+
+li::after{
+    content: ' despues';
+    color: #00f;
+}
+
+Con esto ya tenemos suficiente con los pseudo-elementos. En total hay 10 pseudo-elementos. Before y after se suelen utilizar mucho.
+
+7. METODOLOGÍA BEM
+---------------------
+
+Es una forma de trabajar con nuestros proyectos. Importante tener siempre una metodología de trabajar.
+
+BEM viene de "Block Element Modifier" bloques, elementos y modificadores.
+
+Metodología = forma específica de trabajar.
+
+El principal objetivo de BEM es reutilizar código.
+
+Por ejemplo, siempre darle las mismas características a un botón. Ver foto guardada en la práctica.
+
+BEM consiste en tener una base para los elementos y después con los modificadores ir modificándolos para los distintos elementos. Así no tenemos que reutilizar código.
+
+Además, se resuelven problemas de especificidad. 
+
+BEM permite saber cómo escribir código y cómo nombrar a las clases para solamente viéndolas saber que hacen y que significan.
+
+Y tiene código más legible.
+
+(B)loque(E)lemento(M)odificador
+
+	-Bloque: Componente que no depende de nadie para existir. Una barra de navegación. El formulario que ya hicimos... ya que lo podemos reutilizar en cualquier lugar de la página.
+
+	-Elemento: Hace referencia a una parte de un bloque. Un pedazo/trozo del bloque que, si lo sacamos del bloque no tiene sentido, pero si lo dejamos dentro si lo tiene. Por ejemplo, en la barra de navegación de Google, si sacamos los elementos de esa barra de navegación no tiene sentido. Tiene sentido dentro. Ver vídeo
+
+	-Modificadores: Forma de modificar un bloque o un elemento. Si queremos que un bloque/elemento sea distinto que otro tenemos que modificarlo. Para eso agregamos CLASES MODIFICADORAS para modificarlo.
+
+PD: Para cambiar el estilo de los elementos de una lista hacemos list-style y cambiamos a cuadrados, o lo que nosotros queramos.
+
+SI NO APLICAMOS LA METODOLOGÍA BEM:
+
+/*FORMA INCORRECTA DE APLICAR LA METODLOGÍA BEM*/
+.lista{
+    border: 2px solid #000;
+}
+
+.ingrediente{
+    color: #777;
+    margin: 10px 0;
+    list-style:square;
+}
+
+.ingrediente-importante{
+    color: #00f;
+    margin: 10px 0;
+    list-style: square ;
+}
+
+.ingrediente-danino{
+    color: #f00;
+    margin: 10px 0;
+    list-style: square ;
+}
+
+/*HASTA AQUÍ*/
+
+Vemos que se REPITEN líneas de código, y eso NO lo queremos (margin: 10px 0; list-style: square ;)
+
+APLICANDO METODOLOGÍA BEM:
+
+Toda la lista es un bloque, ya que NO depende de nadie para existir. Como la funcionalidad del bloque es ser una lista, entonces añadimos clase lista al ul:<ul class="lista"> y para los elementos que conforman la lista podemos poner lista + dos guiones bajos + nombre elemento: lista__item:
+
+/*APLICANDO BEM*/
+
+.lista{
+    border: 2px solid #000;
+}
+
+.lista__item{
+    color: #777;
+    margin: 10px 0;
+    list-style: square;
+}
+
+Pero nos falta añadir los modificadores. Ya que queríamos aclarar que la sal era dañina y la harina importante. Para ello, en la misma clase ponemos un espacio, empezamos con el final y añadimos el tipo de elemento que es. Por ejemplo, queríamos decir que la sal es dañina, lo hacemos así: 
+
+ <li class="lista__item item--danino">
+
+O que la harina es importante:
+
+ <li class="lista__item item--importante" >
+
+Se nos quedaría este código muchísimo más claro:
+
+/*APLICANDO BEM*/
+
+.lista{
+    border: 2px solid #000;
+}
+
+.lista__item{
+    color: #777;
+    margin: 10px 0;
+    list-style: square;
+}
+
+.item--danino{
+    color: #f00;
+}
+Aplicar esta metodología siempre. Ahora podemos crear nuevas listas y que estás tengan el mismo estilo. Si queremos modificar una lista, podemos modificar y hacer lo siguiente:
+
+ <ul class="lista lista--vieja">
+        <li class="lista__item item--danino">
+            Sal
+        </li>
+        <li class="lista__item">
+            Patata
+        </li>
+        <li class="lista__item item--importante" >
+            Harina
+        </li>
+        <li class="lista__item">
+            Agua
+        </li>
+    </ul>
+
+.lista--vieja{
+    opacity: 0.5;
+    background: #ddd;
+}
+
+
+Lo único que tenemos que hacer para modificar es añadir un modificador a la clase y hacer los cambios pertinentes.
+
+Utilizar esta metodología para consumir menos recursos, trabajar bien con la especificidad y evitar la repetición de código.
+
+8.PROPIEDAD DISPLAY
+----------------------
+
+	

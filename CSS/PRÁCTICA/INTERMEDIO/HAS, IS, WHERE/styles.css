@@ -1,0 +1,45 @@
+
+/*IS*/
+section .elemento1,
+section .elemento2,
+section .elemento3{
+    color: #f00;
+}
+
+/*USAMOS IS PARA HACER LO MISMO QUE ARRIBA */
+section :is(.elemento1, .elemento2, .elemento3){
+    color: blue;
+}
+
+/*WHERE*/
+/*VEMOS QUE, USANDO WHERE, EL COLOR NO CAMBIA, Y ESO ES POR LA ESPECIFICIDAD DEL WHERE (ES MENOS ESPECÍFICO QUE IS Y QUE HACER LO DE ARRIBA DEL TODO)*/
+section :where(.elemento1,.elemento2,.elemento3){
+    color: #f0f;
+}
+
+/*HAS*/
+/*NO HAY QUE DEJAR ESPACIO. EN ESTE CASO SI LA SECCION CONTIENE EL ELEMENTO 1 LE DAMOS EL BG NEGRO*/
+section:has(.elemento1){
+  
+}
+
+/*COMBINANDO CONOCIMIENTOS PODEMOS HACER LO SIGUIENTE*/
+/*VAMOS A MODIFICAR EL UL QUE CONTENGA DESPUÉS UN DIV*/
+ul:has(+div){
+    background: #000;
+}
+
+/*RECOMIENDA DARLE A LOS INPUT COLOR:INHERIT PARA PODER HACER QUE HEREDE DE LABEL EL COLOR Y SI ES CORRECTO SE PONDRÁ VERDE Y SI NO ROJO*/
+input{
+    color: inherit;
+}
+
+/*PODEMOS HACER ESTO PARA MODIFICAR EL COLOR DEL LABEL EN EL CASO DE QUE EL INPUT SEA VALID O TAMBIÉN INVALID.*/
+label:has(input:valid){
+    color: #0f0;
+}
+
+/*PODEMOS HACER ESTO PARA MODIFICAR EL COLOR DEL LABEL EN EL CASO DE QUE EL INPUT SEA VALID O TAMBIÉN INVALID.*/
+label:has(input:invalid){
+    color: #f00;
+}

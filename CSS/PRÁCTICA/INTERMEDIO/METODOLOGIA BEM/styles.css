@@ -1,0 +1,51 @@
+
+/*FORMA INCORRECTA DE APLICAR LA METODLOGÍA BEM*/
+.lista{
+    border: 2px solid #000;
+}
+
+.ingrediente{
+    color: #777;
+    margin: 10px 0;
+    list-style:square;
+}
+
+.ingrediente-importante{
+    color: #00f;
+    margin: 10px 0;
+    list-style: square ;
+}
+
+.ingrediente-danino{
+    color: #f00;
+    margin: 10px 0;
+    list-style: square ;
+}
+
+/*HASTA AQUI*/
+
+/*APLICANDO BEM*/
+
+.lista{
+    border: 2px solid #000;
+}
+
+.lista--vieja{
+    opacity: 0.5;
+    background: #ddd;
+}
+
+.lista__item{
+    color: #777;
+    margin: 10px 0;
+    list-style: square;
+}
+
+.item--danino{
+    color: #f00;
+}
+
+.item--importante{
+    color: #00f;
+}
+
