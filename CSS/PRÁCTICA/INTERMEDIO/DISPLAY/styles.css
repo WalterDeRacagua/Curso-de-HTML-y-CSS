@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+
+}
+
+
+div{
+    padding: 20px;
+    background: #999;
+    margin: 0 0 20px 0;
+}
+
+/*
+a{
+    background: #f00;
+    color: #fff;
+    display: block;
+    border: 1px solid #111;
+    margin: 10px;
+    padding: 10px;
+}
+    */
+
+p{
+    background: #111;
+    color: #fff;
+    display: inline;
+    /*Si le damos height con display inline, no hace ni caso.tampoco con width*/
+    height: 100px;
+    width: 20px;
+}
+
+.nav{
+    background: #48e;
+    margin: 0 0 20px 0;
+}
+
+.nav__list{
+    margin: 0;
+    text-align: center;
+}
+
+.nav__item{
+    display: inline-block;
+}
+
+.nav__link:hover{
+    background: #59e;
+}
+
+.nav__link{
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+    display: inline-block;
+    padding: 10px;
+    background: #48e;
+}
+
+.link--button{
+    border:1px solid #fff;
+    background: #fff;
+    padding: 6px 12px;
+    color: #48e;
+    border-radius: 12px; 
+    margin-left: 24px; 
+    /*Esta pero desaparece, y los elementos adyacentes se comportan como si no estuviera*/
+    display: none;
+}
+
+.link--button:hover{
+    background: transparent;     
+    color: #fff;       
+}

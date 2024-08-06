@@ -593,4 +593,95 @@ Utilizar esta metodología para consumir menos recursos, trabajar bien con la es
 8.PROPIEDAD DISPLAY
 ----------------------
 
-	
+En este apartado vamos a ver qué es display y la importancia de usarlo.
+
+Si tenemos dos <a> (enlaces) y no ponemos nada de display, entonces salen uno seguido del otro.
+
+Pero si ponemos display:block; entonces sale uno debajo del otro:
+
+
+a{
+    background: #f00;
+    color: #fff;
+    display: block;
+}
+
+Cuando ponemos display block hacemos que ocupe todo el ancho disponible. Además, comienza una nueva línea.
+
+Estos elementos de bloque aceptan márgenes, padding… Si quitamos el display block y hacemos zoom se superpone uno encima del otro, pero si lo dejamos sigue apareciendo uno debajo del otro.
+
+Lo que hacemos con display es transformar un elemento de línea en un elemento de bloque.
+
+Luego, también podemos hacer que elementos de bloque pasen a ser elementos en línea. Usando display: inline; por ejemplo, para p que es un elemento de bloque:
+p{
+    background: #111;
+    color: #fff;
+    display: inline;
+}
+
+Los elementos en línea solo se modifican a lo ancho, no podemos cambiarle el height ni nada...
+
+Por ejemplo, para las tablas <table>, el display es table, y para las celdas su display es table-cell.
+
+Otro tipo de display muy usado también es inline-block, que es una mezcla entre ambas. Se usa, por ejemplo, para realizar barras de navegación.
+
+.nav__item{
+    display: inline-block;
+    padding: 10px;
+    background: #48e;
+}
+
+Además, podemos hacerlo aun más bonito si añadimos a cada item, a cada list element una pseudoclase :hover para que, cuando pasemos el mouse por encima, salga de otro color:
+
+.nav__item:hover{
+    background: #6af;
+}
+
+.nav__link{
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+Y ya tendríamos nuestra barra de navegación. 
+
+Si por ejemplo quisiéramos que un enlace sea un botón, aplicando la metodología BEM podemos añadirle un modificador al enlace:
+     <a href="" class="nav__link link--button">
+
+Y de esta forma nos puede quedar un botón bastante bonito para una barra de navegación:
+
+.link--button{
+    border:1px solid #fff;
+    background: #fff;
+    padding: 6px 12px;
+    color: #48e;
+    border-radius: 12px;  
+}
+
+.link--button:hover{
+    background: transparent;     
+    color: #fff;       
+}
+
+Por tanto, display: inline-block nos sirve para este tipo de cosas.
+
+El último valor que le podemos dar a display es none. Si nosotros le ponemos el display none al botón desaparece:
+
+.link--button{
+    border:1px solid #fff;
+    background: #fff;
+    padding: 6px 12px;
+    color: #48e;
+    border-radius: 12px; 
+    margin-left: 24px; 
+    display: none;
+}
+
+El resto de elementos se comportan como si este NO estuviera.
+
+Veremos display flex-box y otro display que es lo que se usa siempre.
+
+9. POSITION RELATIVA
+--------------------------
+
+Veremos dos valores de la propiedad position.
