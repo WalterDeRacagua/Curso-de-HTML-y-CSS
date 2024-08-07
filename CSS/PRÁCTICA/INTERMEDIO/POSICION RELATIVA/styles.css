@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    background: #ededed;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: #f60;
+    position: relative;
+    z-index: 10;
+    color: #fff;
+}
+
+/*Caja con modificador*/
+.box--blue{
+    background: #00f;
+    /*Con position relative podemos decir que se mueva: mainly hacia top y hacia left.*/
+    top: 70px;
+    left: 20px;
+    z-index: 20;
+}
+
+.box:first-child{
+    top: 150px;
+    left: 40px;
+    background: #f00;
+    z-index: 30;
+}

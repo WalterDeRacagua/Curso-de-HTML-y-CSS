@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    background: #ededed;
+    font-family: sans-serif;
+    text-align: center;
+    background: #333;
+}
+
+.contender{
+    border: 3px solid #000;
+    margin: 20px;
+    background: #fff;
+    position: relative;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: #dbe;
+    color: #fff;
+}
+
+/*Caja con modificador BEM (Bloque elemento modificador)*/
+.box--blue{
+    background: #48e;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.box--red{
+    background: #f77;
+}

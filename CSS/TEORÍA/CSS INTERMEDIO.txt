@@ -685,3 +685,177 @@ Veremos display flex-box y otro display que es lo que se usa siempre.
 --------------------------
 
 Veremos dos valores de la propiedad position.
+
+Nos permite posicionar elementos. Los valores son relative y absolute.
+
+Posicionar un elemento consiste en crear un contexto de apilamiento; objetivo: separar una capa de otras capas. 
+
+Con una aplicación llamada Blender ha mostrado en que consiste este posicionamiento. Básicamente en superponer unos elementos o capas sobre otras.
+
+Positio relative es como decirle al navegador que el elemento mantenga su posición original en la página pero si quiero, puedo moverlo hacia arriba, abajo, izquierda...
+No solo eso, si no que además vas a ser un punto de referencia para los elementos que estén dentro de ti.
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: #f60;
+    position: relative;
+}
+
+/*Caja con modificador*/
+.box--blue{
+    background: #00f;
+    /*Con position relative podemos decir que se mueva*/
+    top: 5px;
+}
+
+Con esto le decimos que podemos mover la caja, y la azul se moverá abajo tantos px como diga.
+
+Si le quitamos position relative NO podemos mover la caja.
+
+Por defecto, position trae el valor de static.
+
+Si añadimos otra caja, empezará justo después del lugar que debería ocupar nuestra caja. El lugar asignado a la caja es fijo, pero la vamos a poder mover, ver el vídeo.
+
+Usar left, top, bottom y right, que es cuanto te vas a mover abajo, arriba, izquierda y derecha... si decimos bottom irá DESDE ABAJO HACIA ARRIBA, y así con todas las propiedades.
+
+Bottom tiene MENOS prioridad que la propiedad TOP. Da igual que pongamos !important o lo que sea que, si definimos ambas, da prioridad a top. Con left y right pasa más de lo mismo, y la prioridad la tiene left sobre right.
+Luego poner TOP Y LEFT.
+
+Otra propiedad que aparece IMPORTANTE es el z-index. Nos permite superponer unas cajas sobre otras a través del eje z. Si hemos creado 3 cajas una detrás de otra, la primera creada (en HTML) siempre irá debajo de las demás a no ser que modifiquemos esta propiedad.
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: #f60;
+    position: relative;
+    z-index: 10;
+}
+
+/*Caja con modificador*/
+.box--blue{
+    background: #00f;
+    /*Con position relative podemos decir que se mueva: mainly hacia top y hacia left.*/
+    top: 70px;
+    left: 20px;
+    z-index: 20;
+}
+
+El z-index de la azul es mayor que el z-index del resto por tanto se superpondrá sobre el resto. Una buena técnica es dar z-index de 10 en adelante e ir poniéndolo de 10 en 10.
+
+z-index solamente sirve cuando tenemos posicionados los elementos.
+
+10. POSICIÓN ABSOLUTA
+-----------------------
+
+La otra forma de posicionar elementos.
+
+Si a un elemento le damos position absolute, lo primero que hace es que ya NO ocupa lugar en la página.
+
+Al poner position absolute vemos que desaparece una caja. Ver vídeo. Pero en realidad sigue estando, es como si la caja 2 se superpusiera sobre la caja 3. Esto se debe a que la caja 2 ya NO OCUPA LUGAR. Si ponemos position:absolute a la azul y top 0 la caja se mueve fuera. En cambio, si ponemos relative, se mantiene dentro de su caja por así decirlo. Position absolute tiene como referencia el comienzo de la etiqueta HTML, que es arriba a la izquierda de la página (No tiene en cuenta el elemento que lo contiene). La podemos mover donde nosotros queramos:
+
+/*Caja con modificador BEM (Bloque elemento modificador)*/
+.box--blue{
+    background: #48e;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+}
+
+Si queremos que el punto de referencia sea el del contenedor que lo contiene tendremos que ponerle a su contenedor POSTION:RELATIVE.
+
+Es por eso que antes habíamos dicho que las cajas que se posicionan como relative FUNCIONAN COMO PUNTOS DE REFERENCIA. Se posiciona como un punto relativo. Si le decimos que se mueva hacia abajo 20 px, lo va a hacer sobre este punto relativo:
+
+.box--blue{
+    background: #48e;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+Una cosa que ocurre con el postionn absolute es que, si le ponemos bottom 0, se posiciona debajo de todo. Si ponemos right 0, se posiciona en la derecha del todo.
+
+Por esto es interesante el position absolute, porque se posiciona en las esquinas y demás. La caja relativa tiene sus propios puntos de referencia. 
+
+Sigue ocurriendo que top > bottom y left > right. Pero además aquí surge algo de magia... Si ponemos top 0, left 0 right 0 y bottom 0 y además añadimos margin auto, se posiciona en el centro del contenedor.
+
+.box--blue{
+    background: #48e;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+Con esto, la caja siempre va a estar centrada. Esta forma de centrar elementos NO LA RECOMIENDO, ya que veremos otra forma de centrarlo, pero esta guay saberlo.
+
+Con relative podemos añadirle el z-index y en position absolute, las posiciones sobre las que se va a desplazar NO son sobre si mismas. Son relativas. Si no hay ningún elemento relativo, lo hará sobre el raíz que es HTML.
+
+Aclarar que las cajas DEBEN ESTAR DENTRO DE SU CONTENEDOR EN HTML.
+
+Vamos a hacer un ejercicio para position absolute. Es muy útil para realizar ventanas modales, aunque ahora apareció el elemento dialog.
+
+11. VENTANAS MODALES
+------------------------
+
+Ejercicio en el que usamos position absolute. Es una utilidad. Ya veremos como se hace con la etiqueta dialog.
+Utiliza dialog para hacer ventanas emergentes:
+
+<dialog class="modal" open>
+        <div class="modal__content">
+            <h2 class="modal__title">VENTANA MODAL</h2>
+        <p class="modal__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam tempora harum rem dignissimos nemo nulla quam, provident enim cumque? Sequi dolores minus dolore iste quisquam similique, amet nostrum at accusamus.
+        </p>
+        <button class="modal__close-button">X</button>
+        </div>
+    </dialog>
+
+Open es para que aparezca abierta. Si no queremos programar el código del botón con JavaScript debemos utilizar dialog open y encerrar el button en un formulario con method= "dialog":
+
+    <dialog open>
+        <div class="modal__content">
+            <h2 class="modal__title">VENTANA MODAL</h2>
+        <form method="dialog">
+            <button class="modal__close-button">X</button>
+        </form>
+        </div>
+    </dialog>
+
+Además, en CSS usando dialog podemos quitar la posición absoluta SI Y SOLO SI USAMOS DIALOG, usando un div como antes debemos de usarlo para colocarlo en la esquina superior derecha.
+
+Usando dialog tampoco sería necesario usar la propiedad background, porque podemos usar el pseudo-elemento dialog::backdrop. INVESTIGAR TODO SOBRE BACKDROP PARA DAR ESTILO A TODO LO DE DETRÁS DE UN DIALOG.
+
+
+12. POSICIONES FIJA Y STICKY
+--------------------------------
+
+Nuevos tipos de position. FIJA = FIXED. 
+
+Si ponemos position fixed ocurre lo mismo que cuando ponemos position absolute. Esto pasa si no ponemos nada mas. Sin embargo, si lo metemos dentro de un contenedor con position relative NO VA A RESPETARLO COMO HACE ABSOLUTE. Respeta siempre la position relative de la raíz, en este caso HTML, que empieza arriba del todo a la izquierda.
+
+Además de esa diferencia, otra diferencia enorme es, que cuando nosotros scrolleamos la pantalla, la cajita sigue fija, sin moverse. Puede ser interesante para poner que es una notificación y poner en CSS lo siguiente:
+
+.box{
+    height: 60px;
+    width: 200px;
+    background: #fff;
+    position:fixed;
+    right: 0;
+    border: 1px solid #000;
+    border-right: 0;
+    box-shadow: 0 0 40px 0 #0009;
+}
+
+Podemos usarlo para poder tener un chat en nuestra página por ejemplo.
+
+El otro position es position sticky. Lo que hace es que, cuando llega a cierta posición, se queda pegado. Por ejemplo:
+.box-fixed{
+    height: 60px;
+    width: 200px;
+    background: #f00;
+    position:sticky;
+    top: 20px;
+}
+Cuando toca top deja 20 px y se queda pegado arriba, ver vídeo. Es decir cuando top es de 20px se va a comportar como fixed.

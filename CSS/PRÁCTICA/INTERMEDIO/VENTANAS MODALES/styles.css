@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.modal{
+    position: absolute;
+    background: #0009;
+    /*Ocupa todo el ancho y largo de la pantalla (las unidades son viewports.)*/
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal__content{
+    background: #fff;
+    padding: 10px 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px ;
+    position: relative;
+}
+
+.modal__title{
+    margin-top: 10px;
+}
+
+.modal__close-button{
+    background: #000;
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    padding: 4px 12px;
+}
