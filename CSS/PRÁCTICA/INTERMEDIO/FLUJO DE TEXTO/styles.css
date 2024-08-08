@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.box{
+    width: 250px;
+    height: 270px;
+    margin: auto;
+    margin-top: 50px;
+    background: #fff;
+    border: 2px solid #0006;
+    /*SI SE NOS VA A DESBORDAR ALGO*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /*SI QUEREMOS BALANCEAR UN TEXTO*/
+    text-wrap: balance;
+    /*SI QUEREMOS BALANCEAR UN PARRAFO*/
+    text-wrap: pretty;
+}
+
+h1{
+    text-wrap: pretty;
+}

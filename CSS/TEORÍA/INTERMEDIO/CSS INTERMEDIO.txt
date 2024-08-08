@@ -859,3 +859,364 @@ El otro position es position sticky. Lo que hace es que, cuando llega a cierta p
     top: 20px;
 }
 Cuando toca top deja 20 px y se queda pegado arriba, ver vídeo. Es decir cuando top es de 20px se va a comportar como fixed.
+
+13. TRANSICIONES
+--------------------------
+
+Son un intervalo de cambio de una propiedad de un valor a otro. Si ponemos un hover a un cuadrado, al pasar el mouse por encima vemos que se pone de MANERA BRUSCA según nosotros le digamos.
+
+.box{
+    width: 200px;
+    height: 200px;
+    background: #f00;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/*LO QUE PASA AL PASAR EL RATÓN POR ENCIMA*/
+.box:hover{
+    background: #a22;
+    color: #fff;
+}
+
+Para hacer que sea más gradual, por ejemplo que pase por todos los colores que hay en el medio para que pase de un estado a otro? SI
+
+Le damos la propiedad a la CAJA QUE VA A TRANSICIONAR, NO AL HOVER. Lo primero es ver que propiedad va a transicionar, transition-property. Y la duración transition-duration 
+
+.box{
+    width: 200px;
+    height: 200px;
+    background: #f00;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    transition-property: color;
+    transition-duration: 1s;
+    transition-delay: 2s;
+}
+
+Luego tenemos transtion delay para ver CUÁNTO TARDA EN HACER LA TRANSICIÓN. Le podemos poner todas las propiedades que queremos que transicionen. por ejemplo, el background y el color:
+
+.box{
+    width: 200px;
+    height: 200px;
+    background: #f00;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    transition-property: color, background-color;
+    transition-duration: 1s;
+    /*Lo que tarda en hacer la transición*/
+    /*transition-delay: 2s;*/
+}
+
+Se separan con comas. Si le aplicamos distintos margins al hover y a la caja puede causar problemas. NO HACER ESTO. TENER MUCHO CUIDADO.
+
+Algo muy interesante son las curvas de Bressier. Ahora lo explicaremos.
+
+Podemos hacer que, cuando toque el usuario el body, cambiar el estilo de la caja.
+
+Podemos hacer que la caja se mueva si pasamos el ratón por encima el body, hacia la derecha si añadimos en transition property left.
+
+
+.box{
+    width: 120px;
+    height: 120px;
+    background: #f00;
+    margin-top: 50px;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    transition-property: left, background-color;
+    transition-duration: 1s;
+    /*Lo que tarda en hacer la transición*/
+    /*transition-delay: 2s;*/
+    color: #f00;
+    position: relative;
+    left: 0;
+}
+
+/*CUANDO PONGAMOS EL MPOUSE SOBRE EL BODY, CAMBIA LA CAJA...*/
+body:hover .box{
+    background: #00f;
+    left: 400px;
+}
+
+Si nos fijamos bien, la animación empieza fuerte pero termina despacio, ¿cómo podemos cambiar eso? Con las curvas de breassier. Con la propiedad transition-timing-function:
+	- transition-timing-function: ease; es la que viene por defecto.
+	- transition-timing-function: easi-in: empieza lento y termina fuerte.
+	- transition-timing-function: ease-in-out: empieza y termina lento
+	- transition-timing-function_ ease-out
+
+Pero podemos trabajar con las curvas de bezier. Entramos a https://cubic-bezier.com/#.17,.67,.83,.67 . Ahí podemos ver todo eso y si le damos a go aparece como se ven las animaciones. Y lo copiamos aquí según la animación que queramos:
+
+transition-timing-function: cubic-bezier(1,-0.01,0,1.03);
+
+Importante esto. También se puede hacer desde Chrome, pero mejor esa página.
+
+También podemos aunar todas las propiedades de transition en una sola si vamos a usar las tres haciendo lo siguiente:
+
+/*SI QUEREMOS LAS 3 PROPIEDADES EN 1 SOLA LINEA: 1º PROPIEDADES (USAR COMAS), 2º CUANTO TIEMPO DURA LA TRANSICION, 3º CUBIC-BRASIER, 4º DELAY */
+    transition: left, background-color, 1s cubic-bezier(.99,0,.43,1) 2s; SOLO USANDO TRANSITION. No hace falta poner la cubic ni el delay, pero si es necesario la propiedad que va a transicionar y la duration.
+
+14. DESBORDAMIENTO-OVERFLOW
+-----------------------------
+
+Cómo manejar el contenido que SOBRESALE, DESBORDA de su contenedor. Si en HTML creamos un div que sea una cajita con texto que sobresalga de la caja NO QUEDA BIEN. La caja tiene medidas fijas, tiene alto y ancho de 220px 
+
+.box{
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    margin-top: 50px;
+    color: #f00;
+    position: relative;
+    left: 0;
+    border: 2px solid #0008;
+    margin: auto;
+    margin-top: 50px;
+}
+
+SIN EMBARGO, SI NO LE DEFINIMOS UN ALTO, EL TAMAÑO SE AJUSTA AL DEL TEXTO. Pero si se lo ponemos se va a estar desbordando.
+
+Esto lo podemos manejar con la propiedad de overflow. Por defecto, el valor de overflow: visible que dice que, lo que sobresalga del contenedor se va a ver, va a ser visible. Pero tenemos otras posibilidades:
+
+	- hidden: se ocultará y si hay información importante, o la que sea NO LA MOSTRARÁ.
+
+	- scroll: Añade una barra de scroll al elemento para que se pueda seguir viendo. Sin embargo, aparecen dos barras de scroll, la que se mueve en el eje x y la que se mueve en el eje-y. Haciendo overflow-x: hidden; podemos eliminar esa barra de scroll. Sin embargo, la mejor forma de hacerlo es con overflow-y: scroll y quitar overflow.
+
+.box{
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    margin-top: 50px;
+    color: #f00;
+    position: relative;
+    left: 0;
+    border: 2px solid #0008;
+    margin: auto;
+    margin-top: 50px;
+    overflow-y: scroll;
+}
+
+Pero esto sigue teniendo un problema, y es que cuando el contenido NO DESBORDE al contenedor, la puta mierda de la barra se va a seguir viendo igual, aunque no se necesita.
+
+Para evitar todo, directamente ponemos overflow:auto; que es de los mejores valores que tiene la propiedad. LA PROPIEDAD OVERFLOW AUTO es la que tienen los text-areas por defecto. 
+
+Otro valor para overflow es overflow:clip; que hace lo mismo que overflow hidden pero NO DEJA ESPACIO PARA LAS BARRAS DE SCROLL. Hidden si que lo deja.
+
+Ahora vamos a ver las porpiedades que se encargan de definir el control del flujo del texto. Lo que acabamos de ver se aplica para todo (imágenes videos)
+
+Lo que vamos a ver ahora es específico para texto.
+
+
+15. CONTROL DE FLUJO DE TEXTO
+-------------------------------
+
+Aquí vemos como tratar ESPECIFICAMENTE EL TEXTO.
+
+La primera propiedad que vemos es white-space, que define CÓMO SE COMPORTAN LOS ESPACIOS EN BLANCO Y LOS SALTOS DE LÍNEA. El valor por defecto es normal.
+
+Luego tenemos el valor nowrap, que lo pone todo en una única línea. No va a ver saltos de línea automáticos. No lo usamos.
+
+Luego tenemos el valor pre, que lo que hace es detectar los saltos de linea TAL CUAL NOSOTROS LOS PONEMOS EN HTML. Es utilizable pero yo no creo que lo usara.
+
+Otro valor de white-space es pre-wrap, que tiene en cuenta cómo lo hayamos puesto nosotros en HTML pero también tiene en cuenta que el contenido se ajuste a los límites. Es parecido al normal. Mezcla entre wrap y normal.
+
+Otra propiedad que tenemos es text-overflow. Si lo que queremos que haga es que muestre los puntos suspensivos podemos hacer es text-overflow: ellipsis de la siguiente manera:
+
+.box{
+    width: 240px;
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+    background: #fff;
+    border: 2px solid #0006;
+    white-space: nowrap;
+    text-overflow:ellipsis ;
+    overflow: hidden;
+}
+
+También funciona con white-space: pre.
+
+Otra propiedad es word-break. Lo que hace con word-break: break-all; y usando white-space: normal es, si una palabra no cabe, recorta la palabra y pone lo que cabe en una linea y lo que no en la siguiente (lo pone sin guion). Otro valor para word-braek es keep-all para idioma como el coreano. 
+
+Un valor que es bueno pero que está en fase experimental es auto-phrase, que detecta frases inteligentes.
+
+Otra propiedad es overflow-wrap: braek-word que rompe la palabra en silabas si no cabe. El otro valor que le podemos dar es anywhere, que lo que hace es que si la palabra se desborda, la rompe para que no se desborde, solo si la palabra es larga.
+
+También podemos usar text-wrap: balance para que h1 por ejemplo se vea más bonito, balancea el texto para que mas o menos todas las palabras encajen de una forma estética:
+
+h1{
+    text-wrap: balance;
+}
+
+Luego, otro valor de text-wrap es pretty, que sirve para intentar dejar un texto bonito. Balance es mejor para títulos (h1, h2) mientras que pretty es mejor para textos largos. Pretty evita que una línea se nos quede con una sola palabra.
+
+LO MÁS IMPORTANTE DE TODO ESTO ES LO SIGUIENTE:
+
+1. Si hay algo que se nos va a desbordar, ponemos WHITE-SPACE: nowrap; Le ponemos un text-overflow: ellipsis y overflow:hidden. Si usamos text-wrap: pretty o balance también funciona.
+
+    /*SI SE NOS VA A DESBORDAR ALGO*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+2. Si queremos balancear un texto usamos text-wrap balance y para balancear párrafos usamos text-wrap: pretty
+
+.box{
+    width: 250px;
+    height: 270px;
+    margin: auto;
+    margin-top: 50px;
+    background: #fff;
+    border: 2px solid #0006;
+    /*SI SE NOS VA A DESBORDAR ALGO*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /*SI QUEREMOS BALANCEAR UN TEXTO*/
+    text-wrap: balance;
+    /*SI QUEREMOS BALANCEAR UN PARRAFO*/
+    text-wrap: pretty;
+}
+
+
+16. OBJECT FIT Y OBJECT POSITION
+------------------------------------
+
+Object FIT sirve para cuando nosotros definimos la altura y el ancho de un elemento, ese elemento también tiene un contenido. Si ponemos una imagen y definimos una altura, ¿qué va a pasar con nuestra imagen? Object fit va a solucionar eso, cómo se comportara el contenido de un objeto de este tipo cuando definimos su alto y su ancho.
+
+Cargamos una imagen y definimos lo siguiente:
+
+img{
+    width: 400px;
+    height: 200px;
+}
+
+La imagen se ve rara. Para solucionarlo definimos un object-fit. Propiedad por defecto es fill, se adapta rellenando el contenido. Contain hace lo mismo que una imagen con background contain, pero supongo que es mejor usar object-fit. Hacía que la imagen entre por lo menos una vez en la resolución que le dimos. Cover se adapta, también lo vimos. Tenemos también object fit none, que mantiene la resolución inicial de la imagen. No se ajsuta al contenido, sale la misma resolución. Por último, tenemos scale-down que lo que hace es que si nosotros le damos una resolución mayor a la imagen, se va a quedar con la resolución inicial, si le damos una resolución menor que la resolución original, se queda con la de resolución menor. Detecta la más pequeña.
+
+Después tenemos object position: top, bottom, left, right,center o incluso pixeles para que nos muestre la parte de arriba, abajo izquierda o derecha de una foto. 
+
+Todo esto NO SE APLICA A LOS FONDOS, SE APLICA A ELEMENTOS COMO IMAGENES O VÍDEOS!!!!!
+
+17. CONTORNO/OUTLINE
+----------------------
+
+Se pudo haber explicado cuando vimos el box-model.
+
+Si nosotros por ejemplo le aplicamos un borde a una caja, el borde AFECTA AL TAMÑO DE LA CAJA.
+
+Si tenemos un input cualquiera, vemos que el input cuando lo clicamos tiene un borde predeterminado QUE NO PODEMOS CAMBIAR ni aun haciendo lo siguiente:
+
+input{
+    border: 2px solid #000;
+}
+
+input:focus{
+    border: 2px solid    #000;
+}
+
+input:active{
+    border: 2px solid    #000;
+}
+
+Permanece siempre un borde predefinido que tiene. Lo que vemos es EL OUTLINE.
+
+En el modelo de caja nos falto decir que ENTRE EL MARGIN Y LOS BORDES estaba el CONTORNO/OUTLINE. Al darle padding a la caja adquiere más tamaño y lo mismo con el resto (borde).
+
+De outline tenemos distintas propiedades: outline, outline-color,outline-width, outline-style y outline-offset. Tenemos que definir su width, color y estilo (solid) (como en el borde) para que pueda aparecer; la clave de outline es que NO OCUPA ESPACIO. No cambia el tamaño de la caja. Si cambiamos el borde si cambia el tamaño, pero si cambiamos el outline, el tamaño permanece igual.
+
+Outline-offset, define el desplazamiento del contorno. Cuanto se separa del borde. Solamente es una propiedad visual, no ocupa espacio.
+
+Lo podemos escribir todo en una linea menos el offset, que lo necesitaríamos poner en otra:
+
+ outline: 5px solid #00f;
+
+Funciona como el borde. Lo podemos utilizar con hover. Es muy útil para saber que esta seleccionando el user.
+
+Si hacemos lo del hover PERO CON EL BORDER -> CAMBIA EL TAMAÑO DE LA CAJA, lo cual es probable que NO lo queramos hacer. Muy bueno para las transiciones, cambios de estado...
+
+Si no quisiéramos que un input tenga un contorno, es muy sencillo, simplemente ponemos outline: none.
+input{
+    margin:50px;
+    border: none;
+    border-top: 3px solid #000;
+}
+
+input:focus{
+    border-color: #00f;
+    color: #00f;    
+    outline: none;
+}
+
+PERO HACER ESTO ESTÁ FATAL. PORQUE CON ESTO TENEMOS PROBLEMAS DE ACCESIBILIDAD!!!! MUY IMPORTANTE!!! DONDE LO DEBERÍAMOS DE HACER ES EN LA PSEUDO-CLASE :FOCUS-VISIBLE:
+
+input{
+    margin:50px;
+    border: none;
+    border-top: 3px solid #000;
+}
+
+input:focus{
+    border-color: #00f;
+    color: #00f;    
+}
+
+input:focus-visible{
+    outline:none ;
+}
+
+Esto último es MUY IMPORTANTE.
+
+18. EMMET
+--------------
+
+Lo explica en un vídeo que ya está subido en su canal. Es un plug-in que nos sirve para facilitar la creación de ciertos elementos de HTML y CSS.
+
+Sirve para hacer cosas como li*4... crear elementos mucho más rápido. Nos permite crear código directamente a través de abreviaciones.
+
+Esto pasa cuando usamos las etiquetas, cuando usamos lorem… 
+
+Si por ejemplo queremos crear un unordered-list con 4 list ponemos lo siguiente:
+
+ul>li*4 
+
+Si además queremos poner dentro de cada li queremos poner un enlace a hacemos: ul> li*4>a. Podemos crear estas estructuras desde 0.
+
+También lo podemos hacer de la siguiente manera: ul>(li>a)*4. El proceso de creación es distinto a nivel interno, pero el resultado es el mismo.
+
+Además también le podemos dar clases. Poniendo después del elemento al que queramos añadir una clase .nombre_clase.
+
+Por ejemplo: ul>(li>a.link)*4 que dice que cada enlace a tendrá la clase link. Si ponemos # crea un id. Crear más de un elemento con un mismo id es una MALA PRÁCTICA para luego JS.
+
+   <!--Si queremos una estructura semánticamente correcta-->
+    header.header>nav.header-nav>ul.header-ul>(li.list-item>a.link)*4
+
+Si queremos que un elemento tenga contenido lo que hacemos es usar {}: header.header>nav.header-nav>ul.header-ul>(li.list-item>a.link{Conio})*4 Le ponemos que el contenido sea Conio.
+
+Si por ejemplo queremos que al contenido se le añada un número con el número de elemento de la ul lo hacemos con el símbolo del dollar $: header.header>nav.header-nav>ul.ul-nav>li.list-item*4>a.link{Link $}  
+
+Cada repetición valdrá uno más.
+
+Para poder crear los propios atributos de la etiqueta debemos poner :atributo, por ejemplo img:src para que se ponga el src (ya vendría por defecto.).
+
+Nosotros podemos crear nuestros propios "snippet" de EMMET. Para ello copiamos el atajo que queramos, hacemos ctrl+shift+p y buscamos snippets. Buscar el que NOSOTROS YA HEMOS CREADO QUE ES html.json.snippet.
+
+Una vez creamos nuestro snippet tenemos que borrar el último carácter y escribirlo de nuevo, lo cual es medio pesado. Ya lo he creado de forma que no sea pesado. 
+
+IMPORTANTE: CTRL+SHIFT+P BUSCAMOS SNIPPET -> CONFIGURAR SNIPPET -> HTML.json-snippet , copiamos la estructura y creamos los snippet que nosotros queramos. Para ir pasando entre los href podemos usar simplemente el tabulador para ir rellenándolo.
+
+En CSS es muchísimo más sencillo. Para el margen de una etiqueta podemos poner m10 y nos pone margin:10px; directamente. Si ponemos m10p p= porcentaje, si ponemos e=em. Si queremos darle margin 10 y 10 hacemos m10-10
+
+Lo mismo sirve para el padding poniendo p. Width con w. Height con h. Igual con color.
+
+LE PODEMOS PEDIR A CHAT GPT QUE NOS HAGA UNA LISTA ED LOS EMMETS MÁS UTILIZADOS Y COPIARLA EN EL ARCHIVO JSON QUE HEMOS CREADO.
+
+Utilizar muchos EMMETS

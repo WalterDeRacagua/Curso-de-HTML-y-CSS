@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+img{
+    width: 1400px;
+    height: 1200px;
+    object-fit:scale-down;
+    object-position: top;
+    border: 2px solid #000;
+    margin-top: 50px;
+    margin-left: 50px;
+}

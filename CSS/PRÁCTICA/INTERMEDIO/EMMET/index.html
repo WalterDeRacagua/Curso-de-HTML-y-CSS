@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contentP="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EMMET en HTML Y CSS">
+    <meta name="keywords" content="EMMET, css">
+    <meta name="robots" content="nosnippet">
+    <meta name="author" content="Sergio Sánchez Carrasco">
+    <meta name="title" content="EMMET">
+    <title>EMMET</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/SELECTORES AVANZADOS/FaviconRM.png">
+</head>
+<body>
+    <!--ul>(li>a)*4-->
+    <ul>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+    </ul>
+    <!--Si queremos además añadir una clase a "a"-->
+    <!--ul>(li>a.link)*4-->
+    <ul>
+        <li><a href="" class="link"></a></li>
+        <li><a href="" class="link"></a></li>
+        <li><a href="" class="link"></a></li>
+        <li><a href="" class="link"></a></li>
+    </ul>
+    <!--Si queremos además añadir un id a "a"-->
+    <!--ul>(li>a#link)*4-->
+    <ul>
+        <li><a href="" id="link"></a></li>
+        <li><a href="" id="link"></a></li>
+        <li><a href="" id="link"></a></li>
+        <li><a href="" id="link"></a></li>
+    </ul>
+    <!--Esto es una mala práctica, tener elementos con el mismo id.-->
+    <ul class="header-ul">
+        <li class="list-item"><a href="" class="link"></a></li>
+        <li class="list-item"><a href="" class="link"></a></li>
+        <li class="list-item"><a href="" class="link"></a></li>
+        <li class="list-item"><a href="" class="link"></a></li>
+    </ul>
+    <!--Si queremos una estructura semánticamente correcta-->
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="header-ul">
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--Si queremos que tenga contenido-->
+    <!--USAMOS {CONIO}-->
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="header-ul">
+                <li class="list-item"><a href="" class="link">Conio</a></li>
+                <li class="list-item"><a href="" class="link">Conio</a></li>
+                <li class="list-item"><a href="" class="link">Conio</a></li>
+                <li class="list-item"><a href="" class="link">Conio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--CON UN CONTADOR...-->
+    <!--header.header>nav.header-nav>ul.ul-nav>li.list-item*4>a.link{Link $}  -->
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="ul-nav">
+                <li class="list-item"><a href="" class="link">Link 1</a></li>
+                <li class="list-item"><a href="" class="link">Link 2</a></li>
+                <li class="list-item"><a href="" class="link">Link 3</a></li>
+                <li class="list-item"><a href="" class="link">Link 4</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="ul-nav">
+                <li class="list-item"><a href="" class="link">Link 1</a></li>
+                <li class="list-item"><a href="" class="link">Link 2</a></li>
+                <li class="list-item"><a href="" class="link">Link 3</a></li>
+                <li class="list-item"><a href="" class="link">Link 4</a></li>
+            </ul>
+        </nav>
+    </header>
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="ul-nav">
+                <li class="list-item"><a href="GDFGDF" class="link">FSFS</a></li>
+                <li class="list-item"><a href="FSDFSFDS" class="link">FSFDSFSD</a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+                <li class="list-item"><a href="" class="link"></a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

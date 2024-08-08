@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    font-family: sans-serif;  
+    /*Asi cuando pongamos el raton da igual donde que cambiara.*/
+    height: 100vh;  
+}
+
+.box{
+    width: 120px;
+    height: 120px;
+    background: #f00;
+    margin-top: 50px;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    transition-property: left, background-color;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(.99,0,.43,1);
+    /*Lo que tarda en hacer la transición*/
+    /*transition-delay: 2s;*/
+    color: #f00;
+    position: relative;
+    left: 0;
+    /*SI QUEREMOS LAS 3 PROPIEDADES EN 1 SOLA LINEA: 1º PROPIEDADES (USAR COMAS), 2º CUANTO TIEMPO DURA LA TRANSICION, 3º CUBIC-BRASIER, 4º DELAY */
+    transition: left, background-color, 1s cubic-bezier(.99,0,.43,1) 2s;
+}
+
+/*CUANDO PONGAMOS EL MPOUSE SOBRE EL BODY, CAMBIA LA CAJA...*/
+body:hover .box{
+    background: #00f;
+    left: 400px;
+}

@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    font-family: sans-serif;  
+    /*Asi cuando pongamos el raton da igual donde que cambiara.*/
+    height: 100vh;  
+    background: #ccc;
+}
+
+.box{
+    width: 220px;
+    height: 220px;
+    background: #fff;
+    margin-top: 50px;
+    color: #f00;
+    position: relative;
+    left: 0;
+    border: 2px solid #0008;
+    margin: auto;
+    margin-top: 50px;
+    overflow: clip;
+}
+
