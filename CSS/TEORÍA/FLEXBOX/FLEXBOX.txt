@@ -1,0 +1,160 @@
+FLEXBOX
+------------
+1. INTRODUCCION A FLEXBOX
+-------------------------------
+
+Es un modelo de caja, algo así como el BoxModel. Es un tipo de modelo de caja. Flexbox es un modulo de css.
+
+Surgio por la pregunta de qué hacer con los tamaños de las cajas cuando sean dinámicos (que vayan cambiando). ¿Qué pasa en esos casos?
+
+Necesitamos cajas con elementos dentro de las mismas que se adapten a los tamaños. Necesitamos que las cajas sean flexibles y el contenido también.
+
+Que dependiendo del tamaño de la página web, los elementos de una caja se redimensionen o adpaten de alguna forma (una caja puede ser un div por ejemplo).
+
+Flexbox es una caja donde vamos a crear este contexto de flexbox. A una caja le damos la propiedad display:flex; El comportamiento flexible lo obtienen los elementos de DENTRO DE LA CAJA, NO LA CAJA. Tendremos que darle propiedades a la caja contenedora y a sus ítems. 
+
+A los flex-items les podemos hacer DE TODO. Darles la vuelta, que estén alineados de forma distinta, cambiar la dirección. Flex box es unidireccional, los elementos que vamos poniendo apuntan a una sola dirección. Nosotros podemos definir esa dirección a la que van apuntando esos elementos. Solo lo podemos mover en el eje x o y. 
+
+Tenemos ROW para ordenar los elementos en fila, podrá considerarse de izquierda a derecha.
+
+Después tenemos ROW-REVERSE, para ordenar los flex-items en fila, pero de izquierda a derecha. (No es correcto decir de derecha a izquierda o viceversa, es mejor decir en dirección contraria)
+
+Después tenemos COLUMN donde la dirección normal es de arriba a debajo (aunque no es correcto decirlo así).
+
+También tenemos COLUMN-REVERSE donde la dirección es la opuesta (de abajo a arriba).
+
+Tenemos dos ejes Y NO LOS VAMOS A LLAMAR EJE X y EJE Y.
+Los vamos a llamar MAIN AXIS (X) y CROSS AXIS (Y). 
+
+El cross axis se cruza con el main.  
+
+En el caso de row, el main axis va de izquierda a derecha (row-reverse de derecha a izquierda) y el cross axis se mantiene de arriba a abajo.
+
+En caso de column, el main axis va de arriba a abajo (column-reverse de abajo a arriba) y el cross axis en ambos casos se mantiene de izquierda a derecha.
+
+En estos elementos ya nos podríamos olvidar del margin, margin-auto y demás.
+
+Las propiedades que más se usan son:
+
+	-align-items: (start, center o end) para ajustar en el eje y donde queremos un elemento.
+
+	-justify-content: (start, center o end) ajustar en el eje x.
+
+	-gap: px; Si queremos una división igual entre los elementos del flexbox SIN NECESIDAD DE USAR MÁRGENES.
+
+.flexbox{
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+Todo esto y MUCHÍSIMO MÁS PODEMOS HACER.
+
+A la caja contenedora le voy a llamar caja flexible. Y a lo de dentro le decimos flex-items. TIENEN PROPIEDADES DISTINTAS. TIENEN QUE SER HIJOS DIRECTOS.
+
+2. FLEX DIRECTION
+-------------------
+
+A la caja padre le debemos dar display flex para que se comporte como una caja flexible y todos sus elementos HIJOS serán flex-items.
+
+Si a la flexbox le ponemos display flex, estos se alinean y si redimensionamos los elementos se van ajustando a la pantalla. Son elementos flexibles. Lo único que NO pueden hacer es crecer. Pero si se pueden encoger.
+
+Después vamos a poder hacer que los elementos se agranden, se achiquen, todo lo vamos a poder definir.
+
+1º: Definir hacia dónde quiero que vayan los elementos. felx-direction: (row, row reverse, column, columna-reverse...). IMPORTANTE FLEX-DIRECTION.
+
+Podemos ver que al ponerle padding a los flex-items NI SE ACHICAN NI SE AGRANDAN. Dejan de ser flexibles. Así que es muchísimo mejor darle height y widht. 
+
+Valor por defecto es row (de flex direction.) Estos elementos están configurados para que, si no le ponemos medidas (a los flex-items), ocupen todo el tamaño de la pantalla por el cross axis. Ocupan todo el eje cruzado a lo ancho, por eso hay que poner widht.
+
+Si queremos cambiar la direccionalidad de cualquier flex-direction tenemos direction con valores rtl (right to left) y ltr.
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+}
+
+Para lenguajes como el árabe por ejemplo. También sirve para el contenido, que aparece escrito de derecha a izquierda. El texto va al revés también.
+
+Se podría configurar la dirección en el caso de que hagamos una web para una empresa gigante. Podemos poner que el flexbox sea direction ltr y las cajitas de la flex box (sus flex-items) sean rtl de forma que el contenido se lea al revés pero las cajas se muevan de manera normal a lo que nosotros estamos acostumbrados.
+
+Ahora vamos a ver propiedades para que, cuando nosotros redimensionemos un flex--item, este pueda moverse hacia abajo.
+
+3. FLEX WRAP Y FLEX FLOW
+---------------------------
+
+Flex wrap te permite cambiar el comportamiento de los flex-items. Flex-wrap es una propiedad que se le da a flexbox, no a los flex-items (hijos).
+
+La propiedad flex-wrap nos permite que, al redimensionar la página, los elementos se vayan colocando hacia abajo. Para ello el valor de la propiedad debe ser flex-wrap: wrap; El valor por defecto es no-wrap. Esto es parecido a cómo se comportaban los elementos en display inline-block.
+
+Vemos que con flew-wrap: wrap, los elementos quedan alineados de una manera extraña (quedan 4 elementos arriba, 2 abajo...); ahora veremos cómo podemos cambiar eso.
+
+Al ponerle al flexbox un height de 100vh al redimensionar la página y hacerla más pequeña se van moviendo los elementos (TODO ESTO SI FLEX-DIRECTION ES COLUMN!!)
+
+Con flex box podemos hacer todo lo que se hace con grid (salvo alguna particularidad), pero lo más importante si se puede. Flexbox es la base más importante, grid es la parte top pero no es lo más importante.
+
+Flex-Flow nos permite resumir la propiedad de flex-direction y la de flex-wrap. Y flex nos permite abreviar tres propiedades: flex-bases, flex-shrink y flex-grow, que los veremos ahora más adelante.
+
+Flex Flow abrevia flex-direction y flex-wrap:
+flex-flow: row wrap; Su valor por defecto es row nowrap. Es raro usar flex-flow, pero se está utilizando cada vez más. Lo que normalmente se ahce es modificar la dirección no el wrap (suele estar nowrap).
+
+Otro valor de flex-wrap es wrap-reverse, que es lo mismo pero wrappea al revés.
+
+En la siguiente sección veremos cómo alinear los elementos en la página web.
+
+
+4. ALINEACIÓN EN LOS EJES (FLEXBOX)
+---------------------------------------
+
+Es una sección bastante importante dentro del tema de Flex-box. 
+
+La primera propiedad que vemos es justify-content, esta propiedad habla del eje PRINCIPAL, del MAIN AXIS. Alinea los ítems en el eje principal.
+
+Sus valores son: start (predeterminado), center, end. Además tenemos space-between, pone el primer elemento al principio del eje, el último elemento al final del eje y todos los que estén en medio distribuirán su espacio para estar a la misma distancia. Es una estética más bonita.
+
+space-around deja el mismo espacio entre los elementos.
+
+Para hacer que ABSOLUTAMENTE TODO tenga la misma distancia, hacemos space-evenly.
+
+.flexbox{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 20px;
+    border: 2px solid #000;
+    justify-content: space-evenly;
+}
+
+Para que sea perfecto mejor quitar el margen.
+
+Estas son las formas de alinear los elementos en el EJE PRINCIPAL / MAIN AXIS.
+
+Los reverse (row y column) no cambian la dirección de alineamiento.
+
+.flexbox{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 20px;
+    border: 2px solid #000;
+    justify-content: start;
+    height: 360px;
+}
+
+Sin embargo, también podemos alinear los elementos en el eje cruzado (CROSS AXIS). Para ello, hacemos uso de la propiedad align-items. Su propiedad por defecto es stretch, stretch significa que los ítems se estiran para llenar el contenedor. Se estira para llenar el cross axis. 
+
+La diferencia entre start y stretch la podemos ver quitando/poniendo el height en los ítems. También tenemos start, center, end y baseline. Lo que hace baseline es que el TEXTO de los flex-items esté la misma altura, se alinea EL TEXTO. A start no le importa el texto.
+
+También tenemos la propiedad align-content (con los mismos valores de antes). Sirve para alinear a TODOS de una forma concreta. Todos se distribuyen en el centro, start, end…
+Como que deja de dividirse en filas o columnas por asi decirlo.
+
+Align item es cuando tenemos una sola linea, si tenemos align content, y hay más de una linea podemos quitar align-item. 
+
+1 linea-> align-items
+2 o más-> align-content.
+
+Para centrar UN ÚNICO elemento de Flex-box podemos utilizar en el flex-item margin: auto y no usar align-items/content: center y justify-content: center. Hacemos directamente margin:auto y se centra. SE UTILIZA MUCHÍSIMO.
+
+5. ORDER (FLEX BOX)
+----------------------
+
+Order únicamente cambia el orden de los elementos.

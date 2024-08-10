@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: #ccc;
+}
+
+div,body{
+    box-sizing: border-box;
+}
+
+.flexbox{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 20px;
+    border: 2px solid #000;
+    justify-content: space-evenly;
+    height: 100px;
+    /*align-items solo si hay una línea de items*/
+    align-items: start;
+    /*align-content solo si hay más de una línea de items*/
+    align-content: center;
+    background: #fff;
+}
+
+.flexbox__flex-item{
+    background: #a22;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    direction: rtl;
+    width: 100px;
+    font-size: 60px;
+}
+
+/*PARA QUE EL PRIMERO TENGA...*/
+.flexbox__flex-item:first-child{
+    background: #f77;
+}
+
+.flexbox__flex-item:last-child{
+    background: #222;
+}

@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+}
+
+.flexbox__flex-item{
+    background: #a22;
+    margin: 10px;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    width: 180px;
+}
+
+/*PARA QUE EL PRIMERO TENGA...*/
+.flexbox__flex-item:first-child{
+    background: #f77;
+}
+
+.flexbox__flex-item:last-child{
+    background: #222;
+}
