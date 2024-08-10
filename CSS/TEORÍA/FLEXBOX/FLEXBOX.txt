@@ -158,3 +158,113 @@ Para centrar UN ÚNICO elemento de Flex-box podemos utilizar en el flex-item mar
 ----------------------
 
 Order únicamente cambia el orden de los elementos.
+
+Solamente es una propiedad y un valor. Y únicamente cambia el orden de manera visual. En el DOM como tal se mantiene el orden.
+
+El orden en el que se verán depende de 2 factores: el orden en el que están puestos en HTML; y el segundo es a través de la propiedad order. Su valor por defecto es 0. Si ponemos 1 se corre un elemento a la izquierda: Si esta ordenado 1->2->3->4 pasa a ser 2->3->4->1. A cada elemento le podemos poner su posición su orden directamente: 
+
+.flexbox__flex-item{
+    background: #a22;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    direction: rtl;
+    width: 100px;
+    font-size: 60px;
+    order: 3;
+}
+
+/*PARA QUE EL PRIMERO TENGA...*/
+.flexbox__flex-item:first-child{
+    background: #f77;
+    order: 2;
+}
+
+.flexbox__flex-item:last-child{
+    background: #222;
+    order: 1;
+} 
+
+Para ello tienen y deben estar muy bien definidos TODOS los elementos del flexbox. IMPORTANTE. Solo cambia el orden visual.
+
+Se pueden dar ordenes negativos.
+
+Ya hemos acabado con las propiedades del Flexbox. Pero ahora vamos a empezar a ver propiedades de los flex ítems. Propiedades que se les dan a los elementos hijos.
+
+6. FLEX GROW, SHRINK AND BASES
+--------------------------------
+
+Son propiedades que se les dan a los flex-items. Un flex-item son los HIJOS DIRECTOS de un FLEXBOX.
+
+Estas propiedades nos van a ayudar a ajustar el tamaño de los flex-items dependiendo del tamaño de la pantalla por ejemplo. Para diseños responsivos. 
+
+Empezamos con flex-grow. Por defecto, viene en 0. Lo que dice esta propiedad es, que del espacio disponible, puede ocupar algo. flex-grow 1 le da igual la alineación. Ocupará todo el espacio disponible. Si crece la pantalla también crece el flex-item. Podemos ver el flex-grow como una forma de agarrar los espacios disponibles, partirlos en muchas partes y le que tenga la propiedad flex-grow:1 tendrá una parte de esa parte disponible.
+
+Si algún flex-item tiene flex-grow:2, entonces ocupará el doble que el resto de flex-items que tengan 1 (si fuera 3 sería el triple, 4 cuadruple...)
+
+.flexbox__flex-item{
+    background: #a22;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    direction: rtl;
+    font-size: 60px;
+    flex-grow: 1;
+}
+
+/*PARA QUE EL PRIMERO TENGA...*/
+.flexbox__flex-item:first-child{
+    background: #f77;
+    flex-grow: 2;
+}
+
+.flexbox__flex-item:last-child{
+    background: #222;
+    flex-grow: 4;
+}
+
+De esta forma el first child ocupará el doble que el de en medio, pero la mitad que el último, ya que el last-child ocupa 4 flex-grows, y el primero 2 flex grows. Se reparten el espacio disponible. En función del width de los flex-items, se repartirán más o menos espacio.
+
+
+El flex-shrink determina la capacidad para encogerse. Si ponemos flex:shrink:0 es que los elementos NO se van a encoger después de alcanzar su tamaño base. Si ponemos 1, todos se encogen de la misma manera. Si queremos que un elemento se encoja más que otro debemos ponerle más flex-shrink. Por ejemplo 2:
+
+
+.flexbox__flex-item{
+    background: #a22;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    direction: rtl;
+    font-size: 60px;
+    width: 200px;
+    flex-shrink: 1;
+}
+
+/*PARA QUE EL PRIMERO TENGA...*/
+.flexbox__flex-item:first-child{
+    background: #f77;
+    flex-shrink: 2;
+}
+
+First child se encogerá más que el resto. Si ponemos 0 NO se encoge.
+
+Flex-bases por defecto viene en automático. Si ponemos flex-basis: 0, el tamaño base va a ser muy bajito. Le podemos poner tamaños en pixeles, y según el significa que es lo máximo que se puede achicar el flex-item antes de encogerse. 
+
+No es lo mismo min-width que flex-basis. La diferencia es que, si tenemos un flex-direction: column; al usar flex-basis es como si usaramos un min-height; mientras que si usaramos flex-direction: row; es como si usaramos un min-width. Esa es la diferencia principal.
+
+ES MUCHO MEJOR ESTABLECER EL FLEX-BASIS.
+
+Según el, lo recomendado es usar un flex-basis:0 y también un min-width de algo.
+
+Hay una propiedad que se encarga de resumir flex.grow (lo que crece), el flex-shrink(lo que se encoje) y el flex-basis (tamaños minimos), que es flex.
+
+Flex: grow shrink basis; en ese orden.
+
+La propiedad flex SI que se suele usar. (Acordarnos de que al padre se le daba flex-flow: (row,col reverse) ((no)wrap))
+
+Además, AL FLEX-BOX LE PODEMOS DAR LA PROPIEDAD GAP: X PX; PARA SEPARAR LOS FLEX-ITEMS ENTRE SI. MUY IMPORTANTE. Es bueno usar GAP.
+
+Ahora vamos a ver align-self, que sirve para alinear un solo flex-item, a un solo hijo, no a todos como hacíamos con align-items o align content.
+
+7. ALGIN SELF
+---------------

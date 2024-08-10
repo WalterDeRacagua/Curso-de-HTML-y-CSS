@@ -12,14 +12,13 @@ div,body{
     display: flex;
     flex-flow: row wrap;
     margin: 20px;
-    border: 2px solid #000;
-    justify-content: space-evenly;
-    height: 100px;
+    justify-content: start;
     /*align-items solo si hay una línea de items*/
-    align-items: start;
+    align-items: center;
     /*align-content solo si hay más de una línea de items*/
     align-content: center;
-    background: #fff;
+    gap: 10px;
+    border: 2px solid #000;
 }
 
 .flexbox__flex-item{
@@ -28,18 +27,16 @@ div,body{
     font-size: 40px;
     text-align: center;
     direction: rtl;
-    width: 100px;
-    font-size: 60px;
-    order: 3;
-}
-
-/*PARA QUE EL PRIMERO TENGA...*/
-.flexbox__flex-item:first-child{
-    background: #f77;
-    order: 2;
+    flex-basis : 150px;
+    flex-grow: 1;
+    /*Para abreviar flex-grow, flex-shrink y flex-basis usamos flex: grow shrink y basis, en ese orden*/
+    flex: 1 1 100px;
 }
 
 .flexbox__flex-item:last-child{
     background: #222;
-    order: 1;
+}
+
+.flexbox__flex-item:nth-child(2n){
+    background: #f77;
 }
