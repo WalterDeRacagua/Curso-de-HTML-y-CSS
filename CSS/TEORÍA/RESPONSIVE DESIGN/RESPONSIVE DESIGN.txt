@@ -155,3 +155,126 @@ Si la pantalla tiene 400px o menos, vas a cargar la imagen de hasta 360px, si ti
 
 4. ETIQUETAS PICTURE, SOURCE Y MEDIA HTML
 ------------------------------------------
+
+En realidad son dos etiquetas y un atributo. Picture y source son ETIQUETAS y media es el ATRIBUTO.
+
+Picture es una etiqueta que se utiliza para especificar multiples fuentes para una imagen. Es como decir que picture muestra una imagen PERO el navegador va a poder elegir entre varias imagenes.
+
+La etiqueta picture NO funciona sin las fuentes, sin la etiqueta SOURCE (sin embargo, source si puede utilizarse en otras ocasiones):
+
+ <picture>
+        <source>
+    </picture>
+
+  <picture>
+        <source src="dalto.png">
+        <source src="dalto-medium.png">
+        <img src="dalto.png" alt="Imagen del Dalto">
+    </picture>
+
+Si nos vamos a network, siempre carga la imagen de la etiqueta img, sin embargo, si NO ponemos ninguna etiqueta img, solo con sources, no carga ninguna. 
+
+¿Qué es lo que está pasando? Que estamos usando el atributo src ="" en vez de utilizar el atributo srcset="".
+
+Siempre va a cargar el primer srcset
+
+<source srcset="dalto-small.png">
+        <source srcset="dalto-medium.png">
+        <img src="dalto.png" alt="Imagen del Dalto">
+
+Si siempre carga el primero... ¿por qué ponemos el segundo? Ahora lo veremos, porque es precisamente para eso para lo que sirve media.
+
+<source media="(max-width:600px)" srcset="dalto-medium.png">
+
+Si la imagen mide 600px o menos, vas a cargar esa imagen, dalto-medium. Primero definimos la más pequeña.
+
+Esto, es lo mismo que hemos hecho antes con sizes y srcset pero usando otras etiquetas. Y picture tiene una respuesta semántica más acertada según el Daltix.
+
+Otra cosa que funciona con el atributo media es usar fotos en webp. Podemos convertir una foto en webp a través de convert.io.com muy útil. Webp en teoría Chrome lo carga mejor. <source type="image/webp" srcset="dalto.webp"> Aquí lo que hacemos es decir que, si soporta la imagen en webp, que la cargue.
+
+Ponemos por orden de prioridad cual es la imagen que queremos que cargue:
+
+<picture>
+        <source type="image/webp" srcset="dalto.webp">
+        <source media="(max-width:600px)" srcset="dalto-medium.png">
+        <source media="(max-width: 360)" srcset="dalto-small.png">
+        <img src="dalto.png" alt="Imagen del Dalto">
+    </picture>
+
+Debemos usar picture cuando necesitamos que no cargue una sola imagen sino que cargue una imagen según la resolución. Si tenemos que cargar un logo para nuestra barra de navegación el cual debería ser muy chiquitito, entonces NO es necesario usar picture. Si tenemos que cargar una imagen muy grande si debemos usar picture.
+
+Todo esto para optimizar mucho nuestra web.
+
+5.MEDIA QUERIES
+------------------
+
+Lo consideramos dentro de CSS.
+
+Son una herramienta que tienen el objetivo de adaptar nuestra página web a diferentes resoluciones.
+
+A una resolución le damos un estilo, a otra resolución le damos otro estilo y así sucesivamente.
+
+La sintaxis es la siguiente:
+
+@media not|only mediatype and (expressions)
+
+
+Donde:
+	-@media: inicia la media query
+
+	-not|only: son operadores OPCIONALES. not lo que hace es EXCLUIR a los dispositivos que cumplen con la consulta; only se utiliza para que navegadores antiguos que NO soportan estas sentencias (media-queries) eviten utilizar el estilo introducido en la consulta.
+
+	-mediatype: Indica el tipo de medio al que va dirigido la consulta. Por ejemplo si queremos imprimir algo usamos print, si queremos medir la pantalla de nuestra compu usamos screen
+
+	-and: Es OPCIONAL. Lo podemos usar para combinar varias expresiones en una consulta.
+
+	-(expressions): Se encargan de evaluar características
+
+Por ejemplo, para dispositivos de impresión podemos cambiar la letra:
+
+@media print{
+    body{
+        font-size: 24pt;
+    }
+}
+
+Cambiamos el tamaño de letra a 24pt, donde pt era una medida que usábamos para este tipo de dispositivos (cuando imprimíamos). En este caso solo cambia cuando lo vamos a imprimir, pero no cambia nuestra web visualmente.
+
+Luego tenemos screen:
+
+@media screen {
+    body{
+        font-size: 20px;
+    }
+}
+
+Que si refleja los cambios en nuestra web visualmente. En este caso lo vemos más grande.
+
+Podemos aplicar una query para una pantalla concreta:
+
+/*SI la pantalla tiene 500px o menos */
+@media screen and (max-width:500px) {
+    body{
+        font-size: 11px;
+    }
+}
+
+La letra tendrá 11px si la pantalla es de 500px o menos. Le podemos aplicar las propiedades que queramos a las etiquetas y clases que nosotros queramos.
+
+Muy importante, de vital importancia poner esta etiqueta: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+/*SI la pantalla tiene 500px o menos */
+@media screen and (max-width:480px) {
+    .flexbox{
+        /*Cuando tiene menos de 500px
+        se convierte en columna.*/
+        flex-direction: column;
+    }
+}
+
+6. EJERCICIO SANTO GRIAL, HOLY GRAIL CON FLEXBOX
+---------------------------------------------------
+
+Ejercicio muy antiguo. 
+
+Ver en el apartado de ejercicios.

@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+div,body{
+    box-sizing: border-box;
+}
+
+.flexbox{
+    display: flex;
+}
+
+.flex-item{
+    background-color: #ccc;
+    padding: 30px;
+    border: 1px solid #f00;
+    flex-grow: 1;
+}
+
+/*Media query para los dispositivos de impresión*/
+@media print{
+    body{
+        font-size: 24pt;
+    }
+}
+
+/*Media query para las pantallas*/
+@media screen {
+    body{
+        font-size: 20px;
+    }
+}
+
+/*SI la pantalla tiene 500px o menos */
+@media screen and (max-width:480px) {
+    .flexbox{
+        /*Cuando tiene menos de 500px
+        se convierte en columna.*/
+        flex-direction: column;
+    }
+}
