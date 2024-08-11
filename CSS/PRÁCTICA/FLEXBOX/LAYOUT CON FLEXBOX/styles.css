@@ -1,0 +1,79 @@
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background-color: #f80;
+    color: #fff;
+}
+
+body, header, nav, div, ul,h1,h2,p, img{
+    box-sizing: border-box;
+}
+
+/*--- HEADER SECTION --- */
+
+.header{
+    height: 100vh;
+    box-sizing: border-box;
+    background-image: url("headerbg.png");
+    /*Porque la imagen se repetía por abajo.*/
+    background-size: cover;
+    display: flex;
+}
+
+.header__overlay{
+    height: 100vh;
+    /*Si le pusieramos 100 vw al width entonces dejaría un hueco a la derecha muy feo*/
+    width: 100vw;
+    background-color: #f806;
+    position: absolute;
+    z-index: 1;
+}
+
+.header__item-container{
+    position: relative;
+    z-index: 10;
+    margin: auto;
+    text-align: center;
+    max-width: 700px;
+}
+
+/*Trabajamos con el p del item-container*/
+.header__item-container p{
+    text-wrap: pretty;
+}
+
+.header__img{
+    min-width: 250px;
+    max-width: 40%;
+    border-radius: 60%;
+    border: 10px solid #fff;
+    /*OUTLINE ERA PARA EL CONTORNO*/
+    outline: 5px solid #f80;
+    outline-offset: 5px;
+    margin: 20px;
+}
+
+h1{
+    margin: 0;
+    font-size: 3.6rem;
+    /*Era para que el titulo quedara mucho mas bonito*/
+    text-wrap:balance;
+}
+
+/*--- NAV BAR SECTION --- */
+
+.nav{
+    background: #fff;
+}
+
+.nav__ul{
+    margin: 0;
+}
+
+.nav__link{
+    color: #f80;
+    /*Para que no salga nada debajo del link, que no salga subrayado*/
+    text-decoration: none;
+}

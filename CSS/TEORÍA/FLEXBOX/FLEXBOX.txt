@@ -266,5 +266,20 @@ Además, AL FLEX-BOX LE PODEMOS DAR LA PROPIEDAD GAP: X PX; PARA SEPARAR LOS FLE
 
 Ahora vamos a ver align-self, que sirve para alinear un solo flex-item, a un solo hijo, no a todos como hacíamos con align-items o align content.
 
-7. ALGIN SELF
+7. ALIGN SELF
 ---------------
+
+Si tenemos un align-content (align content era para cuando hay más de una linea de elementos, y align ítems para cuando NO hay más de una línea de elementos) NO FUNCIONA la propiedad de align self. Solo funciona con align-items o sin nada. Sus valores pueden ser: start, end, center, baseline, o stretch (ocupa todo el ancho). La propiedad por defecto de align self es auto.
+
+Todos los elementos se han visto afectados por align-items. Pero nosotros podemos cambiarlo para cada elemento de MANERA INDIVIDUAL a través de align-self.
+
+8. LAYOUT CON FLEXBOX
+------------------------
+
+Vamos a ver cómo crear un Layout con FlexBox. Aquí hacemos un poco de trampa, porque NO se puede crear layouts solamente con flexbox.
+
+Un layout es la forma que vamos a tener nosotros de distribuir los elementos, el contenido para que todo quepa en nuestra página.
+
+Aquí hace todo unproyecto. Al poner una imagen vemos que sobra margen, para que no pase esto que es el margin collapse, ponemos a h1 margin 0. Esta bien usar h1 y no una clase porque solo debería haber 1 por página.
+
+Aquí repasa el concepto de text-wrap para que el titulo y el texto queden bonitos.

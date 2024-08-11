@@ -14,11 +14,10 @@ div,body{
     margin: 20px;
     justify-content: start;
     /*align-items solo si hay una línea de items*/
-    align-items: center;
+    align-items: start;
     /*align-content solo si hay más de una línea de items*/
-    align-content: center;
-    gap: 10px;
     border: 2px solid #000;
+    height: 300px;
 }
 
 .flexbox__flex-item{
@@ -33,10 +32,15 @@ div,body{
     flex: 1 1 100px;
 }
 
-.flexbox__flex-item:last-child{
-    background: #222;
-}
-
 .flexbox__flex-item:nth-child(2n){
     background: #f77;
+}
+
+.flexbox__flex-item:last-child{
+    background: #222;
+    align-self: stretch;
+}
+
+.item-5{
+    align-self: flex-start;
 }
