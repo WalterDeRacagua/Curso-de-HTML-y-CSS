@@ -1,0 +1,157 @@
+RESPONSIVE DESIGN
+--------------------
+
+1. BLOQUES FLEXIBLES
+-----------------------
+
+Como crear elementos o contenedores, que se vayan adaptando fluidamente a las distintas resoluciones de pantalla.
+
+Lo vamos a ver junto con flexbox, es muy importante seguir viendo flexbox.
+
+Con esto:
+.bloque{
+    min-width: 400px;
+    max-width: 600px;
+    height: 300px;
+    background-color: #7bf;
+    margin: auto;
+}
+
+Se estira hasta los 600px y decrece hasta los 400px. Sin embargo, usar el height NO es muy recomendado. En este caso hace que haya MUCHO espacio vacío. O también, si lo rellenamos de texto, podemos hacer que se desborde el texto al poner una altura concreta. Si queremos usar el height, usar siempre min-height para que no ocurra lo que he dicho. Si necesita medir más para adaptarse a su contenido, lo hará.
+
+Si queremos que los elementos crezcan o decrezcan con min_width y max-width usar display flexbox:
+
+
+.bloque{
+    /*Para que los bloques se coloquen en la misma línea.*/
+    display: inline-block;
+    min-width: 150px;
+    max-width: 200px;
+    background-color: #7bf;
+    margin: auto;
+}
+
+Si usamos display inline-block, los elementos se colocan en la misma línea, y al redimensionar ni crecen ni decrecen. Si se adaptan al redimensionar, pero no crecen ni decrecen, y nosotros si queremos que lo hagan. Si queremos que crezcan los elementos usamos flex-grow:1,2,3... Y sin utilizar flex-basis:0 no serviría de nada. Asi que usar flex-grow: 1 y flex-basis:0 así:
+
+.flexbox{
+    display: flex;
+    /*Para que pueda cambiar de linea*/
+    flex-wrap: wrap;
+}
+
+.bloque{
+    /*Para que los bloques se coloquen en la misma línea.*/
+    display: inline-block;
+    min-width: 150px;
+    max-width: 200px;
+    background-color: #7bf;
+    margin: auto;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+Eso es lo mismo que poner lo siguiente:
+
+.bloque{
+    /*Para que los bloques se coloquen en la misma línea.*/
+    display: inline-block;
+    min-width: 150px;
+    max-width: 200px;
+    background-color: #7bf;
+    margin: auto;
+    flex:1;
+}
+
+De esta forma, flex-grow es 1, flex basis 0 y flex shrink tiene su valor predeterminado. 
+
+Es común en el flex box poner justify-content:center :
+.flexbox{
+    display: flex;
+    /*Para que pueda cambiar de linea*/
+    flex-wrap: wrap;
+    /*Para que se pongan en el centro*/
+    justify-content: center;
+}
+
+También, podemos hacer que, en vez de que los flex-items tengan un max-width, lo tenga el flex box.
+
+Todo lo anterior ya lo habíamos visto, y es una forma de hacer diseños responsivos sin media querys. Pero adaptar una imagen es distinto, o con vídeos.
+
+¿Cómo hacemos imágenes y vídeos que se adapten a todas las resoluciones?
+
+2. MULTIMEDIA FLEXIBLE
+--------------------------
+
+Vamos a aprender a crear imágenes y vídeos flexibles.
+
+Necesitamos que las imágenes o los vídeos se adapten a la pantalla que los contiene. O al contenedor que lo contiene.
+
+Hay una forma, que es la más recomendada para hacerlo con imágenes. Imagínate que tenemos una imagen muy chiquitita. SI ponemos que su width sea del 100% se vera pixelada. No queremos eso. Para que se vea bien le podemos decir que la imagen tenga un max-width del 100%. Para que crezca como máximo un 100% del dispositivo que lo esta rodeando.
+
+Una forma es darle lo siguiente a la imagen:
+
+img{
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+}
+
+No hace falta poner width auto porque es el valor por defecto, pero si lo ponemos, hacerlo correcto sería poner lo siguiente:
+
+
+img{
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+    width: auto;
+}
+
+Para hacerlo con un vídeo es MUY distinto. Las imágenes tienen dimensiones intrínsecas (tienen un ancho y un alto), lo que permite a los navegadores redimensionarlo, pero los vídeos se comportan de manera diferente.
+
+Debemos de meter el vídeo dentro de un contenedor.
+
+    <div class="container">
+        <video src="video.mp4" muted autoplay></video>
+    </div>
+
+Y en CSS ponemos lo siguiente para que sea 16 de ancho y 9 de alto:
+
+.container{
+    max-width: 100%;
+    aspect-ratio: 16/9;
+}
+
+video{
+
+    max-width: 100%;
+}
+
+3. ATRIBUTOS SRCSET Y SIZES
+-------------------------------
+
+Es de la sección de HTML. Hay muchas cosas del responsive design que dependen de la estructura HTML y no de CSS.
+
+Son dos atributos de HTML que trabajan en conjunto. Srcset o source set y sizes son dos atributos complementarios para ofrecernos una solución más avanzada y flexible para poder cargar imágenes responsive. Permiten decirle al navegador cuál debería ser la imagen adecuada según cierta condición. Por ejemplo, una condición puede ser si la página tiene un zoom o si la ventana tiene cierta cantidad de px.
+
+Fundamental para el rendimiento de la página. Tiene que cargar antes de los primeros 4s. 
+
+Lo que tenemos que hacer es, coger la imagen que queremos que se pueda redimensionar en función del dispositivo y darle tamaños más pequeños para las pantallas móviles por ejemplo. Tener una imagen para dispositivos chiquititos, una imagen para dispositivos más grandes, y otra para los más grandes.
+
+Un móvil tarda más en cargar que un ordenador. Para ell móvil, que tiene menos espacio que un ordenador, tiene que aprovechar mejor el espacio. No podemos hacer que cargue una imagen 900x900 si la vamos a ver en una pantalla de 560x420 (por poner un  ejemplo).
+
+Hacemos que cargue una imagen más chiquitita. srcset="dalto-small.png 400w" Hacemos que cargue la imagen dalto-small hasta pantallas de 400px, pero nos faltan el resto de resoluciones. LO hacemos así:
+
+    <img src="dalto-small.png" srcset="dalto-small.png 400w, dalto-medium.png 600w, dalto.png 1000w"> El navegador será el que elija la mejor opción.
+
+El otro atributo es sizes, y SOLAMENTE FUNCIONA con srcset. Ejemlo:
+
+sizes="(max-width: 700px) 600px,900"
+
+Lo que dice esta sentencia o media query es que para pantallas que son menores de 700px te recomiendo que insertes una imagen que tenga hasta 600px, y si tiene más de 700px, mi consejo es que cargues una imagen de 900px.
+
+sizes="(max-width: 400px) 360px, (max-width: 600px) 600px,900">
+
+Si la pantalla tiene 400px o menos, vas a cargar la imagen de hasta 360px, si tiene 600px o menos y más de 400px vas a cargar imágenes de 600px, en otro caso cargas la de 900px.
+
+4. ETIQUETAS PICTURE, SOURCE Y MEDIA HTML
+------------------------------------------

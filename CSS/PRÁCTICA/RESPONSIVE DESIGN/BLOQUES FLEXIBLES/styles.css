@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+div,body{
+    /*Para que se adapte a la pantalla*/
+    box-sizing: border-box;
+}
+
+.flexbox{
+    display: flex;
+    /*Para que pueda cambiar de linea*/
+    flex-wrap: wrap;
+    /*Para que se pongan en el centro*/
+    justify-content: center;
+    max-width: 600px;
+    margin: auto;
+}
+
+.bloque{
+    /*Para que los bloques se coloquen en la misma línea.*/
+    display: inline-block;
+    min-width: 200px;
+    background-color: #7bf;
+    margin: auto;
+    /*
+    Es mejor usar flex:1 
+    flex-grow: 1;
+    flex-basis: 0;
+    */
+    flex:1;
+    font-size: 12px;
+    padding: 10px;
+    margin: 4px;
+}
