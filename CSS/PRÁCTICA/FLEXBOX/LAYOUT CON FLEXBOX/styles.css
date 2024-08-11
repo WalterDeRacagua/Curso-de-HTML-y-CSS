@@ -14,7 +14,7 @@ body, header, nav, div, ul,h1,h2,p, img{
 /*--- HEADER SECTION --- */
 
 .header{
-    height: 100vh;
+    min-height: 100vh;
     box-sizing: border-box;
     background-image: url("headerbg.png");
     /*Porque la imagen se repetía por abajo.*/
@@ -23,9 +23,9 @@ body, header, nav, div, ul,h1,h2,p, img{
 }
 
 .header__overlay{
-    height: 100vh;
+    min-height: 100vh;
     /*Si le pusieramos 100 vw al width entonces dejaría un hueco a la derecha muy feo*/
-    width: 100vw;
+    width: 100%;
     background-color: #f806;
     position: absolute;
     z-index: 1;
@@ -66,14 +66,88 @@ h1{
 
 .nav{
     background: #fff;
+    display: flex;
+    /*Para que al redimensionar quede todo más bonito*/
+    justify-content: center;
+    padding: 8px 20px;
+    flex-wrap: wrap;
+    /*Para que siempre se quede arriba*/
+    position:sticky;
+    /*Necesitamos poner adonde se pega*/
+    top: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 0 25px #0006;
 }
 
 .nav__ul{
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.nav__item{
+    /*Para quitar los puntos de los li*/
+    list-style: none;
+}
+
+.nav__logo-container{
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav__ul-container{
+    flex-grow: 4;
+    text-align: center;
 }
 
 .nav__link{
     color: #f80;
     /*Para que no salga nada debajo del link, que no salga subrayado*/
     text-decoration: none;
+    /*Para que estén en línea.*/
+    display: inline-block;
+    padding: 10px;
+    border-radius: 0;
+    transition: background-color 0.2s, border-radius 0.2s, outline 0.2s, outline-offset 0.2s;
+    margin: 2px;
+    /*Contorno*/
+    outline: 0;
+    outline-offset: 0;
+}
+
+.nav__link:hover{
+    background-color: #f803;
+    border-radius: 20px;
+    outline: 2px solid #f805;
+    outline-offset: -3px;
+    box-shadow: 1px 0 2px #1118;
+}
+
+/*MODIFICADOR BEM*/
+.link--login{
+    background-color:#d60;
+    color: #ffd;
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-left: 10px;
+}
+
+.link--login:hover{
+    background-color: #b61;
+}
+
+.nav__logo{
+    width: 70px;
+    padding: 10px;
+}
+
+/*--- MAIN SECTION --- */
+
+main{
+    max-width: 800px;
+    text-align: center;
+    margin: auto;
+    font-size: 24px;
+    text-wrap: pretty;
 }

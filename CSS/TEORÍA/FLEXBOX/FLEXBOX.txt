@@ -9,6 +9,8 @@ Surgio por la pregunta de qué hacer con los tamaños de las cajas cuando sean d
 
 Necesitamos cajas con elementos dentro de las mismas que se adapten a los tamaños. Necesitamos que las cajas sean flexibles y el contenido también.
 
+Para que se ve bien en todos los elementos NO debemos de dar un height fijo
+
 Que dependiendo del tamaño de la página web, los elementos de una caja se redimensionen o adpaten de alguna forma (una caja puede ser un div por ejemplo).
 
 Flexbox es una caja donde vamos a crear este contexto de flexbox. A una caja le damos la propiedad display:flex; El comportamiento flexible lo obtienen los elementos de DENTRO DE LA CAJA, NO LA CAJA. Tendremos que darle propiedades a la caja contenedora y a sus ítems. 
@@ -283,3 +285,7 @@ Un layout es la forma que vamos a tener nosotros de distribuir los elementos, el
 Aquí hace todo unproyecto. Al poner una imagen vemos que sobra margen, para que no pase esto que es el margin collapse, ponemos a h1 margin 0. Esta bien usar h1 y no una clase porque solo debería haber 1 por página.
 
 Aquí repasa el concepto de text-wrap para que el titulo y el texto queden bonitos.
+
+Para crear diseños responsivos, está mal darle un height o un width a los elementos.
+
+Para que la barra de navegación se quede fija en la pantalla
