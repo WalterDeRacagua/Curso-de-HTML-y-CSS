@@ -275,6 +275,148 @@ Muy importante, de vital importancia poner esta etiqueta: <meta name="viewport" 
 6. EJERCICIO SANTO GRIAL, HOLY GRAIL CON FLEXBOX
 ---------------------------------------------------
 
-Ejercicio muy antiguo. 
+Ejercicio muy antiguo. A día de hoy este patrón o diseño se sigue utilizando y la web queda linda si se utiliza bien.
 
-Ver en el apartado de ejercicios.
+Ver en el apartado de ejercicios. Aquí dejaré apuntado todo aquello que no recordemos y todo aquello que sea de utilidad.
+
+Holly grail se divide en tres etapas/secciones:
+
+	1-Etapa principal: Menu principal de navegación o header.
+
+	2-Extensión principal: Tenemos un main content y dos columnas. Una puede ser en un lateral y la otra puede ser una sección de interés por ejemplo. 3 en total
+
+	3-Footer
+
+Ver el diseño del Santo Grial de la foto hecho con MIRO. Se aplica casi para todo.
+
+Nos vamos a centrar en que sea responsivo.
+
+El primer componente presenta la siguiente estructura HTML:
+
+    <!--DISEÑO DE LA BARRA DE NAVEGACIÓN-->
+    <header class="header">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">ITEM</a>
+                </li>
+                <li>
+                    <a href="#">ITEM</a>
+                </li>
+                <li>
+                    <a href="#">ITEM</a>
+                </li>
+                <li>
+                    <a href="#">ITEM</a>
+                </li>
+                <li>
+                    <a href="#">ITEM</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+El segundo componente es peculiar, ya que posee 3 elementos, la sección main y dos columnas. No podemos usar directamente el main, deberemos de usar un div para tener a los tres elementos. Su diseño es de la siguiente manera:
+
+ <!--DISEÑO DE LA MAIN SECTION Y COLUMNAS LATERALES.-->
+    <div class="main-wrapper">
+        <!--COLUMNA/BARRA SECUNDARI-->
+        <aside>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">ITEM</a>
+                    </li>
+                    <li>
+                        <a href="#">ITEM</a>
+                    </li>
+                    <li>
+                        <a href="#">ITEM</a>
+                    </li>
+                    <li>
+                        <a href="#">ITEM</a>
+                    </li>
+                    <li>
+                        <a href="#">ITEM</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!--CONTENIDO PRINCIPAL-->
+        <main>
+            <h1>
+                TITULO PRINCIPAL
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium reiciendis non inventore quaerat, nemo, quae voluptatum illum ipsum est maiores voluptate sequi quis. Consectetur aut, quam labore ipsam neque laudantium. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum ullam quis deserunt omnis quia, iste consequuntur quaerat hic doloribus, est aperiam repellat esse quibusdam, natus quam quas sapiente unde ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit ipsam praesentium sequi iste inventore! Fuga consectetur aperiam laborum repellendus, explicabo fugit beatae pariatur. Ipsum nisi error quasi numquam, atque rerum?
+            </p>
+        </main>
+        <!--COLUMNA/BARRA SECUNDARIA-->
+        <aside>
+            <h2>TITULO RANDOM</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, itaque porro aperiam temporibus facere esse ab nulla incidunt assumenda beatae et soluta saepe vitae dolores, impedit iure eius nobis praesentium?
+            </p>
+        </aside>
+    </div>
+
+La estructura del footer de momento será sencilla:
+
+    <footer>
+        Sergio Sánchez - @Copyright 2027
+    </footer>
+
+Importante, para que el footer quede abajo, debemos poner el el body en CSS lo siguiente:
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    /*Para asegurarnos de que el footer siempre se quede abajo ponemos display flex*/
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    min-height: 100vh;
+}
+
+display flex y flex-direction columna y align ítems start es muy importante.
+
+Además es muy importante que el div del main, el header y el footer tengan lo siguiente:
+
+
+De esta forma el footer siempre se encontrará abajo
+.main-wrapper, header, footer{
+    width: 100%;
+}
+
+Y además para el footer es de vital importancia si usamos este diseño, poner:
+
+/*FOOTER*/
+
+footer{
+    margin-top: auto;
+}
+
+margin-top:auto.
+
+Podemos hacer que, cuando la pantalla sea menor de los pixeles que nosotros elijamos, una de las columnas deje de verse de la siguiente forma a través de una media-query:
+
+@media screen and (max-width:600px){
+    /*DE FORMA QUE NO SE MUESTRA LA ÚLTIMA COLUMNA CUANDO LA PANTALLA ES DE 600PX O MENOS*/
+    aside:last-child{
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px){
+    .main-wrapper{
+        flex-direction: column;
+    }
+}
+
+En el body ha cambiado el flex direction de start a center.
+
+Mirar todo el ejercicio.
+
+7. FEATURE QUERIES - MOBILE FISRT
+-----------------------------------
