@@ -1,5 +1,5 @@
 
-/*IS*/
+/*SIN USAR ISIS*/
 section .elemento1,
 section .elemento2,
 section .elemento3{
@@ -20,7 +20,7 @@ section :where(.elemento1,.elemento2,.elemento3){
 /*HAS*/
 /*NO HAY QUE DEJAR ESPACIO. EN ESTE CASO SI LA SECCION CONTIENE EL ELEMENTO 1 LE DAMOS EL BG NEGRO*/
 section:has(.elemento1){
-  
+  background-color: #000;
 }
 
 /*COMBINANDO CONOCIMIENTOS PODEMOS HACER LO SIGUIENTE*/
