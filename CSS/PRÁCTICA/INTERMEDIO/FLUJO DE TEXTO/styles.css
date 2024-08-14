@@ -14,7 +14,7 @@ body{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    /*SI QUEREMOS BALANCEAR UN TEXTO*/
+    /*SI QUEREMOS BALANCEAR UN TÍTULO*/
     text-wrap: balance;
     /*SI QUEREMOS BALANCEAR UN PARRAFO*/
     text-wrap: pretty;
