@@ -418,5 +418,164 @@ En el body ha cambiado el flex direction de start a center.
 
 Mirar todo el ejercicio.
 
-7. FEATURE QUERIES - MOBILE FISRT
------------------------------------
+7. MOBILE FIRST
+----------------
+
+Es una forma de pensar el diseño de una página web en la que, primero creamos la web adaptada a dispositivos móviles y de móviles la adaptamos a pantallas más grandes.
+
+Si es algo que es para todo el mundo y no para un nicho concreto es útil el MOBILE FIRST, porque es probable que la gente entre más veces desde el teléfono móvil.
+
+1ºMóvil -> 2º dispositivos más grandes.
+
+Lo que hemos hecho hasta ahora en desktop first. para hacer que sea mobile first con el ejercicio del Santo Grial cambiamos algunas propiedades. Pasamos de esto: 
+@media screen and (max-width:800px){
+
+    /*DE FORMA QUE NO SE MUESTRA LA ÚLTIMA COLUMNA CUANDO LA PANTALLA ES DE 600PX O MENOS*/
+    aside:last-child{
+        display: none;
+    }
+}
+ A tener lo siguiente: 
+@media screen and (max-width:800px){
+    /*DE FORMA QUE NO SE MUESTRA LA ÚLTIMA COLUMNA CUANDO LA PANTALLA ES DE 600PX O MENOS*/
+    aside:last-child{
+    }
+} 
+aside:last-child{
+    min-width: 10rem;
+    display: none;
+}
+
+Le damos a que no se muestre desde el principio porque lo estamos diseñando para el móvil.
+
+Y pasamos de esto: 
+@media screen and (max-width:500px){
+    .main-wrapper{
+        flex-direction: column;
+    }
+} 
+
+A quitárselo de la media screen y ponerlo en el main-wrapper:
+.main-wrapper{
+    max-width: 1024px;
+    flex-direction: column;
+}
+
+De esta forma ya tendríamos la resolución para móviles. Después de esto tendríamos que adaptarla a ordenadores, tablets…
+
+Para ello hacemos lo siguiente:
+
+Esto:
+@media screen and (max-width:500px){
+    .main-wrapper{
+        flex-direction: column;
+    }
+}
+
+Se convierte en esto: 
+@media screen and (min-width:800px){
+    /*DE FORMA QUE NO SE MUESTRA LA ÚLTIMA COLUMNA CUANDO LA PANTALLA ES DE 600PX O MENOS*/
+    aside:last-child{
+        display: block;
+    }
+}
+
+Y añadimos esto: 
+
+@media screen and (min-width:480px){
+    .main-wrapper{
+        flex-direction: row;
+    }
+}
+
+Entonces: 
+Si utilizamos la estrategia de desktop-first, entonces en las @media-queries tenemos que, para las screens, debemos usar max-width. 
+
+Si utilizamos la estrategia de mobile-first, entonces en las @media-queries tenemos que, para las screens, debemos usar min-width. 
+
+Con esto tenemos un punto positivo, que toda la información entre en una pantalla pequeñita de móvil.
+
+Mobile first es el enfoque principal sobre el que se trabaja en las webs. Pero esto depende del uso que se le vaya a dar a nuestra web. Si van a ser adolescentes y milenials, entonces mobile first. Si es para una app médicos desktop-first.
+
+8. FEATURE QUERIES
+----------------------
+
+Se les conoce también como media queries de nivel 4.
+
+Permite al desarrollador escribir código en caso de que el navegador soporte una funcionalidad.
+
+Por ejemplo:
+/*Si el navegador soporta esta propiedad*/
+@supports (color: oklch(30% 0.2 30)){
+    body{
+        color: oklch(30% 0.2 30);
+    }
+}
+
+Entonces si soporta el color, lo pone simplemente. En caso de que el navegador no lo soporte, no le va a dar el estilo.
+
+Esto se usa en caso de que tengamos TOODA una propiedad que no se soporta.
+
+Si NO se soporta se pone lo siguiente:/*Si el navegador NO lo soporta*/
+@supports not (color: oklch(60% 0.2 30)){
+    body{
+        color: #000;
+    }
+}
+
+Nos sirve para que, en caso de que un diseño se rompa en caso de que no se soporte alguna propiedad no funcione. Y si no lo soporta definir el estilo con otras propiedades. Mejoras compatibilidad, consigues diseños más seguros. 
+
+Es una práctica recomendada que se utiliza para probar nuevas funcionalidades para ver si los navegadores lo soportan.
+
+9. CONTAINER QUERIES
+--------------------
+
+Los queries de contenedor representan un avance en el diseño, sobre todo en la parte del desarrollo web.
+
+Coger un contenedor y según las propiedades de ese contenedor dar estilo a los elementos que EL CONTENEDOR tiene dentro. Es una locura y un avance muy grande. Antes no se podía hacer.
+
+Ahora podemos hacer que, si por ejemplo la columna del medio del ejercicio del santo grial se hace más pequeña, su contenido se adapte porque la columna de en medio se está achicando. 
+
+Para ello, lo primero que debemos hacer es definir como contenedor al elemento que queremos que sea contenedor. 
+Para ello hacemos uso de la propiedad container-type: la cual puede obtener los siguientes valores:
+
+	-container-type: inline-size; Vamos a poder condicionar las propiedades que le vamos a dar por su ancho. Solamente tiene en cuenta las dimensiones en línea.
+
+	-container-type: size; Solamente tiene en cuenta las dimensiones que le damos en bloque y en línea.
+
+	--container-type: normal; Hace que el elemento NO SE PUEDA CONSIDERAR UN QUERY CONTAINER.
+
+Ahora para definir la container-querie hacemos lo siguiente (tenemos que poner container-type!= normal):
+
+p{
+    font-size: 8px;
+}
+
+/*Si el contenedor es más pequeño que los 500px...*/
+@container (max-width:500px){
+    p{
+        font-size: 20px;
+    }
+}
+
+Entonces, si el contenedor es más pequeño que 500px, entonces el fontsize es más grande para que se pueda ver desde un teléfono.
+
+Sin embargo, con esto se le aplica la propiedad a TODOS LOS CONTENEDORES. ¿CÓMO HACEMOS PARA QUE SE APLIQUE A UN ÚNICO CONTENEDOR?
+
+Para que se aplique a un contenedor concreto, debemos darle la propiedad container-name y poner nombre al contenedor:
+
+.container{
+    /*Vamos a poder condicionar las propiedades que le vamos a dar...*/
+    container-type: inline-size;
+    /*Poner nombre para que podamos aplicar una container query a un contenedor concreto*/
+    container-name: main;
+}
+
+No es compatible en todos los navegadores pero ya casi todos lo soportan. Pueden aumentar la complejidad del código.
+
+/*Si el contenedor es más pequeño que los 500px...*/
+@container main (max-width:700px){
+    p{
+        font-size: 40px;
+    }
+}

@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/*Si el navegador soporta esta propiedad*/
+@supports (color: oklch(60% 0.2 30)){
+    body{
+        color: oklch(60% 0.2 30);
+    }
+}
+/*Si el navegador NO lo soporta*/
+@supports not (color: oklch(60% 0.2 30)){
+    body{
+        color: #000;
+    }
+}
