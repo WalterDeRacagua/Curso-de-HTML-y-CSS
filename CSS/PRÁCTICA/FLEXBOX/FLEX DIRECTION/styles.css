@@ -7,6 +7,7 @@ body{
 .flexbox{
     display: flex;
     flex-direction: row;
+    direction: rtl;
 }
 
 .flexbox__flex-item{
