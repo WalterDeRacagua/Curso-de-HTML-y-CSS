@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.grid{
+    display: grid;
+    height: 80vh;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:1fr 2fr 1fr;
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: auto auto;
+}
+
+.grid-item{
+    background-color: #3d6;
+    margin: 10px;
+    padding: 10px;
+    font-size: 30px;
+    color: #fff;
+}

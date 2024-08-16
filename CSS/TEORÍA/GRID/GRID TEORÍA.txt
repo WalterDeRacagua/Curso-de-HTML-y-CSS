@@ -1,0 +1,343 @@
+GRID TEORÍA
+--------------
+
+1. INTRODUCCIÓN A GRID
+------------------------
+
+Grid layout, o simplemente grid, es un sistema de diseño bidimensional, que nos permite crear layouts complejos de forma sencilla y con cosas flexibles.
+
+Con grid, a diferencia de flexbox en donde solamente elegíamos una dirección (colocar los elementos de izquierda a derecha, o derecha izquierda, o de arriba a abajo...), aquí decimos que la grilla va a trabajar verticalmente como si fuera una columna y horizontalmente como si fuera una fila.
+
+En grid NO TENEMOS UNA ÚNICA DIRECCION. TENEMOS DOS. 
+Trabajaremos con filas Y columnas. 
+
+Grid se creó para poder trabajar con dos dimensiones.
+
+¿Cuándo trabajamos con flexbox y cuándo con Grid? Si solo necesitamos un diseño que trabaje con una dirección usamos flexbox. En otro caso, usamos GRID.
+
+Nosotros mismos entenderemos cuándo usar flexbox y cuando usar grid una vez que hayamos aprendido grid.
+
+Conceptos clave: 
+
+	-CONTENEDOR GRID/GRID CONTAINER: Elemento padre que se define como contenedor cuadrícula. Si a un elemento le damos display grid, ese elemento es el grid container.
+
+	-GRID ITEMS: Que son los elementos HIJOS DIRECTOS del grid container. Cada elemento puede ocupar una o más celdas de la cuadricula
+	
+	-LÍNEAS DE LA CUADRÍCULA: Se define como los bordes de la cuadrícula y separan las filas y las columnas. Tendrá en cuenta las líneas/ bordes cuando posicionemos los elementos.
+
+	-GRID-TRACKS: O una fila o una columna del GRID
+
+	-GRID-CELL: Es la unidad básica en la que se puede colocar un grid element. Es muy distinto al grid item.
+
+	-GRID-AREAS: Son áreas formadas por celdas de un grid. A un elemento le podemos hacer que ocupe TODO un grid área ocupando así varias celdas.
+
+Muchas de las cosas que tiene GRID se parecen a FLEXBOX, como space-evenly y demás.
+
+
+2. CREANDO UN GRID
+--------------------
+
+Vamos a crear nuestra primera cuadricula con grid. 
+
+Trabajar con grid implica crear un entorno con el que podamos trabajar con filas y columnas.
+
+Para ello hacemos esto en HTML:
+
+ <div class="grid">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+    </div>
+
+Creamos un div con la clase grid, y 6 divs dentro que serán sus grid-items. Y en CSS:
+
+.grid-item{
+    background-color: #2f9;
+    margin: 10px;
+    padding: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+
+Hasta ahora no se comportan con un grid, es lo mismo que hemos hecho siempre. Para que sea un grid, debemos hacer lo siguiente: 
+
+.grid{
+    display: grid;
+}
+
+Vemos que hay una diferencia mínima, le hemos dicho al navegador que queremos que la clase grid queremos que se comporte como un grid/cuadrícula. Si NO LE DECIMOS NADA MÁS QUE SE COMPORTE COMO UN GRID, CADA HIJO SERÁ UNA FILA IMPLICITA. 
+
+El cambio que vemos ocurre por el margin-collapse. A cada item le hemos dicho que tenia 10px de margen, lo que ocurre esque en total van a haber 20px, y no se colapsan. Esto lo vemos en el apartado del margin.
+
+Pero ese no es el único cambio. Si nosotros le damos estas propiedades a los grid-items: width: 45%; display: inline-block; y quitamos el display grid del contenedor, podemos observar que se colocan uno al lado del otro, en cambio, si volvemos a poner el display: grid, dejan de estar uno al lado del otro y pasan a estar cada uno en una línea distinta.
+
+Eso ocurre porque cada grid-item son filas si no decimos nada. Cada elemento es un row. Ocupan celdas diferentes y cada celda es una linea. Por tanto, HAY UNA ÚNICA COLUMNA Y TANTAS FILAS COMO HIJOS TENGA EL GRID CONTAINER.
+
+Como no queremos que estén colocados cada uno en una fila, vamos a ver las propiedades que determinan el número de filas y de columnas de nuestra grid, o cuadrícula.
+
+	-  grid-template-columns: ; La medida que queremos que tenga cada columna de nuestra grid. Si no decimos nada decimos que cada columna ocupara todo lo que ocupe la grid. Si queremos que tenga dos columnas debemos añadir otro valor.
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns: 300px 300px;
+}
+
+De esta forma le decimos que queremos dos columnas que ocupen cada una 300px de ancho, podemos darle el valor que queramos. También le podemos dar porcentajes para que podamos trabajar de forma dinámica. Le podemos poner muchas otras unidades.
+
+Le podemos cambiar la dirección al igual que hacíamos con flexbox a través de direction:rtl (right to left):
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns: 300px 300px;
+    direction: rtl;
+}
+
+	- grid-template-rows: Podemos decirle el número de filas que queremos y la ALTURA DE CADA FILA (con template-cols definíamos la anchura).
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:20% 300px 300px;
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: 100px 300px;
+}
+
+Podemos hacer combinaciones de filas y columnas como nosotros queramos: poner 3 filas y 2 columnas, o poner 2 filas y 3 columnas...
+
+
+3. UNIDADES AUTO Y FR
+----------------------------
+
+Son unidades muy utilizadas para las propiedades que hemos visto anteriormente, grid-template-cols y grid-template-rows.
+
+Fr se usa bastante.
+
+Auto se estira para ocupar toda la celda o toda la columna. Una cosa es el tamaño DE LA CELDA Y OTRA DISTINTA EL TAMAÑO DEL GRID-ITEM (EL HIJO).
+
+Si ponemos de tamaño auto a 2 columnas y añadimos contenido a una de ellas, el espacio que sobra de la primera será el espacio que ocupe la segunda en el caso de que NO TENGA CONTENIDO. Ver vídeo. Básicamente calcula el min-content de todo (que ahora lo veremos) y ve cual es el espacio que sobra, y calculando ese espacio sobrante, lo que hace es distribuirlo entre las cajas que le dimos auto. Funciona igual en rows y en col
+
+Ahora vamos con el fr. 
+
+.grid{
+    display: grid;
+    height: 80vh;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:1fr 200px 300px;
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: auto auto;
+}
+
+En este caso, 1fr ocupa TODO el ancho disponible. Si se lo ponemos a todos lo divide todo exactamente igual. No lo aplica restando el min-content, lo aplica del width total. Si te pasas del contenido se agrandará. EL contenido afecta.
+
+Mientras que auto tiene en cuenta el contenido mínimo y lo que sobra lo distribuye, fr (unidad fraccionaria) lo divide exactamente iguales (pero el contenido afecta). AL principio es complejo. Funciona parecido a flex-grow de flexbox, si ponemos 2fr y al resto 1, el que tiene 2 ocupará el doble.
+
+IMPORTANTE: fr se usa MUCHÍSIMO MÁS QUE auto.
+
+
+4.  REPEAT() Y MINMAX()
+-------------------------
+
+Son funciones muy útiles.
+
+Repeat nos ayuda a evitar repetir la misma expresión o kas mismas expresiones.
+
+MINMAX() es para darle un mínimo y un máximo a una columna.
+
+En el caso de repeat, si por ejemplo queremos que nuestro grid tenga 4 columnas cada una de un fr, en vez de poner 4 veces 1fr,1fr... Hacemos lo siguiente:
+
+.grid{
+    display: grid;
+    height: 80vh;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(4,1fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: auto auto;
+}
+
+O podemos poner: grid-template-columns:repeat(3,1fr) 200px; 3 columnas de 1 fr, y una última columna de 200px. o ponerlo delante. Es una función interesante y versátil.
+
+A demás, si tenemos un patrón como el siguiente:   grid-template-columns:1fr 2fr 1fr 2fr 1fr 2fr; Si queremos repetir patrones, también podemos hacerlo con repeat. En el caso anterior tenemos 3 veces el mismo patrón; el patrón es 1fr 2fr. Se repite 3 veces. Lo ponemos de la siguiente manera:
+
+.grid{
+    display: grid;
+    height: 80vh;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 1fr 2fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: 300px 200px;
+}
+
+grid-template-columns:repeat(3, 1fr 2fr); 
+
+Usar repeat. Esta muy bien para poder mantener el código de manera muy sencilla.
+
+En el caso de minmax(mínimo,maximo) podemos definir cual es la anchura mínima y máxima de los grid-items:
+
+ grid-template-columns:200px 100px minmax(300px, 700px);
+
+Con esto estamos diciendo que la anchura de la primera columna son 200px, la anchura de la segunda son 100px, y la anchura de la tercera tendrá un mínimo de 300px y un máximo de 700px. 
+
+Además, podemos acoplar el uso de repeat y minmax de la siguiente forma:
+
+ grid-template-columns:repeat(5, minmax(300px,500px));
+
+De forma que tendremos 5 columnas con un mínimo de 300px y máximo de 500px.
+
+Obviamente estas propiedades también funcionan con grid-template-rows. En ese caso, el minmax será para la altura de las filas.
+
+Podemos observar además que, algunas celdas de nuestro grid no las definimos. Por ejemplo, nosotros decimos que queremos 2 filas y 200 columnas pero el navegador nos coloca 4 filas en vez de dos para colocar a todos los elementos. Cómo definimos el resto? Al resto del grid lo llamamos grid implícito. Nosotros definimos las del grid explícito. Ahora lo veremos. Ver la foto de GRID IMPLICITO VS EXPLICITO.
+
+
+5. GRID IMPLÍCITO Y EXPLÍCITO
+---------------------------------
+
+Ya hemos visto que el grid implícito son aquellas celdas que define el navegador, y el explicito aquellas que definimos/manejamos nosotros. 
+
+El grid implícito consiste en que grid trata a todos los elementos como parte de su cuadrícula. Si creamos elementos que nosotros NO definimos, grid crea nuevas filas. Si decimos que nuestra cuadrícula tiene 3 filas y 3 columnas (3x3) y creamos 12 elementos en total, habrá  3 elementos en la grilla que nosotros no habremos definido ya que no se adaptan correctamente. Esos elementos son implícitos por el navegador. Ver de nuevo la foto.
+
+Si por ejemplo nosotros tenemos 10 elementos y hemos dicho que nos los divida en 2 filas y 2 columnas, cuando lo veamos en la web vemos que hay 2 columnas pero 5 filas. Hay 3 filas que son implícitas, creadas por el navegador. ¿Cómo las definimos o las manejamos?
+
+Podemos manejar estos elementos implícitos a través de la propiedad grid-auto-rows: 200px; Que define una altura de 200 px para los elementos implícitos, para los elementos que define el navegador que no caben como tal en la cuadrícula con las propiedades que le hemos dado.
+
+Vemos que siempre se crean filas y no columnas nuevas. Podríamos cambiar los ejes para que se creen columnas nuevas en vez de filas. Ya lo veremos. Con esa propiedad, deberíamos usar grid-auto-columns.
+
+Para que haga lo que hemos dicho de que, en vez de filas, cree columnas, debemos de utilizar la propiedad grid-auto-Flow y darle el valor de columna.
+
+
+.grid{
+    display: grid;
+    height: 100vh;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 200PX);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-flow: column;
+    grid-auto-columns: 10px;
+}
+
+Son las últimas dos propiedades, decimos que añada columnas en vez de filas y que las columnas implícitas que nosotros no hemos manejado tengan una anchura de 10px. Otro valor que se le puede dar a grid-auto-Flow es dense, intenta rellenar los huecos en blanco. Se usa cuando tengamos muchos elementos.
+
+
+6. GRID GAP
+--------------
+
+Es lo mismo que en flexbox (es la separación de los elementos). Lo vamos a ver porque hay que verlo.
+
+Usamos el mismo ejemplo que antes y le ponemos al body y al div (esto el lo hace siempre) un box-sizing: border-box. 
+
+Además, le añadimos un borde al .grid. 
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 1fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-rows: 150px;
+    grid-auto-flow: row;
+    grid-auto-columns: 100px;
+    border: 3px solid #000;
+}
+
+Nuestros elementos quedan dentro de la caja grid. Vemos que al tener que cada grid-item tiene un margin, no hay margin-collapse. Si hay márgenes de 10px entre elementos, estos se duplicarán a 20.
+
+.grid-item{
+    background-color: #3d6;
+    margin: 10px;
+    padding: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+
+Lo mejor en estos casos es NO DEJAR MARGIN NI WEBADAS. Usamos GAP. Tenemos column-gap, para separar las columnas y tenemos row-gap. Para resumir las 2 en una usamos gap. 
+
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 1fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-rows: 150px;
+    grid-auto-flow: row;
+    grid-auto-columns: 100px;
+    border: 3px solid #000;
+    column-gap: 10px;
+    row-gap: 50px;
+    /*PRIMER PARAMETRO SON LAS FILAS, SEGUNDO LAS COLUMNAS*/
+    gap: 50px 10px;
+}
+
+Como vemos, podemos usar gap para poner tanto el gap de las rows, como el de las cols. El primer parámetro es el de las filas, el segundo es el de las columnas.
+
+Si ponemos uno solo es para ambos.
+
+Vemos que al usar gap, no se nos separa los elementos del borde. Para ello, para poder separarlos, ponemos padding al padre. VER FOTOS CON PADDING VS SIN PADDING. Lo mismo que le damos de gap, dárselo de padding.
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 1fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-rows: 150px;
+    grid-auto-flow: row;
+    grid-auto-columns: 100px;
+    border: 3px solid #000;
+    column-gap: 10px;
+    row-gap: 50px;
+    /*PRIMER PARAMETRO SON LAS FILAS, SEGUNDO LAS COLUMNAS*/
+    gap: 20px;
+    /*PARA SEPARAR LOS ITEMS DEL BORDE USAMOS PADDING*/
+    padding: 20px;
+}
+
+Además, le debemos añadir el margin auto y el width que queramos y un background-color para que se vea mejor. VER LA FOTO GAP-EXAMPLE.
+
+No es común usar el padding como hemos hecho, pero si queremos lo podemos utilizar. Tampoco debería de tener un borde ni tampoco un background el grid-container, no es lo normal.
+
+Mientras menos media-queries le tengamos que agregar, mientras menos capas de complejidad le tengamos que agregar al proyecto, mejor.
+
+IMPORTANTE: Usar gap y no margin. Y padding cuando veamos necesidad estética.
+
+
+7. GRID DINÁMICO Y RESPONSIVE
+-------------------------------
+
+El grid del que partimos es estático, no se va a adaptar a diferentes tamaños y a diferentes medidas.
+
+Para conseguir diseños dinámicos/ responsive tenemos que ver DOS VALORES que se le dan al repeat() que poníamos en el grid-template-columns y rows. 
+
+Estos valores son:
+
+	- auto-fit: Ajusta, hace un ajuste automático
+	- auto-fill: rellena.
+
+Por ejemplo:
+
+grid-template-columns:repeat(auto-fit, 100px); Con esto conseguimos una especie de wrap que conseguíamos en flexbox. Se van adaptando.
+
+Si ponemos auto-fill, en este caso se comportan igual, la forma que tiene de funcionar es la misma.
+
+Si ponemos lo siguiente:
+
+  grid-template-columns:repeat(auto-fit, minmax(100px,1fr));
+
+Normalmente en minmax() PONEMOS MEDIDAS EN FR'S IMPORTANTE.
+
+Lo que hace autofit es checkear para cada resolución si entra una nueva columna. Auto-fill hace lo mismo cuando SE TRATAN DE MUCHOS ELEMENTOS.
+
+La diferencia entre auto-fit y auto-fil se encuentra cuando hay pocos elementos.
+
+Auto-fill crea nuevas columnas por más que no haya elementos, es como si le reservara espacio a nuevos elementos para que entren en otra columna. Va creando columnas para ir rellenando.
+
+Sin embargo, auto-fit no rellena, adapta lo que hay, y se estira.
+
+Si no queremos que se estiren los grid-items entonces usamos auto-fill, si si queremos auto-fit.
+
+Youtube usa auto-fill para que si una persona tiene en su lista de vídeos 1 solo vídeo, deje un hueco. Ver foto. Crea columnas para todos los espacios disponibles, pero quedan vacías para no mostrar un vídeo en grande.

@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #aaa;
+}
+
+body,div{
+    box-sizing: border-box;
+}
+
+.grid{
+    display: grid;
+    /*TANTAS MEDIDAS COMO COLUMNAS QUERAMOS*/
+    grid-template-columns:repeat(3, 1fr);
+    /*TANTAS MEDIDAS COMO FILAS QUERAMOS, CON ESTO DEFINIMOS EL ALTO*/
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-rows: 150px;
+    grid-auto-flow: row;
+    grid-auto-columns: 100px;
+    column-gap: 10px;
+    row-gap: 50px;
+    /*PRIMER PARAMETRO SON LAS FILAS, SEGUNDO LAS COLUMNAS*/
+    gap: 20px;
+    /*PARA SEPARAR LOS ITEMS DEL BORDE USAMOS PADDING*/
+    padding: 20px;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.grid-item{
+    background-color: #3d6;
+    padding: 10px;
+    font-size: 30px;
+    color: #fff;
+}
