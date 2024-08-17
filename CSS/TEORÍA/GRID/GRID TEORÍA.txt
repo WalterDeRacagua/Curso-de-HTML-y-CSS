@@ -341,3 +341,61 @@ Sin embargo, auto-fit no rellena, adapta lo que hay, y se estira.
 Si no queremos que se estiren los grid-items entonces usamos auto-fill, si si queremos auto-fit.
 
 Youtube usa auto-fill para que si una persona tiene en su lista de vídeos 1 solo vídeo, deje un hueco. Ver foto. Crea columnas para todos los espacios disponibles, pero quedan vacías para no mostrar un vídeo en grande.
+
+8. GRID ROW Y GRID COLUMN
+------------------------------
+
+Estas propiedades son la base de muchas cosas que vamos a poder hacer en el futuro.
+
+Dice que la cantidad de líneas que hay (siendo una linea por ejemplo lo que delimita las imágenes con el top, o lo que las delimita de las imágenes de abajo) es igual al número de filas +1. Igual para las columnas. Ver la imagen que he creado con miro.
+
+Hay distintos tipos de grid columns y grid rows.
+
+GRID-COLUMN-START: Es donde empieza la imagen o el grid-item en cuestión. En que columna. 
+
+GRID-ROW-START: Es en que fila empieza la imagen o el grid-item en cuestión. En que fila. 
+
+GRID-COLUMN-END: En que columna termina la imagen o el grid-item en cuestión. En que columna. Por defecto, termina en la 2 líneas.
+
+Ver fotos para entenderlo del todo.
+
+GRID-ROW-END: En que fila termina la imagen o el grid-item en cuestión. En que fila. Por defecto termina en una línea.
+
+Con imágenes funciona muy distinto que con un div. Con una imagen que se encuentre en un div funciona totalmente bien. Es por eso que lo óptimo sería meter las imágenes en divs, y ya utilizar grid-column/row-start/end.
+
+Con una imagen que esté fuera de un div, ocurre que al ponerle estas propiedades, el resto no se posicionan de una manera limpia y correcta. Metiendo la imagen dentro de un div si.
+
+También, en vez de poner la imagen dentro del div en HTML, lo que podemos hacer es añadir un div, decir lo que queremos que ocupe, y añadirle al div un background-image:
+
+.grid-item:first-child{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: 3;
+    grid-row-end: 3;
+    background-image: url(dalto.png);
+    background-size:cover;
+}
+
+Por tanto, podemos utilizar la imagen como fondo, o bien poner la imagen dentro del div para que se adapte de forma correcta.
+
+También, en vez de decirle en qué línea empieza y en qué línea termina, lo que podemos hacer es decirle en qué línea empieza y cuanto ocupa:
+
+grid-column-end: span 2; Esto significa que va a ocupar 2 líneas más. Vas a ocupar 2 columnas más.
+
+Ver foto llamada span. En esa foto decimos que la primera imagen empiece en la segunda columna, y se extienda dos filas y dos columnas con el span. El span ayuda a cambiar de posición las fotos.
+
+Una MEJOR forma de hacerlo es utilizando GRID-COLUMN O GRID-ROW a secas. El primer valor de ambos es su correspondiente start y el segundo es su correspondiente end.
+
+.grid-item:first-child{
+    /*GRID-COLUMN: START Y END, ES LO MISMO*/
+    grid-column: 2/span 2;
+    grid-row: 2/span 2;
+    background-image: url(dalto.png);
+    background-size:cover;
+}
+
+Empieza en la columna 2 y se expande 2 columnas, y empieza en la fila 2 y se expande 2 filas. Para mover el elemento o la imagen, lo que sea, lo único que tenemos que hacer es cambiar el start de cada uno. Muy fácil
+
+
+
+
