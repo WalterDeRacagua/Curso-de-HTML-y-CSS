@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Grid flow dense con css">
-    <meta name="keywords" content="Grid, grid flow, grid flow dense, css">
+    <meta name="description" content="Subgrid en CSS">
+    <meta name="keywords" content="Subgrid,css">
     <meta name="robots" content="nosnippet">
-    <meta name="author" content="Sergio Sánchez Carrasco">
-    <meta name="title" content="Grid flow dense">
-    <title>GRID FLOW DENSE</title>
+    <meta name="author" content="Sergio Sanchez Carrasco">
+    <meta name="title" content="SUBGRID"> 
+    <title>SUBGRID</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="grid">
-        <div class="grid-item">1</div>
+        <div class="grid-item">
+            <div class="subgrid-item">SUB 1</div>
+            <div class="subgrid-item">SUB 2</div>
+            <div class="subgrid-item">SUB 3</div>
+            <div class="subgrid-item">SUB 4</div>
+        </div>
         <div class="grid-item">2</div>
         <div class="grid-item">3</div>
         <div class="grid-item">4</div>
@@ -26,13 +31,6 @@
         <div class="grid-item">11</div>
         <div class="grid-item">12</div>
         <div class="grid-item">13</div>
-        <div class="grid-item">14</div>
-        <div class="grid-item">15</div>
-        <div class="grid-item">16</div>
-        <div class="grid-item">17</div>
-        <div class="grid-item">18</div>
-        <div class="grid-item">19</div>
-        <div class="grid-item">20</div>
     </div>
 </body>
 </html>

@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body,div{
+    box-sizing: border-box;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(3,50px);
+    gap: 10px;
+    padding: 10px;
+    /*Para ajustar el ITEM dentro de la celda, Eje horizontal*/
+    justify-items: stretch;
+    /*Para ajustar las CELDAS en la pantalla*/
+    justify-content:space-evenly;
+    /*Mover ITEM eje vertical*/
+    align-items: stretch;
+    /*AJUSTA CELDAS EN EL EJE VERTICAL*/
+    align-content: space-evenly;
+    height: 350px;
+    border: 2px solid #000;
+    margin: 20px;
+}
+
+.grid-item:first-child{
+    justify-self: stretch;
+    align-self: stretch;
+    background-color: #e66;
+}
+
+.grid-item{
+    background-color: #48e;
+    font-size: 30px;
+    max-width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+
+}
+
+.grid-item:hover{
+    opacity: 0.74;
+}
