@@ -1,0 +1,184 @@
+/*Para dar estilo a todo hacemos lo siguiente*/
+
+*{
+    /**/
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+    background: linear-gradient(to left, #4b846766, #a9c7e266);
+    color: #2C2C2Cdd;
+}
+
+body, div,ul,nav,header,footer, a, li,label{
+    margin: 0;
+    padding: 0;
+}
+
+/* ------- HEADER SECTION -------*/
+
+.header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    container-type: inline-size;
+    container-name: header;
+}
+
+.header__open-nav-button{
+    color: #A9C7E2;
+    font-size: 3rem;
+    font-weight: 600;
+    /*Para que el boton NO estorbe hacemos position absolute*/
+    position: absolute;
+    right: 10px;
+}
+
+/*Seleccionamos al input del header que tiene un checkbox*/
+.header__checkbox{
+    /*Para que no se muestre el checkbox*/
+    display: none;
+}
+
+.header__nav{
+    /*Para que desaparezca el nav*/
+    display: none;
+    /*Ponemos estas propiedades aquí en vez de donde :checked porque así el navegador no tiene que cambiar tantas cosas cuando se le da al botón*/
+    background-color: #fff;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    /*Para que nuestro menú NO esté encima del nav*/
+    z-index: -1;
+}
+
+.header__nav-list{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+
+/*Si está seleccionado, vamos a modificar al hermano (~) y al header nav le damos displayy block*/
+.header__checkbox:checked ~ .header__nav{
+    /*Hacemos que aparezca el menú*/
+    display: flex;
+}
+
+.header__logo{
+    max-width: 100%;
+    width: 64px;
+    margin: 10px 20px;
+}
+
+.header__nav-item{
+    /*Para que se le vayan los puntos*/
+    list-style:none;
+}
+
+/*Al enlace de los items*/
+.header__nav-item a{
+    color:  #4b8467;
+}
+
+/*Cuando NO pasemos el ratón por encima. Para mejorar el rendimiento lo hacemos cuando el enlace no esta activo o no estamos pasanod el raton encima*/
+.header__nav-item a:not(:is(:hover,:active)){
+    /*Quitamos el subrayado, si se pasa el ratón o se activa se pone*/
+    text-decoration: none;
+}
+
+/* ------- HEADER QUERIES-------*/
+
+/*Cuando el header tenga 600px o más*/
+@container header (min-width:800px){
+    .header__nav{
+        display:block;
+        position: static;
+        height: auto;
+        width: auto;
+        justify-content: space-between;
+    }
+    .header__nav-list{
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        /*Para que haya separación entre los items*/
+        gap: 20px;
+        /*Para que no esten pegados a la derecha*/
+        margin-right: 20px;
+    }
+
+    .header__nav-item{
+        font-size: 20px;
+    }
+    
+    .header__open-nav-button{
+        display: none;
+    }
+
+}
+
+/* ------- HEADER ENDS ------- */
+
+/* ------- PROFILE SECTION ------- */
+
+.profile__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.profile__data-container{
+    max-width: 600px;
+    padding: 12px;
+}
+
+.profile__img-container{
+    max-height: 600px;
+    /*Si el contenido, en este caso la imagen, se sale del contenedor, entonces ocultarlo.*/
+    overflow: hidden;
+}
+
+.profile__img{
+    /*Para que nuestra imagen sea responsive*/
+    max-width: 100%;
+    width: 720px;
+    border-radius: 16px;
+}
+
+h1{
+    color: #4b8467;
+}
+
+.profile__skills-container h2{
+    color: #4b8467;
+}
+
+.profile__skill{
+    list-style: none;
+    display: flex;
+    margin: 10px;
+}
+
+.load-bar{
+    border: 2px solid #4b8467;
+    border-radius: 8px;
+    color: #fff;
+    padding: 2px;
+    font-size: 12px;
+    width: 80%;
+    margin: 4px;
+    background-color: #fff;
+}
+
+
+/* ------- PROFILE QUERIES ------- */
+
+/* ------- PROFILE END ------- */

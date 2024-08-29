@@ -1,0 +1,64 @@
+CREANDO UNA WEB:
+
+Warframe: Es una especie de boceto de lo que nosotros queremos para hacer en nuestra web. Como un diseño.
+
+Tenemos que hacer un diseño de cómo debería verse en dispositivos móviles y cómo en pantallas más grandes.
+
+Primero lo vamos a construir para dispositivos móviles. Luego lo vamos a agrandar a un ordenador. Aquí vamos a ver las ventajas de trabajar Mobile First.
+
+Los colores que puede que vaya a usar son los siguientes:
+Azul claro de la camiseta: #A9C7E2
+Verde de la camiseta: #4B8467
+Verde oscuro de la vegetación: #2D4F3B
+Color de piel: #DFAF91
+Blanco del agua de la cascada: #E3E9EB
+
+Empezamos haciendolo para móvil, lo agranda a 125%.
+
+En la barra de navegación lo que ha hecho es que podamos pulsar el botón para que se desplieguen las distintas opciones de nuestro menú. A lo mejor usando javascript es más fácil.
+
+Ahora va a poner que el header sea un CONTENEDOR. Para poder usar container-queries. Para hacer que nuestro navegador se comporte como un contenedor, tenemos que ponerle lo siguiente:
+
+.header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    container-type: inline-size;
+    container-name: header;
+}
+
+Y despues ya podemos adaptar el header a las distintas resoluciones con container queries:
+
+/* ------- HEADER QUERIES-------*/
+
+/*Cuando el header tenga 600px o más*/
+@container header (min-width:800px){
+    .header__nav{
+        display:block;
+        position: static;
+        height: auto;
+        width: auto;
+        justify-content: space-between;
+    }
+    .header__nav-list{
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        /*Para que haya separación entre los items*/
+        gap: 20px;
+        /*Para que no esten pegados a la derecha*/
+        margin-right: 20px;
+    }
+
+    .header__nav-item{
+        font-size: 20px;
+    }
+    
+    .header__open-nav-button{
+        display: none;
+    }
+
+}
+
+En css tenemos la seccion del header, y después tenemos la sección del perfil/profile. Importante, estamos utilizando la metodología BEM.
