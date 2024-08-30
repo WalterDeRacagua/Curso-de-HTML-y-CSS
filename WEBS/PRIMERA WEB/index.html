@@ -9,7 +9,7 @@
 </head>
 <body>
     <!--SECCIÓN DEL HEADER-->
-    <header class="header">
+    <header class="header" id="header">
         <!--El id name debería de ser menú-toggle para más caracteristico-->
         <input class="header__checkbox" type="checkbox" id="open-menu">
         <!--Le damos un role por motivos de accesibilidad, el rol del label es de boton-->
@@ -21,19 +21,19 @@
             <ul class="header__nav-list">
                 <!--Poner # al href para que no nos moleste, antes de poner el enlace que nosotros deseamos-->
                 <li class="header__nav-item">
-                    <a href="#">About us</a>
+                    <a href="#profile">About us</a>
                 </li>
                 <li class="header__nav-item">
-                    <a href="#">Portfolio</a>
+                    <a href="#portfolio">Portfolio</a>
                 </li>
                 <li class="header__nav-item">
-                    <a href="#">Contact</a>
+                    <a href="#form">Contact</a>
                 </li>
             </ul>
         </nav>
     </header>
     <!--SECCIÓN PRINCIPAL-->
-    <main class="profile">
+    <main class="profile" id="profile">
         <!--Wrapper no es nada especial, es una capa que se crea para despues cambiarla en CSS-->
         <div class="profile__wrapper">
             <!--IMAGEN DENTRO DEL DIV IMPORTANTE-->
@@ -120,5 +120,75 @@
             </div>
         </div>
     </main>
+    <section class="portfolio" id="portfolio">
+        <h2 class="portfolio__title">PORTFOLIO SECTION</h2>
+        <div class="portfolio__project-container">
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 1
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 2
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 3
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name"> 
+                    PROJECT 4
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 5
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 6
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="form" id="form">
+        <h2 class="form__title">CONTACT</h2>
+        <!--El atributo Action indica a donde se enviarán los datos.-->
+        <form class="form__form">
+            <div class="form__input-container">
+                <label> Nombre
+                    <input type="text" placeholder="Aurora">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Apellido
+                    <input type="text" placeholder="Martínez">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Mail
+                    <input type="email" placeholder="ejemplo@ejemplo.com">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Mensaje
+                    <textarea placeholder="Escribe el mensaje que quieras enviar..."></textarea>
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Enviar
+                    <!--Boton de enviar-->
+                    <input type="submit">
+                </label>
+            </div>
+        </form>
+    </section>
+    <footer class="footer" id="footer">
+        <strong>Sergio & Ada </strong>~ Copyright
+    </footer>
 </body>
 </html>

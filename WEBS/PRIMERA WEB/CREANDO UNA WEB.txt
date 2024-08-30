@@ -62,3 +62,24 @@ Y despues ya podemos adaptar el header a las distintas resoluciones con containe
 }
 
 En css tenemos la seccion del header, y después tenemos la sección del perfil/profile. Importante, estamos utilizando la metodología BEM.
+
+Para el portafolio vamos a utilizar Grid. Va a ser sencillo, pero a la misma vez complicado debido al uso de Grid. 
+
+IMPORTANTE!! PARA CENTRAR ELEMENTOS CON GRID SE HACE DE LA SIGUIENTE MANERA:
+
+.portfolio__project{
+    background-image: url("LOGO2.png");
+    background-position: center;
+    background-size: cover;
+    /*PARA CENTRAR ELEMENTOS CON GRID SE HACE DE LA SIGUIENTE MANERA*/
+    display: grid;
+    place-content: center;
+}
+
+display grid y place-content: center.
+
+Para poner más oscura la imagen del fondo podmeos hacer lo siguiente:
+
+  background-image: linear-gradient(#0005, #0005), url("LOGO2.png");
+
+Importante poner primero el gradiente y después la imagen.
