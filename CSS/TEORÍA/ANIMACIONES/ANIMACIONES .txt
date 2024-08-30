@@ -1,0 +1,90 @@
+ANIMACIONES 
+-----------------
+
+1. TRANSICIONES (REPASO)
+---------------------------
+
+Ya vimos las transiciones, pero vamos a repasarlas rápidamente.
+
+Para hacer que, al tocar una barra, esta se llene podmeos hacer lo siguiente:
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    transition: width 2s linear;
+}
+
+Además, podemos hacer que, cuando vuelva la barrita, tarde más tiempo que al pinchar o menos. Para hacer que tarde menos tiempo al cargar cuando pinchemos en la barra, podemos hacer lo siguiente:
+
+.barra:active{
+    width:87vw;
+    /*Cuando esté activo, que tarde menos tiempo*/
+    transition-duration: 1s;
+}
+
+Algo muy importante que se nos ha podido pasar, es el box sizing border box para el div. Esto es muy importante porque de esa forma la barra no se sale al poner width del 100%.
+
+div{
+    /*MUY IMPORTNATE PONER ESTO, PORQUE SI NO AL DARLE A LA BARRITA, CARGARÁ MÁS ALLÁ DE LA BARRA.*/
+    box-sizing: border-box;
+}
+
+Estos efectos son muy interesantes para botones.
+
+Un efecto interesante de carga para nuestras barras de carga. Para ello necesitamos usar la función steps().
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    transition: width 2s steps(10);
+}
+
+De esta forma, la transición hará 10 pasos hasta completarse.
+
+Recordar usarlo, porque se pueden hacer efectos muy guapos.
+
+Los steps podemos hacer que funcionen como en un videojuego y carguen a 60fps haciendo steps(60).
+
+Para personas que tengan problemas relacionados con epilepsia por ejemplo, Chrome tiene activado para poder desactivarlas. Para ello utilizamos una media-query:
+
+/*PARA PERSONAS QUE SUFRAN PROBLEMAS EN RELACIÓN A EPILEPSIA Y LAS ANIMACIONES SEAN PELIGROSAS, USAMOS ESTA MEDIA QUERY.*/
+
+@media (prefers-reduced-motion: reduce){
+    
+    .box {
+        margin: 20px;
+        background-color: #fff;
+        border: 4px solid #743298;
+        padding: 6px;
+        border-radius: 39px;
+        transition: border 5s linear;
+    }
+
+    .barra{
+        padding: 40px;
+        background-color: #743298;
+        border-radius: 30px;
+        width: 10%;
+        transition: width 5s steps(10), background-color 1s steps(3); 
+    }
+
+    .barra:active{
+        width:100%;
+        /*Cuando esté activo, que tarde menos tiempo*/
+        transition-duration: 1s;
+        background-color: #f45;
+        
+    }
+
+    /*Para la caja que tiene una barra en estado de hover..*/
+    .box:has(.barra:active){
+        border:4px solid #f45;
+    }
+}
+   
+
+O en vez de ir cambiando los tiempos de las animaciones, poner transitions none en cada una. O animation none. Pero tener cuidado con el tipo de cosas que lo hacemos. Desactivar las más brutas.

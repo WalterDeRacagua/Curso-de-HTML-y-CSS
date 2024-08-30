@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+}
+
+div{
+    /*MUY IMPORTNATE PONER ESTO, PORQUE SI NO AL DARLE A LA BARRITA, CARGARÁ MÁS ALLÁ DE LA BARRA.*/
+    box-sizing: border-box;
+}
+
+.box {
+    margin: 20px;
+    background-color: #fff;
+    border: 4px solid #743298;
+    padding: 6px;
+    border-radius: 39px;
+    transition: border 2s linear;
+}
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    transition: width 2s steps(10), background-color 2s steps(10); 
+}
+
+.barra:active{
+    width:100%;
+    /*Cuando esté activo, que tarde menos tiempo*/
+    transition-duration: 1s;
+    background-color: #f45;
+    
+}
+
+/*Para la caja que tiene una barra en estado de hover..*/
+.box:has(.barra:active){
+    border:4px solid #f45;
+}
+
+/*PARA PERSONAS QUE SUFRAN PROBLEMAS EN RELACIÓN A EPILEPSIA Y LAS ANIMACIONES SEAN PELIGROSAS, USAMOS ESTA MEDIA QUERY.*/
+
+@media (prefers-reduced-motion: reduce){
+    
+    .box {
+        margin: 20px;
+        background-color: #fff;
+        border: 4px solid #743298;
+        padding: 6px;
+        border-radius: 39px;
+        transition: border 5s linear;
+    }
+
+    .barra{
+        padding: 40px;
+        background-color: #743298;
+        border-radius: 30px;
+        width: 10%;
+        transition: width 5s steps(10), background-color 1s steps(3); 
+    }
+
+    .barra:active{
+        width:100%;
+        /*Cuando esté activo, que tarde menos tiempo*/
+        transition-duration: 1s;
+        background-color: #f45;
+        
+    }
+
+    /*Para la caja que tiene una barra en estado de hover..*/
+    .box:has(.barra:active){
+        border:4px solid #f45;
+    }
+}
+   
