@@ -1,0 +1,217 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #222;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-evenly;
+    align-items: center;
+}  
+
+.btn{
+    padding: 10px 40px;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 6px;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+/*BOTÓN 1 WAVE*/
+
+.btn-1{
+    border: 1px solid #48e;
+    /*Para que lo que sobra del botón desaparezca de la vista.*/
+    overflow: hidden;
+}
+
+.btn-1::before{
+    /*Siempre tenemos que darle algo de contenido al before y al after*/
+    content: '';
+    background-color: #48e;
+    display: block;
+    height: 200%;
+    width: 140%;
+    position: absolute;
+    z-index:-1;
+    transition: top .6s, left .6s;
+    border-radius: 50%;
+    top: 100%;
+    left: 30%;
+}
+
+.btn-1:hover::before{
+    top: -35%;
+    left: -20%;
+}
+
+
+/*BOTÓN 2 NEÓN*/
+
+.button-container:has(.btn-2){
+    /*Filtro que lo hace ver aun más neón*/
+    filter: drop-shadow(0px 0px 15px #48e) drop-shadow(0px 0px 15px #48e);
+}
+
+.btn-2{
+    /*Hacemos como un botón que de entrada está apagado*/
+    border: 1px solid #fff3;
+    color: #fff3;
+}
+
+.btn-2:hover{
+    animation: parpadear 1s infinite alternate backwards;
+}
+
+.btn-2::before, .btn-2::after{
+        /*Siempre tenemos que darle algo de contenido al before y al after*/
+        content: '';
+        background-color: #48e;
+        display: block;
+        height: 1px;
+        width: 20%;
+        position: absolute;
+        z-index:-1;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: -16px;
+        opacity: 0;
+        transition: top .6s, opacity .6s, width 0.6s;
+        animation: parpadear-linea 1s  infinite alternate backwards;
+}
+
+.btn-2::after{
+    width: 10%;
+    top: -19px;
+    animation:  parpadear-linea 1s  infinite alternate-reverse backwards;
+}
+
+
+.btn-2:hover::before,  .btn-2:hover::after{
+    /*Siempre tenemos que darle algo de contenido al before y al after*/
+    opacity: 1;
+    top: -5px;
+    width: 80%;
+}
+
+.btn-2:hover::after{
+/*Siempre tenemos que darle algo de contenido al before y al after*/
+    top: -9px;
+    width: 60%;
+}
+
+
+@keyframes parpadear{
+    0%{
+        color: #fff3;
+        border: 1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    25%{
+        border-color: #48e;
+        color: rgb(111, 168, 255);
+        /*Le agregamos 2 sombras*/
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+        text-shadow:0px 0px 9px #48ee,0px 0px 9px  rgba(111, 168, 255, 0.454);
+    }
+    30%{
+        color: #fff3;
+        border: 1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    35%{
+        color: rgb(111, 168, 255);
+        /*Le agregamos 2 sombras*/
+        text-shadow:0px 0px 9px #48ee,0px 0px 9px  rgba(111, 168, 255, 0.454);
+    }
+    46%{
+        color: #fff3;
+        border: 1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+
+    60%{
+        border-color: #48e;
+        /*Le agregamos 2 sombras*/
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+    }
+
+    72%{
+        color: #fff3;
+        border: 1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+
+    100%{
+        color: rgb(111, 168, 255);
+        /*Le agregamos 2 sombras*/
+        text-shadow:0px 0px 9px #48ee,0px 0px 9px  rgba(111, 168, 255, 0.454);
+    }
+}
+
+@keyframes parpadear-linea{
+    0%{
+        background-color: #48e;
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+    }
+
+    25%{
+        background-color: #fff3;
+        box-shadow: none;
+    }
+    30%{
+        background-color: #48e;
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+    }
+
+    35%{
+        background-color: #fff3;
+        box-shadow: none;
+    }
+    46%{
+        background-color: #48e;
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+    }
+
+
+    60%{
+        background-color: #fff3;
+        box-shadow: none;
+    }
+
+    72%{
+        background-color: #48e;
+        box-shadow: 0px 0px 6px #48e3,
+        0px 0px 16px #48e3;
+    }
+
+
+    100%{
+        background-color: #fff3;
+        box-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .btn, .btn::before, .btn::after{
+        animation: none;
+    }
+}

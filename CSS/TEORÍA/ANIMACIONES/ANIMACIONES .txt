@@ -88,3 +88,239 @@ Para personas que tengan problemas relacionados con epilepsia por ejemplo, Chrom
    
 
 O en vez de ir cambiando los tiempos de las animaciones, poner transitions none en cada una. O animation none. Pero tener cuidado con el tipo de cosas que lo hacemos. Desactivar las más brutas.
+
+
+2. ANIMACIONES
+----------------------
+
+Ahora si empezamos con lo nuevo.
+
+Una animación es un proceso que quiere generar una ilusión de movimiento. Coger una imagen o cualquier elemento sin movimiento y animarla, hacer que tenga movimiento. Hacer como si fuera una transición entre un estado y otro final. EN medio de esa transición pueden pasar más cosas.
+
+Una transición necesita algo para realizarse, por ejemplo que pongas el ratón por encima o que esté activado el elemento. En el apartado 1 de transiciones veíamos que la transición ocurría si clickabamos (mientras estuviera activo :active).
+
+Las animaciones las podemos ejecutar cuando queramos, en cualquier momento que elijamos nosotros. Pueden ser automáticas incluso. Podemos hacer que tengan más de un valor para una propiedad, que pasen más cosas en medio (pasar de color azul a verde luego a rojo, luego a amarillo...) mientras que con las transiciones solo pasa de un estado a otro (color azul a rojo por ejemplo). Tenemos más control sobre lo que pasa. Podemos hacer que se repita. Plantilla para hacer animaciones:
+
+/*Plantilla para hacer una animación*/
+
+@keyframes nombre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+El from va a tener las propiedades de cuando empieza la animación y el to de cuando termina la animación.
+
+En vez de for y to se pueden utilizar porcentajes:
+
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+
+Y podemos agregarle qué va a pasar en medio:
+
+    50%{
+
+	opacity:0.8
+    }
+
+Muy importante por eso las animaciones a diferencia de las transiciones. 
+
+Lo bueno de tener animaciones es que se pueden aplicar a distintos elementos y a distintas etiquetas.
+
+Vamos a hacer la animación de llenar la barra, pero en vez de usar transition usamos @keyframe. 
+
+/*Plantilla para hacer una animación*/
+@keyframes llenar-barra {
+
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+
+El nombre de la animación es llenar barra y comienza en un 0% y termina en un 100%.
+
+@keyframes llenar-barra {
+
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+
+Lo siguiente que tenemos que hacer es darle a la barra el nombre de animación.
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    animation-name: llenar-barra;
+}
+
+Hasta aquí aun no funciona nada. Para que una animación funcione necesitamos como MÍNIMO el nombre de dos propiedades:
+
+	-animation-name: nombre de la animación.
+
+	-animation-duration: duración de la animación.
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    animation-name: llenar-barra;
+    animation-duration: 2s;
+}
+
+Las transiciones por defecto se repiten solamente una vez. Carga el elemento y carga directamente la animación y acaba.
+
+Para hacer que la animación tarde algo más en iniciar, podemos usar la siguiente propiedad:
+
+	- animation-delay: 3s;
+
+Si queremos que el elemento pase del estado de vacío al de lleno Y QUEREMOS QUE SE QUEDE EN EL ESTADO DE LLENO, podemos hacer lo siguiente:
+
+	- animation-fill-mode.
+
+animation-fill-mode puede coger los siguientes valores:
+
+	-backwards: vuelve al estado inicial del que partía.
+	-forwards: permanece en el estado final al que debe llegar la transición. La diferencia entre forwards y both la podemos ver en el vídeo grabado en la sección.
+
+	-none: Es como si pusiéramos backwards
+
+	-both: Es como forwards pero con la diferencia del vídeo grabado.
+
+Para ver la diferencia entre both y forwards pongo este ejemplo:
+
+/*Plantilla para hacer una animación*/
+@keyframes llenar-barra {
+
+    0%{
+        width: 30%;
+        background-color: #f33;
+    }
+
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}
+
+Si utilizamos animation-fill-mode: forwards, el elemento empieza en el estado que se le da al elemento .barra fuera del @keyframe, en este caso:
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    animation-name: llenar-barra;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode:both;
+}
+
+Sin embargo, si usamos both, la animación comienza en el estado de 0% o from que hayamos determinado en el @keyframe, en este caso:
+
+  0%{
+        width: 30%;
+        background-color: #f33;
+    }
+
+Si no me equivoco, se suele usar mucho más both que forwards.
+
+Ambos terminan en el mismo estado.
+
+También le podemos dar delays negativos a nuestras animaciones para que empiecen antes de ver la web. Si pones animation-delay: -1s habrá avanzado lo que avanzaría en 1s.
+
+Para que no empiece más rápido y termine más lento, es decir, para que vaya siempre a la misma velocidad tenemos que añadir la propiedad animation-timing-function: linear. Así será uniforme.
+
+Aquí también funciona la función cubic-bezier que vimos con las transiciones. 
+
+Ahora... ¿cómo hacemos para que una transición se repita más de una vez?
+
+Para ello utilizamos la propiedad animation-iteration-count: infinite, para que el número de iteraciones que haga la animación sea infinita. Podemos poner que se ejecute un número finito de veces. 14 por ejemplo.
+
+El delay, aunque se repita la animación 14 veces, solo sirve para la primera vez que se realiza la animación.
+
+Si queremos que la animación se repita infinitas veces y que al volver no haga un efecto feo de repente, tenemos que usar animation-direction. animation-direction puede utilizar los siguientes valores:
+
+	-reverse: va al revés.
+
+	-normal: que es la que viene por defecto.
+
+	-alternate: para que vaya normal y vuelve en reverso. Es una propiedad buenísima. Va y vuelve. Es más natural. Empieza en 0% y termina en 100%.
+
+	-alternate-reverse: Hace el mismo efecto, pero empieza al revés. Empieza en 100% y termina en 0%.
+
+Después tenemos animation-play-state que lo que puede hacer es que la animación paré con el valor paused o prosiga con el valor running. Esto es interesante para hacer efectos como: 
+
+.barra:active{
+    animation-play-state:paused ;
+}
+
+Si nosotros pinchamos sobre la barra y mantenemos el click se quedará pausado.
+
+3. BOTONES ANIMADOS
+------------------------
+
+En este apartado vamos a ver como hacer unas configuraciones buenas para botones en CSS. 
+
+Vamos a hacer 2. Haremos 2 botones iguales, pero cada botón tendrá una animación distinta. Vamos a hacer uso de after y de before.
+
+Tenemos lo siguiente:
+
+.btn{
+    padding: 10px 40px;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 6px;
+    letter-spacing: 3px;
+}
+
+.btn-1{
+    border: 1px solid #48e;
+}
+
+Al before lo primero que hay que darle es el content aunque no tenga NADA. content: '';
+
+Recordar que el before puede utilizarse como un elemento a parte. Si ponemos lo siguiente:
+
+.btn-1::before{
+    /*Siempre tenemos que darle algo de contenido al before y al after*/
+    content: '';
+    background-color: #48e;
+    display: block;
+    height: 200%;
+    width: 200%;
+    position: absolute;
+}
+
+Vemos como aparece un bloque azul en medio de la pantalla. Para solucionar esto hacemos que ambos botones .btn tengan una position relative para que tomen de referencia al elemento. 
+
+Además para que no se vea del todo tenemos que ponerle un z-index negativo y poner al botón un overflwo: hidden, de forma que todo el contenido que este fuera, lo ocultará.
+
+De esto mirar las configuraciones y que nos diga el chat gpt qué es ::after ::before que no nos acordamos.
+
+Según chat gpt son pseudo-elementos que sirven para añadir elementos decorativos o funcionales antes o después del contenido de un elemento sin necesidad de modificar HTML.
+
+4. EFECTO TYPEWRITER
+-------------------------
+
+Es el efecto para hacer como si estuviéramos escribiendo nosotros en el momento en la web.
+
