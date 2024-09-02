@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+    height: 300vh;
+}
+
+div{
+    /*MUY IMPORTNATE PONER ESTO, PORQUE SI NO AL DARLE A LA BARRITA, CARGARÁ MÁS ALLÁ DE LA BARRA.*/
+    box-sizing: border-box;
+}
+
+.crecedor{
+    height: 200vh;
+}
+
+.container{
+    scroll-timeline: --containerScroll block;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.box {
+    background-color: #fff;
+    border: 4px solid #18131b;
+    padding: 6px;
+    border-radius: 39px;
+    /*La barra queda fija y no desaparece si scrolleamos*/
+    position: absolute;
+    width: 100%;
+}
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    animation-name: llenar-barra;
+    animation-fill-mode:both;
+    animation-timing-function: linear;
+    animation-timeline: --containerScroll;
+}
+
+.barra:active{
+    animation-play-state:paused ;
+}
+
+/*media queries*/
+
+/*keyframes*/
+
+/*Plantilla para hacer una animación*/
+@keyframes llenar-barra {
+
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}
+
+/*Para el segundo tipo de animación donde el time-line NO depende de animation-duration..*/
+
+.crecedor-2{
+    height: 100vh;
+}
+
+.box-2{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra2;
+    animation-timeline: --cajita;
+}
+
+.container-2{
+}
+
+@keyframes llenar-barra2 {
+
+    0%{
+        width: 0%;
+    }
+    
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}

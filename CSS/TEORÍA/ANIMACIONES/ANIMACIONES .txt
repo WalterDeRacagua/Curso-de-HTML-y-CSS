@@ -324,3 +324,255 @@ Según chat gpt son pseudo-elementos que sirven para añadir elementos decorativ
 
 Es el efecto para hacer como si estuviéramos escribiendo nosotros en el momento en la web.
 
+Para hacer esto, al contenedor del texto le tenemos que poner un display flex y margin auto para que se centre. Obviamente esto NO es lo importante. Lo importante es cómo saber hacer la animación. Ahora copiaré el texto de cómo hacerlo.
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 1px #eef);
+}
+
+.text{
+    color: #fff;
+    letter-spacing: 3px;
+    animation: grow 1s both steps(7);
+    overflow: hidden;
+    position: relative;
+}
+
+.text::before{
+    content: '';
+    width: 1px;
+    height: 80%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    border-radius: 3px;
+    animation: parpadeo .36s infinite alternate;
+}
+
+/*Cuando seleccionamos el texto parece que teine más drop shadow*/
+.text::selection{
+    background-color:transparent ;
+}
+
+/*Keyframes*/
+
+@keyframes grow {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes parpadeo {
+    0%{
+        /*Pasar de que se vea a que NO se vea*/
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+5. ANIMACIONES BASADAS EN SCROLL
+------------------------------------
+
+Son animaciones que transcurren a medida que vamos scrolleando.
+
+En vez de que la animación dure 3s por ejemplo, que la animación empiece cuando tenemos la barra de scroll arriba y baja. La animación va a depender de donde esté la barra de scroll. Antes necesitábamos hacerlo con JS.
+
+Acordarnos que el timing function teníamos el valor de linear, podemos darle ease out para que la animación empiece fuerte y termine despacio y también teníamos la cubic-bezier() function.
+
+El time-line de la animación entonces y hasta ahora es el animation-duration que le pongamos a la animación. Pero tenemos otra forma de definir el time-line de las animaciones y que NO dependan de la duración. Hablamos de las animaciones basadas en el scroll.
+
+Tenemos dos tipos de animaciones basadas en el scroll:
+
+	-scroll: Solo funciona por el scroll del elemento. Animación dependerá del avance de la barra de scroll.
+	-En el momento que se llegue a la parte donde se encuentra el elemento, este aparecerá y después desaparecerá.
+
+Tenemos esas dos formas. El principal es el de la barra de desplazamiento. El animation-iteration-count no aplica para este tipo de animaciones. El delay nos puede servir, pero de momento lo quitamos. La animation-duration la quitamos y de momento nos quedamos con esto:
+
+.barra{
+    padding: 40px;
+    background-color: #743298;
+    border-radius: 30px;
+    width: 10%;
+    animation-name: llenar-barra;
+    animation-fill-mode:both;
+    animation-timing-function: linear;
+}
+
+PD: Es el ejercicio de llenar la barrita que venimos haciendo desde el primer apartado de animaciones. La animación consistía en llenar la barrita y que esta cambiara de color:
+
+/*Plantilla para hacer una animación*/
+@keyframes llenar-barra {
+
+    0%{
+        width: 30%;
+        background-color: #f33;
+    }
+
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}
+
+Para hacer el efecto con el scroll debemos usar la propiedad animation-timeline: ; Y utilizar la función scroll(). De esta forma le decimos que nuestra animación se va a basar en el scroll.
+
+Ahora con esto puesto simplemente, la barrita se llena si la barra de scroll desciende hasta abajo y se va llenando progresivamente. No se basa en la duración. El time-line va a ser a través del scroll. 
+
+Después, al body le damos un scroll-timeline-name:
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+    height: 200vh;
+    scroll-timeline-name: --body;
+}
+
+Pero además del nombre tenemos que definir cual es el eje de la barra de scroll:
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+    height: 200vh;
+    scroll-timeline-name: --body;
+    scroll-timeline-axis: inline;
+}
+
+Tenemos dos ejes:
+
+	-inline: El eje x.
+	-block: El eje y
+
+Como solo queremos que la animación suceda con el eje de las y, el eje vertical, tenemos que poner block. scroll-timeline-name y scroll-timeline-axis las podemos resumir en una sola propiedad:
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+    height: 200vh;
+    scroll-timeline: --body block;
+}
+
+scroll-timeline, a la cual primero le damos el nombre y lo segundo el eje.
+
+Sin embargo, aquí Dalto lo ha hecho como el orto. AL body no le podemos dar la propiedad de scroll-timeline: --body block, porque al poner después en la barra animation-timeline: --body, deja de funcionar.
+
+Entonces lo que hacemos es meter dentro de un contenedor a la barra y le añadimos la propiedad:
+
+.container{
+    height: 200vh;
+    scroll-timeline: --body block;
+}
+
+Aquí se ha explicado como el culo y ha cortado mal el vídeo y hay una parte que le ha faltado por poner.
+
+El scroll del body o del root() por tanto tiene de nombre scroll().
+
+Normalmente lo que se utiliza es la función scroll() y nos dejamos de líos.
+
+Después tenemos otro tipo de animación. Funciona por el view, dependiendo de si un elemento se va a ver o no se va ver.
+
+Para ello, a la propiedad animation-timeline le vamos a dar el valor de función view().
+
+Ahora le tenemos que dar el view-timeline al navegador. Con ello le decimos que te vas a basar en vez de en el scroll, en cuando al elemento se le vea. Es como decirle al navegador CUÁL ES EL ELEMENTO QUE TIENE QUE SER OBSERVADO. Para ello hacemos lo siguiente:
+
+/*Para el segundo tipo de animación donde el time-line NO depende de animation-duration..*/
+
+.crecedor-2{
+    height: 100vh;
+}
+
+.box-2{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra2;
+    animation-timeline: --cajita;
+}
+
+.container-2{
+}
+
+@keyframes llenar-barra2 {
+
+    0%{
+        width: 0%;
+    }
+    
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}
+
+En concreto lo importante es esto:
+
+.box-2{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra2;
+    animation-timeline: --cajita;
+}
+
+Al box-2 le damos un view-timeline con el nombre de --cajita y con el valor de block para que aparezca con el desplazamiento vertical y animation-timeline: en vez de ponerle view() le ponemos --cajita para que se fije en ese elemento. 
+
+En este ejemplo, ocurre lo mismo que si ponemos animation-timeline:view(). Pero a veces nosotros queremos que un elemento se vea en el caso de que haya otro elemento que se esté viendo. Es decir, si queremos que un elemento tenga esta animación en el caso de que haya otro elemento que esté apareciendo, tenemos que hacer esto último y poner el view-timeline al elemento que tomamos de referencia.
+
+
+6. RANGO DE ANIMACIONES
+--------------------------
+
+Vamos a continuar con el ejemplo de antes para explicar el rango de animaciones.
+
+¿Cómo podemos hacer para que la animación comience un poco más tarde?
+
+Para eso tenemos la propiedad animation-range. animation-range-start: cover 10%; Lo que hace esto es que una vez HA PASADO UN 10% DEL VIEW, COMIENZA A HACER LA ANIMACIÓN.
+
+.box{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra;
+    animation-timeline: --cajita;
+    animation-range-start: cover 20%;
+    /*ESTO HAY QUE PONERLO PORQUE SI NO DE PRIMERAS YA APARECE LA BARRA LLENA. PERO NOSOTROS NO QUEREMOS ESO*/
+    animation-fill-mode: both;
+}
+
+Importante usar animation-fill-mode: both para que no veamos la barra llena.
+
+Al igual que podemos hacer que empiece más tarde, podemos hacer que finalice más temprano con animation-range-end. Por defecto ambas vienen en normal.
+
+Con animation-range-end decimos en qué momento queremos que acabe la animación.
+
+.box{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra;
+    animation-timeline: --cajita;
+    animation-range-start: cover 20%;
+    animation-range-end: cover 80%;
+    /*ESTO HAY QUE PONERLO PORQUE SI NO DE PRIMERAS YA APARECE LA BARRA LLENA. PERO NOSOTROS NO QUEREMOS ESO*/
+    animation-fill-mode: both;
+}
+
+
+De está forma la animación empieza en el 20% del view y acaba en el 80%.
+
+Pero no solo le podemos dar cover. También le podemos dar contain. También tenemos exit-crossing, que la animación empieza cuando este despareciendo de la pantalla.
+
+Para calcularlo bien podemos buscar view progress timeline range visualizer

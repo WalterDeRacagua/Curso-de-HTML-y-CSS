@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #222;
+    display: flex;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 1px #eef);
+}
+
+.text{
+    color: #fff;
+    letter-spacing: 3px;
+    animation: grow 1s both steps(7);
+    overflow: hidden;
+    position: relative;
+}
+
+.text::before{
+    content: '';
+    width: 1px;
+    height: 80%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    border-radius: 3px;
+    animation: parpadeo .36s infinite alternate;
+}
+
+/*Cuando seleccionamos el texto parece que teine más drop shadow*/
+.text::selection{
+    background-color:transparent ;
+}
+
+/*Keyframes*/
+
+@keyframes grow {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes parpadeo {
+    0%{
+        /*Pasar de que se vea a que NO se vea*/
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

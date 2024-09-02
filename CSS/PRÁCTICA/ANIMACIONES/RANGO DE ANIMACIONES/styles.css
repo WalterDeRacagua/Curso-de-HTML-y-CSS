@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #ccc;
+    height: 300vh;
+}
+
+div{
+    /*MUY IMPORTNATE PONER ESTO, PORQUE SI NO AL DARLE A LA BARRITA, CARGARÁ MÁS ALLÁ DE LA BARRA.*/
+    box-sizing: border-box;
+}
+
+/*Para el segundo tipo de animación donde el time-line NO depende de animation-duration..*/
+
+.crecedor{
+    height: 100vh;
+}
+
+.box{
+    view-timeline: --cajita block;
+    background-color: #48e;
+    padding: 20px;
+    animation: llenar-barra;
+    animation-timeline: --cajita;
+    animation-range-start: cover 20%;
+    animation-range-end: cover 80%;
+    /*ESTO HAY QUE PONERLO PORQUE SI NO DE PRIMERAS YA APARECE LA BARRA LLENA. PERO NOSOTROS NO QUEREMOS ESO*/
+    animation-fill-mode: both;
+}
+
+.container{
+}
+
+@keyframes llenar-barra {
+
+    0%{
+        width: 0%;
+    }
+    
+    100%{
+        width: 100%;
+        background-color: #f33;
+    }
+}
