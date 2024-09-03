@@ -55,4 +55,13 @@ El CDN es importante. Mejora la velocidad de carga, aumenta la disponibilidad y 
 
 Antes para tener el candadito de que nuestra web es segura necesitábamos una IP dedicada como la que ofrece Hostinger. Pero nadie entra a nuestra web mediante el Dominio.
 
-Desventaja de no tener una IP dedicada es que básicamente si nosotros estamos en una WEB compartida, si alguno de la web hace spam, a nosotros si mandamos correos también nos lo pueden marcar como spam. Lo que hacen otros usuarios si afecta a nuestra web. Sin embargo, Hostinger suele restringir a este tipo de usuarios.
+Desventaja de no tener una IP dedicada es que básicamente si nosotros estamos en una WEB compartida, si alguno de la web hace spam, a nosotros si mandamos correos también nos lo pueden marcar como spam. Lo que hacen otros usuarios si afecta a nuestra web. Sin embargo, Hostinger suele restringir a este tipo de usuarios. Luego tampoco es tan necesario.
+
+Protocolo FTP, mecanismo para pasar nuestros archivos de nuestra computadora hasta el servidor. Tenemos 2 FTP:
+
+	1º. Pasarlo directamente. No es seguro.
+	2º. SFTP, que es FTP sobre SSH; o FTPS sería FTP sobre SSL. Cifran la conexión.
+
+Descargar cliente FileZila y descargar el primero. En Hostinger vamos a archivos -> Cuentas FTP. Lo primero que hacemos es cambiar la contraseña de FTP que sea LARGUÍSIMA y que tenga muchos caracteres. Copiamos la IP del FTP. En el apartado de servidor pegamos esa información, copiamos el nombre de usuario y la contraseña. Ya podremos ver los archivos que hemos subido. Lo mejor es subir los archivos de esta forma. De esta segunda forma.
+
+Esta parte es mejor ir a verla en el momento en el que necesitemos subir nuestra web.
