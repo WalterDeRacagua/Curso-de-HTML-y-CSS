@@ -573,6 +573,10 @@ Con animation-range-end decimos en qué momento queremos que acabe la animación
 
 De está forma la animación empieza en el 20% del view y acaba en el 80%.
 
-Pero no solo le podemos dar cover. También le podemos dar contain. También tenemos exit-crossing, que la animación empieza cuando este despareciendo de la pantalla.
+Pero no solo le podemos dar cover. También le podemos dar contain. También tenemos exit-crossing, que la animación empieza/termina cuando este despareciendo de la pantalla.
 
-Para calcularlo bien podemos buscar view progress timeline range visualizer
+Para calcularlo bien podemos buscar view progress timeline range visualizar, en concreto en este enlace:https://scroll-driven-animations.style/tools/view-timeline/ranges/#range-start-name=cover&range-start-percentage=0&range-end-name=cover&range-end-percentage=100&view-timeline-axis=block&view-timeline-inset=0&subject-size=smaller&subject-animation=reveal&interactivity=clicktodrag&show-areas=yes&show-fromto=yes&show-labels=yes
+
+En esta web podremos controlar el animation range start y animation-range-end para darle los valores que nosotros queramos.
+
+Con esto podemos ver cómo funciona cada valor que se le puede dar al range. contain por ejemplo si su range es 0% el elemento hará la animación cuando se muestre por completo el elemento correspondiente, el view-timeline correspondiente. Con cover 0% se empieza a ver una vez se empieza a ver el elemento correspondiente.

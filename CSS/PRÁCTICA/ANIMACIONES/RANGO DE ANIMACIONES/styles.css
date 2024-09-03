@@ -26,8 +26,9 @@ div{
     padding: 20px;
     animation: llenar-barra;
     animation-timeline: --cajita;
-    animation-range-start: cover 20%;
-    animation-range-end: cover 80%;
+    animation-range-start: contain 10%;
+    animation-range-end: contain 80%;
+    animation-timing-function: linear;
     /*ESTO HAY QUE PONERLO PORQUE SI NO DE PRIMERAS YA APARECE LA BARRA LLENA. PERO NOSOTROS NO QUEREMOS ESO*/
     animation-fill-mode: both;
 }
