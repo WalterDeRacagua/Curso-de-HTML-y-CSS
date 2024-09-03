@@ -1,0 +1,58 @@
+WEB HOSTING
+----------------
+
+1. INTRODUCCIÓN AL ALOJAMIENTO WEB
+-------------------------------------------
+
+El nos recomienda ver su curso de hosting porque es requisito para el desarrollo web saber de hosting. Pero aquí simplemente va a hacer una introducción para poder subir nuestra página a la web.
+
+El Hosting se refiere a un servicio que nos ofrece espacio para nosotros poder almacenar información.
+
+Puede ser accesible a través de la web el contenido que nosotros subamos.
+
+Una empresa nos ofrece este servicio con una computadora que permanece siempre encendida.
+
+Permite que nuestro sitio web sea accesible desde cualquier lugar del mundo 24h. Ofrece un lugar donde almacenar todos nuestros documentos. Suelen incluir tecnologías para que nosotros con facilidad podamos gestionar nuestra web. Además tenemos más seguridad. Y nos ofrecen soporte técnico sobre cosas del hosting.
+
+Tenemos que entender que hosting contratar. A largo plazo termina siendo un gasto.
+
+2. TIPOS DE HOSTING
+-------------------------------------------
+
+Objetivo: hacer una clasificación de los hostings a utilizar.
+
+Dependiendo de la necesidad y de los requerimientos de cada sitio web debemos saber qué hosting es el mejor.
+
+	1. HOSTING COMPARTIDO: Un servidor con un montón de webs. Comparten recursos. El que más usuarios atrae, el que más afluencia tiene, más recursos consume. Este tipo de Hosting tiene un panel de control para gestionar nuestra web. Es gestionado por el proveedor. Es para empresas más pequeñitas que no tengan tanta afluencia, tantas visitas por así decirlo.
+
+	2. VPS Virtual Private Server o Servidor Privado Virtual. Funciona distinto a HOSTING PRIVADO pero son parecidos. Separa el servidor en varias partes, no lo mete entero en un sitio. Cada parte es distinta, es como si fueran servidores distintos. Dentro de cada servidor puede haber varias zonas virtuales. El rendimiento de cada uno NO se ve afectado por otros. El rendimiento de una página aquí NO DEPENDE DE OTRAS PÁGINAS, en Hosting compartido SI. Es para empresas medianas con mucho tráfico de afluencia.
+	
+	3. HOSTING DEDICADO: Ofrece TOOOODO un servidor PARA UN SOLO CLIENTE. Ideal para páginas webs que manejan muchos datos. Para empresas muy importantes que generan mucha afluencia en su página. 
+
+	4. CLOSE HOSTING: Distribuye tu web en un montón de servidores lo que hace que todo sea mucho más rápido, que sea mucho más escalable y flexible. Por ejemplo, para una página que vende productos que, en un Black Friday va a explotar de clientes. 
+
+	5. HOSTING ESPECIALIZADO: Hosting optimizado para cosas específicas. Hay varios tipos de Hosting Especializados para distintos servicios.
+	
+¿Qué tenemos que buscar en un proveedor de servicios de Hosting?
+
+	1º. SOPORTE 24/7.
+	2º. RENDIMIENTO ALTO. TIEMPOS DE CARGA RÁPIDO.
+	3º. FIABLE.
+	4º. DIVERSIDAD Y FLEXIBILIDAD. QUE PODAMOS ELEGIR Y ESCALAR NUESTRA WEB SIN QUE SEA CARO NI TEDIOSO.
+	5º. COPIAS DE SEGURIDAD INMEDIATAS
+	6º. FÁCIL DE USAR.
+
+Su hosting preferido es Hostinger. Ofrece todo lo anterior, y tiene un dominio gratuito. Un dominio es Google.com por ejemplo. El nombre de la página web. Es una forma de llamar al servido que aloja a nuestra página web.
+Y un certificado SSL. Le vendió hosting a 30.000.000. 
+
+
+3. PLANES DE HOSTING CON HOSTINGER
+---------------------------------------
+
+Ir al apartado del vídeo que dice HOSTING RECOMENDADO. Porque ahí nos hace un descuento. El almacenamiento NVE es más rápido que el SSD. SSD es más rápido que los discos duros.
+
+El CDN es importante. Mejora la velocidad de carga, aumenta la disponibilidad y mejora la seguridad.
+
+Antes para tener el candadito de que nuestra web es segura necesitábamos una IP dedicada como la que ofrece Hostinger. Pero nadie entra a nuestra web mediante el Dominio.
+
+Desventaja de no tener una IP dedicada es que básicamente si nosotros estamos en una WEB compartida, si alguno de la web hace spam, a nosotros si mandamos correos también nos lo pueden marcar como spam. Lo que hacen otros usuarios si afecta a nuestra web. Sin embargo, Hostinger suele restringir a este tipo de usuarios.
