@@ -580,3 +580,43 @@ Para calcularlo bien podemos buscar view progress timeline range visualizar, en 
 En esta web podremos controlar el animation range start y animation-range-end para darle los valores que nosotros queramos.
 
 Con esto podemos ver cómo funciona cada valor que se le puede dar al range. contain por ejemplo si su range es 0% el elemento hará la animación cuando se muestre por completo el elemento correspondiente, el view-timeline correspondiente. Con cover 0% se empieza a ver una vez se empieza a ver el elemento correspondiente.
+
+7. CREANDO WEB CON ANIMACIONES
+----------------------------------
+
+Veremos que animaciones vamos a incluir a nuestra primera web que ya hicimos responsive. 
+
+Lo único que vamos a animar en este parte es la barra de navegación y algunas cosas más.
+
+Lo primero que hacemos es eliminarle al header el container-name y type y en vez de añadir una container query añadimos una media-query.
+
+La animación para el navegador, para que cuando esta en el modo ordenador se haga como transparente y cambien las letras de color es la siguiente:
+
+@keyframes header-movement{
+    0%{
+        padding: 20px 0;
+        /*Que empiece con el mismo background*/
+        background-color: #fff;
+    }
+
+    100%{
+        /*Que se achique, se haga más pequeño para que ocupe menos*/
+        padding: 0;
+        /*Pero que acabe con otro background*/
+        background-color: #4b646766;
+        color: #fffa;
+    }
+}
+
+Además añadimos la siguiente animación para que empiecen a aparecer algunos elementos de nuestra página web:
+
+@keyframes aparecer {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+

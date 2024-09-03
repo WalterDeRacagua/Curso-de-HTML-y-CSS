@@ -1,0 +1,580 @@
+/*Para dar estilo a todo hacemos lo siguiente*/
+
+*{
+    /**/
+    box-sizing: border-box;
+    /*Para que al scrollear sea más lento*/
+    scroll-behavior:smooth;
+}
+
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+    background: linear-gradient(to left, #4b846766, #a9c7e266);
+    color: #2C2C2Cdd;
+}
+
+body, div,ul,nav,header,footer, a, li,label{
+    margin: 0;
+    padding: 0;
+}
+
+/* ------- HEADER SECTION -------*/
+
+.header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    font-size: 20px;
+    color: #4b8467;
+}
+
+.header__open-nav-button{
+    color: #4b8463;
+    font-size: 3rem;
+    font-weight: 600;
+    /*Para que el boton NO estorbe hacemos position absolute*/
+    position: absolute;
+    right: 10px;
+}
+
+/*Seleccionamos al input del header que tiene un checkbox*/
+.header__checkbox{
+    /*Para que no se muestre el checkbox*/
+    display: none;
+}
+
+.header__nav{
+    /*Para que desaparezca el nav*/
+    display: none;
+    /*Ponemos estas propiedades aquí en vez de donde :checked porque así el navegador no tiene que cambiar tantas cosas cuando se le da al botón*/
+    background-color: #fff;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    /*Para que nuestro menú NO esté encima del nav*/
+    z-index: -1;
+}
+
+.header__nav-list{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+
+/*Si está seleccionado, vamos a modificar al hermano (~) y al header nav le damos displayy block*/
+.header__checkbox:checked ~ .header__nav{
+    /*Hacemos que aparezca el menú*/
+    display: flex;
+}
+
+.header__logo{
+    max-width: 100%;
+    width: 64px;
+    margin: 10px 20px;
+}
+
+.header__nav-item{
+    /*Para que se le vayan los puntos*/
+    list-style:none;
+}
+
+/*Al enlace de los items*/
+.header__nav-item a{
+    color:  inherit;
+}
+
+/*Cuando NO pasemos el ratón por encima. Para mejorar el rendimiento lo hacemos cuando el enlace no esta activo o no estamos pasanod el raton encima*/
+.header__nav-item a:not(:is(:hover,:active)){
+    /*Quitamos el subrayado, si se pasa el ratón o se activa se pone*/
+    text-decoration: none;
+}
+
+/* ------- HEADER QUERIES-------*/
+
+@media screen and (min-width:800px){
+
+    .header{
+        padding: 20px 0;
+        animation: header-movement both;
+        animation-timeline: scroll();
+        /*AL estar basado en el scroll, para que lo veamos le ponemos la position sticky*/
+        position: sticky;
+        /*Se tiene que quedar pegado cuando choque con lo de arriba.*/
+        top: 0;
+        /*Queremos que la animación empiece antes*/
+        animation-range-start: cover 0%;
+        animation-range-end: contain 5%;
+    }
+
+    .header__nav{
+        display:block;
+        position: static;
+        height: auto;
+        width: auto;
+        justify-content: space-between;
+        /*Cuando esté con esta resolución no puede tener un color de fondo*/
+        background-color: transparent;
+    }
+    .header__nav-list{
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        /*Para que haya separación entre los items*/
+        gap: 20px;
+        /*Para que no esten pegados a la derecha*/
+        margin-right: 20px;
+    }
+
+    .header__nav-item{
+        font-size: 20px;
+    }
+    
+    .header__open-nav-button{
+        display: none;
+    }
+}
+
+/* ------- HEADER ENDS ------- */
+
+/* ------- PROFILE SECTION ------- */
+
+.profile{
+    container-type:inline-size;
+    container-name: profile;
+    animation: aparecer 2.2s -.6s both;
+}
+
+.profile__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1400px;
+}
+
+.profile__data-container{
+    max-width: 600px;
+    padding: 12px;
+}
+
+.profile__img-container{
+    max-height: 600px;
+    /*Si el contenido, en este caso la imagen, se sale del contenedor, entonces ocultarlo.*/
+    overflow: hidden;
+}
+
+.profile__img{
+    /*Para que nuestra imagen sea responsive*/
+    max-width: 100%;
+    width: 720px;
+    border-radius: 20px;
+}
+
+h1{
+    color: #4b8467;
+}
+
+.profile__skill{
+    list-style: none;
+    display: flex;
+    margin: 10px;
+    max-width: 600px;
+    margin-left: 0;
+    /*Para que se alinen los nombres al centro*/
+    align-items: center;
+}
+
+/*SERGIO*/
+
+.skills-container--sergio h2{
+    color: #4b8467;
+}
+
+.load-bar{
+    border-radius: 8px;
+    color: #fff;
+    padding: 2px;
+    font-size: 12px;
+    width: 80%;
+    margin: 4px;
+    margin-left: 0;
+}
+
+.load-bar--sergio{
+    border: 2px solid #4b8467;
+}
+
+.load-bar__bar{
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+
+.bar--sergio{
+    background-color: #4b8467;
+}
+
+.skill-name--sergio{
+    color: #4b8467;
+}
+
+/*ADA*/
+
+.skills-container--ada h2{
+    color: #48e;
+}
+
+.load-bar--ada{
+    border: 2px solid #48e;
+}
+
+.bar--ada{
+    background-color: #48e;
+}
+
+.skill-name--ada{
+    color: #48e;
+}
+
+/*GENERAL*/
+
+.bar--10{
+    width: 10%;
+}
+
+.bar--60{
+    width: 60%;
+}
+
+.bar--80{
+    width: 80%;
+}
+
+.bar--90{
+    width: 90%;
+}
+
+.bar--100{
+    width: 100%;
+}
+
+/* ------- PROFILE QUERIES ------- */
+
+@container profile  (min-width:800px){  
+    .profile__wrapper{
+        flex-direction: row;
+        padding: 20px;
+        background-color: transparent;
+        height: 90vh;
+        margin: auto;
+    }
+
+    .profile__data-container{
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        /*Borde arriba izquierda, arriba derecha, abajo derecha, abajo izquierda*/
+        border-radius: 0 25px 25px 0;
+        box-shadow: 0px 0px 8px #000;
+    }
+
+    h1{
+        margin: 0;
+        font-size: 3rem;
+    }
+
+    .profile__data{
+        max-width: 620px;
+    }
+
+    .profile__img-container{
+        max-height: initial;
+        /*Borde arriba izquierda, arriba derecha, abajo derecha, abajo izquierda*/
+        border-radius: 25px 0 0 25px;
+        box-shadow: 0px 0px 8px #000;
+    }
+
+    .profile__img{
+        height: 100%;
+        /*Para que quede bien la foto*/
+        object-fit: cover;
+        width: 500px;
+        border-radius: 0;
+    }
+}
+
+/* ------- PROFILE END ------- */
+
+/* ------- PORTFOLIO SECTION------- */
+
+.portfolio{
+    background-color: #4b6467;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    container-type: inline-size;
+    container-name: portfolio;
+    justify-content: space-evenly;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% contain 50%;
+}
+
+.portfolio__title{
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.portfolio__project-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1300px;
+    margin: auto;
+    width: 100%;
+    gap: 12px;
+    padding: 12px;
+    min-height: 90vh;
+}
+
+.portfolio__project{
+    /*Background image sirve para imagenes o gradientes*/
+    background-image: linear-gradient(#0005, #0009), url("LOGO2.png");
+    background-position: center;
+    background-size: cover;
+    /*PARA CENTRAR ELEMENTOS CON GRID SE HACE DE LA SIGUIENTE MANERA*/
+    display: grid;
+    place-content: center;
+    border-radius: 10px;
+    margin: 5px;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: contain 5% cover 48%;
+}
+
+.portfolio__project:last-child{
+    margin-bottom: 30px;
+}
+
+.portfolio__project:hover{
+    opacity: 0.74;
+    /*Para que tenga un contorno*/
+    outline: 2px solid #fff6;
+}
+
+/* ------- PORTFOLIO QUERIES------- */
+
+/*50 rem==800px/16. Se están empezando a utilizar más los rems.*/
+@container portfolio (min-width:50rem){
+    .portfolio__project-container{
+        grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    }
+
+    .portfolio__project:first-child{
+        grid-column: span 2;
+    }
+
+    .portfolio__project:last-child{
+        grid-column: span 2;
+    }
+}
+
+@container portfolio (min-width:70rem){
+    .portfolio__project-container{
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    }
+
+    /*Vamos a darle protagonismo al primer proyecto*/
+    .portfolio__project:first-child{
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .portfolio__project:last-child{
+        grid-column: span 4;
+    }
+}
+
+/* ------- PORTFOLIO END------- */
+
+/* ------- FORMULARIO SECTION-------*/
+
+.form{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    container-type: inline-size;
+    container-name: form;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% contain 50%;
+}
+
+.form__form{
+    /*Para que crezca a lo largo.*/
+    flex: 1;
+    padding: 12px;
+    max-width: 600px;
+    /*Para que se haga más grande.*/
+    width: 100%;
+    display: grid;
+    gap: 12px;
+    background-color: #4b646755;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 1px 2px 3px #000;
+    margin-bottom: 20px;
+}
+
+.form_title{
+    font-size: 2.4rem;
+}
+
+.form__input-container :is(input,textarea){
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 14px;
+    margin: 4px;
+    border: none;
+    box-shadow: 2px 2px 9px #0002;
+    border-radius: 8px;
+    outline: none;
+}
+
+/*DE ESTA MANERA, CUANDO EL USUARIO ESTE ESCRIBIENDO EN EL INPUT O EN EL TEXT-AREA, SE PONDRA LAS PROPIEDADES QUE DIGAMOS*/
+.form__input-container :is(input,textarea):focus{
+    outline: 3px solid #4b6467;
+    outline-offset: 3px;
+}
+
+/*IMPORTANTES ESTE CÓDIGO SI PONEMOS UN TEXT-AREA*/
+.form__input-container textarea{
+    resize: none;
+    min-height: 120px;
+    /*Para que herede la tipografía Montserrat.*/
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.form__input-container input[type="submit"]{
+    padding: 12px;
+    background-color: #4b6467;
+    color: #fff;
+}
+
+.form__input-container label{
+    margin: 5px;
+    color: #4b6461;
+}
+
+/* ------- FORMULARIO QUERIES-------*/
+
+@container form (min-width:50rem){
+    .form__form{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "nombre apellido"
+        "email email"
+        "message message"
+        "submit submit"
+        ;
+    }
+
+    .form__input-container:first-child{
+        grid-area: nombre;
+    }
+
+    .form__input-container:nth-child(2){
+        grid-area: apellido;
+    }
+
+    .form__input-container:nth-child(3){
+        grid-area: email;
+    }
+
+    .form__input-container:nth-child(4){
+        grid-area: message;
+    }      
+
+    .form__input-container:last-child{
+        grid-area: submit;
+    }
+}
+
+/* ------- FORMULARIO END-------*/
+
+/*------- FOOTER SECTION ------- */
+
+.footer{
+    padding: 60px;
+    text-align: center;
+    background-color: #4b6467;
+    height: 30vh;
+    color: #fff;
+}
+
+strong{
+    font-size: 20px;
+}
+
+
+/*------- FOOTER QUERIES ------- */
+
+/*------- FOOTER END ------- */
+
+
+/* ------- KEYFRAMES 4 ANIMATIONS ------- */
+
+
+@keyframes header-movement{
+    0%{
+        padding: 20px 0;
+        /*Que empiece con el mismo background*/
+        background-color: #fff;
+    }
+
+    100%{
+        /*Que se achique, se haga más pequeño para que ocupe menos*/
+        padding: 0;
+        /*Pero que acabe con otro background*/
+        background-color: #4b646766;
+        color: #fffa;
+    }
+}
+
+
+@keyframes header-movement{
+    0%{
+        padding: 20px 0;
+        /*Que empiece con el mismo background*/
+        background-color: #fff;
+    }
+
+    100%{
+        /*Que se achique, se haga más pequeño para que ocupe menos*/
+        padding: 0;
+        /*Pero que acabe con otro background*/
+        background-color: #4b646766;
+        color: #fffa;
+    }
+}
+
+@keyframes aparecer {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web primera que hicimos pero añadimos animaciones">
+    <meta name="keywords" content="Web con animaciones">
+    <meta name="robots" content="nosnippet">
+    <meta name="author" content="Sergio Sánchez Carrasco">
+    <meta name="title" content="SERGIO & ADA">
+    <title>SERGIO & ADA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Favicon.png">
+</head>
+<body>
+    <!--SECCIÓN DEL HEADER-->
+    <header class="header" id="header">
+        <!--El id name debería de ser menú-toggle para más caracteristico-->
+        <input class="header__checkbox" type="checkbox" id="open-menu">
+        <!--Le damos un role por motivos de accesibilidad, el rol del label es de boton-->
+        <label for="open-menu" class="header__open-nav-button" role="button">=</label>
+        <div class="header__logo-container">
+            <img class="header__logo" src="LOGO2.png" alt="Logo de la marca Sergio & Ada">
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <!--Poner # al href para que no nos moleste, antes de poner el enlace que nosotros deseamos-->
+                <li class="header__nav-item">
+                    <a href="#profile">About us</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#portfolio">Portfolio</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#form">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--SECCIÓN PRINCIPAL-->
+    <main class="profile" id="profile">
+        <!--Wrapper no es nada especial, es una capa que se crea para despues cambiarla en CSS-->
+        <div class="profile__wrapper">
+            <!--IMAGEN DENTRO DEL DIV IMPORTANTE-->
+            <div class="profile__img-container">
+                <img class="profile__img" src="s&a.jpg" alt="Foto de Sergio y Ada con un fundo de naturaleza y cascada.">
+            </div>
+            <div class="profile__data-container">
+                <div class="profile__data">
+                    <div class="profile__desc">
+                        <h1>¿Quiénes son Sergio & Ada?</h1>
+                        <p>
+                            Sergio & Ada son una pareja a la que le encanta viajar y disfrutar de la naturaleza, la cultura de otros países, de los monumentos... 
+                        </p>
+                    </div>
+                    <!--SKILLS DE SERGIO-->
+                    <div class="profile__skills-container skills-container--sergio">
+                        <h2>SKILLS SERGIO</h2>
+                        <ul>
+                            <li class="profile__skill skill--sergio">
+                                <div class="load-bar load-bar--sergio">
+                                    <div class="load-bar__bar bar--sergio bar--80">
+                                        80%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--sergio">HTML</span>
+                            </li>
+                            <li class="profile__skill skill--sergio">
+                                <div class="load-bar load-bar--sergio">
+                                    <div class="load-bar__bar bar--sergio bar--60">
+                                        60%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--sergio">CSS</span>
+                            </li>
+                            <li class="profile__skill skill--sergio">
+                                <div class="load-bar load-bar--sergio">
+                                    <div class="load-bar__bar bar--sergio bar--90">
+                                        90%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--sergio">JAVA</span>
+                            </li>
+                        </ul>
+                        <li class="profile__skill skill--sergio">
+                            <div class="load-bar load-bar--sergio">
+                                <div class="load-bar__bar bar--sergio bar--100">
+                                    100%
+                                </div>
+                            </div>
+                            <span class="profile__skill-name skill-name--sergio">C++</span>
+                        </li>
+                    </div>
+                    <!--SKILLS DE ADA-->
+                    <div class="profile__skills-container skills-container--ada">
+                        <h2>SKILLS ADA</h2>
+                        <ul>
+                            <li class="profile__skill skill--ada">
+                                <div class="load-bar load-bar--ada">
+                                    <div class="load-bar__bar bar--ada bar--100">
+                                        100%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--ada">ENFERMERA</span>
+                            </li>
+                            <li class="profile__skill skill--ada">
+                                <div class="load-bar load-bar--ada">
+                                    <div class="load-bar__bar bar--ada bar--80">
+                                        80%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--ada">M. EMERGENCIAS</span>
+                            </li>
+                            <li class="profile__skill skill--ada">
+                                <div class="load-bar load-bar--ada">
+                                    <div class="load-bar__bar bar--ada bar--10">
+                                        10%
+                                    </div>
+                                </div>
+                                <span class="profile__skill-name skill-name--ada">FOTOGRAFA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="portfolio" id="portfolio">
+        <h2 class="portfolio__title">PORTFOLIO SECTION</h2>
+        <div class="portfolio__project-container">
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 1
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 2
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 3
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name"> 
+                    PROJECT 4
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 5
+                </h2>
+            </div>
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">
+                    PROJECT 6
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="form" id="form">
+        <h2 class="form__title">CONTACT</h2>
+        <!--El atributo Action indica a donde se enviarán los datos.-->
+        <form class="form__form">
+            <div class="form__input-container">
+                <label> Nombre
+                    <input type="text" placeholder="Aurora">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Apellido
+                    <input type="text" placeholder="Martínez">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Mail
+                    <input type="email" placeholder="ejemplo@ejemplo.com">
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Mensaje
+                    <textarea placeholder="Escribe el mensaje que quieras enviar..."></textarea>
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label> Enviar
+                    <!--Boton de enviar-->
+                    <input type="submit">
+                </label>
+            </div>
+        </form>
+    </section>
+    <footer class="footer" id="footer">
+        <strong>Sergio & Ada </strong>~ Copyright
+    </footer>
+</body>
+</html>
