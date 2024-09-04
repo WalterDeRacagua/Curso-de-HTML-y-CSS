@@ -1,0 +1,175 @@
+SECCIÓN AVANZADA
+-------------------
+
+1. FILTER Y BACKDROP-FILTER
+--------------------------------
+
+Es la sección avanzada del curso. Vamos a ver TODO sobre funciones.
+
+Hemos visto durante el curso algunas funciones como en las animaciones con la función de scroll(), o view() o el valor de background-image: url().
+
+Ejemplo:
+url("sergioada.png"): esta función tiene que buscar la url y poner la foto como valor.
+
+Tambien teníamos la función dropshadow(), minmax() que utilizabamos en grid àra definir minimos y máximos....
+
+Las funciones de filtro usamos con la propiedad filter. Nosotros la que hemos visto es filter: drop-shadow(o o 15px #fff) lo cual hacia que hubiera una sombra:
+
+.box{
+    background-color: #10232f;
+    margin: auto;
+    padding: 50px 50px;
+    filter: drop-shadow(0 0 15px #000);
+}
+
+Hay más propiedades de filter. Lo que hacen es aplicar efectos especiales sombras, desenfoques, aumentan el contraste. ..
+
+blur() es un efecto de desenfoque: filter: blur(3px); Hace que se desenfoque bastante el elemento sobre el que aplicamos esta función. Se aplica a la caja y a todos sus elementos hijos. Se le da con rems o pixeles.
+
+Un efecto común con blur() es aplicarlo al fondo cuando abrimos una ventana modal de las que ya vimos y superponemos la ventana modal.
+
+Después tenemos la función brightness filter: brightness(2); Si le damos valores mayores que 1 entonces la imagen o el elemento se hace más clarito, mientras que si le damos valores menores que 1 se hacen más oscuros. Esto es más para personas que se dedican a diseño de imagen. Pero es bueno saberlo.
+
+Más tarde tenemos el contraste: filter: contrast(); Si ponemos 0, la imagen va a ser gris; si ponemos 1 tendrá un contraste normal. Funciona mejor con imágenes que con elementos. Los claros hacen que sean más claros, y los oscuros más oscuros.
+
+También tenemos la función greyscale o escala de grises: filter: grayscale(); Si le damos 1 se pone gris. Si 0, entoncesla deja normal.
+
+Por otra parte tenemos satúrate() que es la saturación de la imagen o del elemento. Esto sobre todo se ve con imágenes. Si ponemos 1 se ve bien, normal. 
+
+Después tenemos hue-rotate(). Funciona internamente cuando le pasamos un valor en grados (deg (degrees)). Cambia la escala de colores simplemente en función del valor que le demos. No se cuando utilizar este tipo de funciones, si no es para hacer una imagen más graciosa o una animación.
+
+Luego, con filter también, tenemos la función opacity(), que no funciona con backdrop-filter. Lo que hace es aplicar un filtro de opacidad al elemento al que se le aplica la propiedad. filter: opacity(0.3);El valor 0 en la función implica que el elemento es transparente, y 1 que se ve por completo.
+
+No obstante, también tenemos la función invert() que invierte los colores.
+
+También tenemos la función filter: sepia(1), lo pone en color sepia, que es un filtro de instagram
+
+Por último tenemos backdrop-filter: hue-rotate() que actúa como una capa de ajuste y aplica el hue rotate PERO AL FONDO, AL BACKDROP!! A LO QUE ESTÁ DETRÁS. El que recibe los efectos es lo de debajo.
+
+PD: Se pueden aplicar varios filters/ filtros a la vez a un elemento dejando espacios entre las funciones:   /*Aplicar varios filtros a través de separar con espacios*/ 
+    filter: blur(10px) sepia(1) contrast(2);
+
+Estos filtros se ejecutan en el orden en el que los pongamos, lo cual es bastante importante.
+
+Según él se usan bastante estas propiedades.
+
+2.TRANSFORM
+--------------------
+
+En este apartado veremos las funciones de transformación. Nos permiten escalar, sesgar, rotar y trasladar el elemento.
+
+La primera propiedad es scale. scale cambia la escala del elemento. Si le damos 2 el elemento se agranda:
+
+img{
+    scale: 2;
+}
+
+Si le das 1 se queda igual y si le das 0 desaparece. Trabaja con una escala de tamaños. Si le ponemos 2 será el doble de grande del original. Esta propiedad antes estaba dentro de otra propiedad que se llama transform.
+
+img{
+    transform: scale(2);
+}
+
+Es lo mismo que antes. Tenemos también las funciones scaleY() y scaleX() para modificar la escala del elemento a lo ancho (scaleX) o a lo largo (scaleY()). También podemos poner scale: 1 2; Donde el primer valor es el ancho, y el segundo es el largo.
+
+También existe transform: scale3D() que sirve para mover un objeto en 3 dimensiones.
+
+Otras funciones útiles que se utilizan con transform es la función skew(). Es como que mueve los ángulos.
+
+Skew() se trabaja también en deg (grados, degrees). Sesga la imagen NO LA ROTA. También esta skewY() solo lo hace en el ejeY, skewX() lo hace en el eje X
+
+.box{
+    margin: auto;
+    padding: 50px 50px;
+    border: 4px solid #000;
+    width: fit-content;
+    transform: skew(20deg);
+}
+
+Después para rotar imágenes tenemos la siguiente función de transform: transform: rotate(20deg); Rota 20 grados la imagen, en este caso a la derecha. Rotate se puede usar como propiedad de CSS.
+
+El rotate lo podemos usar para hacer un efecto de giro, por ejemplo, cuando pasamos el ratón por encima:
+
+.box:first-child{
+    rotate: 0deg;
+    transition: rotate 1s;
+}
+
+.box:last-child{
+    /*Sesga la imagen, NO LA ROTA*/
+    transform: skew(20deg);
+}
+
+.box:first-child:hover{
+    rotate: 360deg;
+}
+
+Se haría de esta forma.
+
+Otro valor común para el transform es el translate. transform: translate(30px); Tenemos translateX() que es igual que translate, luego tenemos translateY() que desplaza el elemento tantos pixeles en el eje Y como le digamos. Se pueden introducir valores negativos. Luego, a la función translate le podemos pasar dos valores como parámetro para que haga las traslación en ambos ejes:  transform: translate(80px,200px); ponemos la coma al tratarse de una función.
+
+También se puede hacer sin utilizar transform, utilizando la propiedad translate. translate: 80px 200px. Traslada el elemento 80px en el eje x y 200px en el eje Y.
+
+3. MIN, MAX Y CLAMP
+------------------------------
+
+Son funciones de comparación. Los 3 comparan 3 valores y se va quedando con el máximo, el mínimo o con el valor ideal. Son funciones como ya hemos dicho de comparación.
+
+Creamos una cajita con un texto, el cual para centrarlo, le damos a su cajita la siguiente propiedad:
+
+.box{
+    height: 200px;
+    background-color:#48e;
+    display: grid;
+    place-content: center;
+}
+
+Obviamente es place-content: center.
+
+Una cosa curiosa es que si a una caja que tiene un h1 y un p:
+ <div class="box">
+        <h1>TITULO</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur odio eos ducimus excepturi rem illo maxime! Incidunt autem labore harum sed quidem, recusandae mollitia consequatur et exercitationem cumque maiores error?</p>
+    </div>
+
+Si a la caja le damos un font-size en pixeles, por defecto p y h1 tienen un fontsize de 1 y 2 em. Por tanto su Font-size no va a ser el de la caja, va ser proporcional al valor de la caja padre.
+
+Si ponemos esto:
+.box{
+    background-color:#48e;
+    display: grid;
+    place-content: center;
+    color: #fff;
+    width: 600px;
+    margin: 120px auto;
+    font-size: 40px;
+    padding: 0 40px;
+}
+
+h1{
+    font-size: 2em;
+}
+
+Es lo mismo que si no le ponemos un font-size al h1. Si pusiéramos p{ font-size: 1em;} tampoco cambiaría.
+
+La función min lo que hace es: width: min(600px,800px); En este caso compara ambos valores y nos devuelve el más pequeño. Compara ambos valores y devuelve el más pequeño. En este caso 600px.
+
+Entonces para qué sirve min??? Sirve para comparar medidas absolutas con medidas relativas. Por ejemplo:  width: min(600px,100%); Entonces si 600px es menor que el 100% de la pantalla que esté, entonces la caja será de 600px. Si no ocupará el 100%. Esto es muy útil. Además, podemos añadir más valores: min(600px, 100%, 200%)
+
+max hace el efecto opuesto. Sirve para comparar valores y se queda con el más grande entre los valores introducidos como parámetros de la función.
+
+
+PEEERO, hoy por hoy nadie utiliza ni min ni max porque existe una alternativa mejor clamp(), lo primero que le vas a pasar es la medida que quieres que tenga como mínimo, después le pasamos el valor ideal que queremos que tenga, y después el valor máximo. 
+
+Lo que hace clamp() es, con el siguiente ejemplo: width: clamp(800px, 100%, 1400px); Lo que hace es, que si el valor ideal, en este caso el 100%, es menor que el valor mínimo, entonces se queda con el mínimo 800px. Y si es mayor que 1400px, entonces se queda no con el 100%, sino con los 1400px de pantalla. Es decir, le estamos diciendo que NO VA A MEDIR MENOS DE 800PX, QUE SI PUEDE VA A MEDIR EL 100% DE LA PANTALLA, Y QUE TAMPOCO VA A MEDIR EL 100% SI OCUPA MÁS DE 1400PX, QUE ES EL MÁXIMO.
+
+De esta forma podemos trabajar con cajas flexibles. Sin flexbox, maxwidth…
+
+Es útil para crear tamaños de letra flexibles.
+
+Esta muy bien usarlo para evitar media-queries().
+
+4.VARIABLES
+------------------
+
+NADA QUE VER CON EL TEMA: Si damos en HTML Ctrl + Ç nos comenta toda una línea de código, como pasa en C++.

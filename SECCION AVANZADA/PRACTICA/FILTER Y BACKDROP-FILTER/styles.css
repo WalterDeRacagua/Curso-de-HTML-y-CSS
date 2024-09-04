@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+}
+
+.box{
+    background-color: #10232f;
+    margin: auto;
+    padding: 50px 50px;
+    /*Desenfoque*/
+    filter: blur(1px);
+    /*Brillo*/
+    filter: brightness(2);
+    /*Contraste*/
+    filter: contrast(1);
+    /*Escala de grises*/
+    filter: grayscale(1);
+    /*Saturación*/
+    filter: saturate();
+    /*rotación en la escala de colores*/
+    filter: hue-rotate(1000deg);
+    position: absolute;
+    /*Para la opacidad*/
+    filter: opacity(10);
+    /*Para colores Sepia*/
+    filter: sepia(1);
+    /*Aplicar varios filtros a través de separar con espacios*/ 
+    filter: blur(10px) sepia(1) contrast(2);
+    backdrop-filter: hue-rotate(100deg);
+}
+
+img{
+    max-width: 100%;
+    object-fit: cover;
+}

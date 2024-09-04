@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.box{
+    background-color:#48e;
+    display: grid;
+    place-content: center;
+    color: #fff;
+    width: 600px;
+    margin: 120px auto;
+    font-size: clamp(1rem, 2vw, 5rem);
+    padding: 0 40px;
+    /*Para el valor mínimo*/
+    width: min(600px,100%);
+    /*Para el valor máximo*/
+    width: max();
+    /*Para el valor ideal*/
+    width: clamp(800px, 100%, 1400px);
+    border: 6px solid #000;
+}
+
+h1{
+    font-size: 2.2em;
+    margin-bottom: 0;
+}

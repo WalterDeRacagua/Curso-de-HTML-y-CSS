@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    background-color: #48e;
+    flex-direction: column;
+}
+
+.box{
+    margin: auto;
+    padding: 50px 50px;
+    border: 4px solid #000;
+    width: fit-content;
+    transform: translate(80px,200px);
+}
