@@ -173,3 +173,249 @@ Esta muy bien usarlo para evitar media-queries().
 ------------------
 
 NADA QUE VER CON EL TEMA: Si damos en HTML Ctrl + Ç nos comenta toda una línea de código, como pasa en C++.
+
+Una variable es un espacio que se almacena en la memoria de nuestro programa que hace referencia a un dato que puede cambiar con el tiempo.
+
+Imagínate que queremos que nuestra web tenga un color principal y un color secundario. Qué podemos hacer? Definir una variable.
+
+Para definir una variable en CSS tenemos que poner dos guiones "--". Por ejemplo, queremos una variable que nos almacene este color rojo para poder usarlo sin buscar y será el color principal de la web:
+
+--color-principal: #f44;
+
+Podemos hacer ahora que la caja tenga un color de fondo del de la variable:
+
+
+.box{
+    --color-principal: #f44;
+    background-color:var(--color-principal);
+    display: grid;
+    place-content: center;
+    color: #fff;
+    width: 600px;
+    margin: 120px auto;
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 40px;
+    border: 6px solid #000;
+}
+
+Utilizando la función var(): background-color:var(--color-principal);. 
+
+La utilidad de usar variables en vez de usar colores es que después lo podemos cambiar solo cambiando la variable. Esto es realmente útil para mantener nuestro código.
+
+En webs grandes hay propiedades que tienen muchísimos valores repetidos. Imagínate tener que cambiar uno por uno. Imposible. Además, el nombre de las variables tiene que ser claro.
+
+Si queremos cambiar el color cambiar únicamente el VALOR de la VARIABLE. Sencillo porque nosotros ya hemos programado anteriormente.
+
+Otra cosa muy importante que tienen las variables es que funcionan únicamente para la descendencia del elemento sobre el que se crea la variable.
+
+Teniendo el siguiente código de CSS Y HTML:
+
+    <div class="box">
+        <h1>TITULO</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur odio eos ducimus excepturi rem illo maxime! Incidunt autem labore harum sed quidem, recusandae mollitia consequatur et exercitationem cumque maiores error?</p>
+    </div>
+    <div class="box">
+        <h1>TITULO</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur odio eos ducimus excepturi rem illo maxime! Incidunt autem labore harum sed quidem, recusandae mollitia consequatur et exercitationem cumque maiores error?</p>
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur voluptate nisi dignissimos quaerat ratione! Ipsum, dolor necessitatibus molestiae magni perspiciatis impedit. Non quos a reprehenderit sapiente facilis facere quasi corrupti?
+    </p>
+
+.box{
+    --color-principal: #48e;
+    display: grid;
+    place-content: center;
+    color: #fff;
+    margin: 120px auto;
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 40px;
+    border: 6px solid #000;
+}
+
+.box:first-child{
+    background-color: var(--color-principal);
+}
+
+.box:nth-child(2){
+    color: var(--color-principal);
+    border: 6px solid var(--color-principal);
+}
+
+h1{
+    font-size: 2.2em;
+    margin-bottom: 0;
+}
+
+/*Le damos estilo a los p que es hijo directo del body*/
+body > p{
+    color: var(--color-principal);
+    font-size: 60px;
+}
+
+
+Como el p que es hijo directo de body (body > p) NO ESTÁ DENTRO DE LA CAJA, ENTONCES LA VARIABLE PARA ÉL NO FUNCIONA. Si lo pusiéramos en el body, entonce ahí si que va a funcionar.
+
+Además, PODEMOS REDEFINIR las variables para los distintos elementos. Por ejemplo, queremos que el color principal general de nuestra web sea el #48e, pero para las cajas queremos que sea otro. Podemos redefinir la variable:
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    padding: 20px;
+    --color-principal: #48e;
+}
+
+.box{
+    --color-principal: #f33;
+    display: grid;
+    place-content: center;
+    color: #fff;
+    margin: 120px auto;
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 40px;
+    border: 6px solid #000;
+}
+
+Entonces las cajas usaran el color f33 y el resto el 48e.
+
+Es útil definir variables para el tamaño principal del texto de nuestro programa, así siempre es el mismo y no tenemos que escribir lo mismo 500 veces.
+
+También es útil para utilizar junto con la función calc() ahora veremos para qué exactamente.
+
+Luego podemos hacer lo siguiente:
+
+@property --color-principal{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #48e;
+}
+
+Crear la propiedad --color-principal, que espera recibir un color. El parámetro que vamos a esperar es un color.
+
+Luego tenemos otros tipos de sintaxis como por ejemplo "<number>" que espera un número.
+
+A la property le podemos dar otro valor, el inherits. El inherits es un booleano (true/false) que sirve para saber si se puede heredar o no (en este caso NO= FALSE).
+
+Y luego le podemos dar un valor inicial a la propiedad.
+
+Esto es útil, es como si fuera una variable global. Si en el ejemplo de antes pusiéramos sintaxis: "<number>" no funcionaria porque el valor inicial es un color lo cual NO es un número. 
+
+Además podemos redefinirla para que en otros casos el color principal sea otro. 
+
+Es una forma de llevar CSS al extremo y es una técnica de Houdinni, que sobre todo se utilizan en JScript.
+
+Esto de @property es lo mismo que hacer:
+
+:root{
+  --color-principal:48e;
+}
+
+A mi me ha gustado más property, pero es más corto lo de la root. En el root sirve para toda la página.
+
+
+5. FUNCIÓN CALC()
+----------------------------
+
+Es una función que hace cálculos. Permite:
+	-sumar 
+	-restar 
+	-multiplicar 
+	-dividir
+
+Por ejemplo width:100% es lo mismo que width: calc(50% + 50%) por ejemplo:
+
+.box{
+    margin: 60px auto;
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 30px;
+    border: 6px solid #000;
+    /*Esto es lo mismo que poner directamente 100%*/
+    width: calc(50% + 100px);
+}
+
+Esto es muy útil porque, como pasaba con las funciones clamp min max y demás podemos combinar unidades absolutas con unidades relativas. Se le suele dar calc(50% + 100px) o valores un pelin más grandes que 100px.
+
+Es común de usar. También podemos restar. Es útil para, por ejemplo cuando no queremos que una pantalla, aunque la hagamos más pequeña o lo que sea, NO queremos que tenga scroll. Si ponemos esto tiene scroll:
+
+.box{
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 30px;
+    border: 6px solid #000;
+    /*Esto es lo mismo que poner directamente 100%*/
+}
+
+.box:first-child{
+    height: 200px;
+}
+
+.box:nth-child(2){
+    height: 83vh;
+}
+
+Entonces está mal calculado. Para calcularlo correctamente podemos usar la función de calc():
+
+.box:nth-child(2){
+    height: calc(100vh - 300px);
+    overflow: scroll;
+}
+
+de forma que calculara el 100vh de la pantalla y le restará 300px para que no sea necesario scroll. El overflow scroll se lo damos para que no haya texto que se salga.
+
+También podemos multiplicar y se múltiplica, combinarlo con variables... Las funciones las podemos combinar con otras funciones y que se reciban como parámetros unas entre otras...
+
+.box:nth-child(2){
+    height: calc(100vh - clamp(2.4rem, 2.2vw, 4rem));
+    overflow: scroll;
+}
+
+Será útil combinar clamp y calc para AJUSTAR TAMAÑOS FUENTE, ESPACIADOS Y MÁRGENES FLUIDOS, PARA ANCHOS Y ALTURAS DE ELEMENTOS, PARA ESPACIADOS INTERNOS EN DISEÑOS DE GRID Y FLEXBOX...
+
+6. Propiedades de Scroll
+----------------------------
+
+El dice que le deberíamos dar estilo a las barras del body, pero nosotros le vamos a dar estilo a la barra de scroll que hemos añadido a la .box gracias al overflwo: scroll:
+
+.box{
+    font-size: 30px;
+    padding: 0 40px;
+    border: 6px solid #000;
+    width: 50vw;
+    height: 100vh;
+    overflow: scroll;
+}
+
+Creamos dos enlaces para poder subir al principio del texto y bajar hasta el final del texto. 
+
+La primera propiedad que vemos que ya habíamos visto es el scroll-behaviour que es para el comportamiento del scroll. Solamente puede tener dos valores:
+
+	- smooth: Desplazamiento limpio.
+	- auto (defecto): desplazamiento directo.
+
+Esto no afecta si nosotros lo movemos de manera manual. Con JS podemos cambiar el desplazamiento del scroll de manera manual para que sea mucho más limpio y no tan directo. SOLO CAMBIA PARA LOS ENLACES.
+
+Otra propiedad para la barra de scroll que le podemos dar es el scrollbar-color. A esta propiedad le tenemos que dar dos colores: el primero será el color de la barra y el segundo que será el color del fondo de la barra por donde se desplazará. Se le llama track al fondo. Le podemos poner blanco, o del color del fondo en general para que solo cambie la barra.
+
+La siguiente propiedad nos va a permitir cambiar el tamaño de la scrollbar. La propiedad susodicha es scrollbar-width que NO funciona con poner un valor en pixeles. Tiene 3 valores: auto(es el valor por defecto), thin (hace la barra significativamente más pequeña), none (desaparece el scroll pero se sigue pudiendo deslizar).
+
+Para la accesibilidad, una normativa general para el scrollbar-color es que los colores CONTRASTEN, es una normativa de accesibilidad. Que contrasten significa que LA BARRA DE SCROLL DEBE SER DISTINGUIBLE PARA CUALQUIER USUARIO PARA QUE LA UTILICE. Por ejemplo, NO poner dos colores azules muy parecidos.
+
+Usar thin NO ES MUY RECOMENDABLE porque puede ser difícil de ver.
+
+Luego tenemos el scroll-snap:
+
+	-scroll-snap-type: Define el comportamiento de desplazamiento y el punto de ajuste. Valores:
+
+		o x/y Mandatory: Imprescindible poner el eje al principio. Ajuste al desplazamiento es obligatorio.
+		o x/y proximity: opcional
+		o none
+
+	-scroll-snap-align: alineamiento.
+	
+		o start
+		o center
+		o end
+	-scroll-snap-stop: Considera si un punto de ajuste debe ser considerado como una parada obligatoria en el desplazamiento:
+	
+		o normal: El comportamiento de ajuste es normal.
+		o always: El punto de ajuste se considera una parada obligatoria, incluso si se ha pasado rápidamente por el área.
+

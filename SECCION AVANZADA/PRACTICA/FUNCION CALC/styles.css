@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.box{
+    font-size: clamp(2.4rem, 2.2vw, 4rem);
+    padding: 0 30px;
+    border: 6px solid #000;
+    /*Esto es lo mismo que poner directamente 100%*/
+}
+
+.box:first-child{
+    height: 200px;
+}
+
+.box:nth-child(2){
+    height: calc(100vh - 200px);
+}
+
+@property --color-principal{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #48e;
+}

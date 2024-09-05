@@ -1,4 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+
+
 body{
     margin: 0;
     font-family: sans-serif;
+    padding: 20px;
+}
+
+.box{
+    display: grid;
+    place-content: center;
+    color: #fff;
+    margin: 120px auto;
+    font-size: clamp(var(--tamanyo-principal), 2.2vw, 4rem);
+    padding: 0 40px;
+    border: 6px solid #000;
+}
+
+.box:first-child{
+    background-color: var(--color-principal);
+}
+
+.box:nth-child(2){
+    color: var(--color-principal);
+    border: 6px solid var(--color-principal);
+}
+
+h1{
+    font-size: 2.2em;
+    margin-bottom: 0;
+}
+
+/*Le damos estilo a los p que es hijo directo del body*/
+body > p{
+    color: var(--color-principal);
+    font-size: 60px;
+}
+
+@property --color-principal{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #48e;
 }
