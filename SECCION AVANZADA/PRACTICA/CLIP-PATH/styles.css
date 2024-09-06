@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: montserrat;
+    background-color: #fff;
+}
+
+img{
+    max-width: 100%;
+    clip-path: circle(40% at 20% 10%);
+    clip-path: ellipse(30% 50% at 50% 50%);
+    border: 6px solid #000;
+}

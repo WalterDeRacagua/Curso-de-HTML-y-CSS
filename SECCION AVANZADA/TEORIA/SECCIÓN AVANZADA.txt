@@ -419,3 +419,83 @@ Luego tenemos el scroll-snap:
 		o normal: El comportamiento de ajuste es normal.
 		o always: El punto de ajuste se considera una parada obligatoria, incluso si se ha pasado rápidamente por el área.
 
+7. INITIAL LETTER
+---------------------------
+
+Propiedad que va acompañada del pseudo-elemento :first-letter para hacer distintas cosas.
+
+Para que un párrafo pueda utilizar la propiedad initial letter, si o sí necesitamos que tenga el pseudo-elemento ::first-letter. Además de la pseudoclase, necesitamos utilizar la propiedad initial-letter:
+
+p::first-letter{
+    initial-letter: 2 2;
+}
+
+El primer 2 es para saber cuántas LÍNEAS va a ocupar hacia arriba. El segundo valor es DESDE QUE LÍNEA lo vas a ocupar.
+
+Además de esto, a la ::first-letter le podemos dar otras propiedades como por ejemplo el padding:
+
+p::first-letter{
+    initial-letter: 2 2;
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+Primer valor es cuantas líneas vas a ocupar y el segundo es desde que línea.
+
+8. UNIDADES DEL VIEWPORT
+---------------------------
+
+Va a ser principalmente teoría. 
+
+Si usamos medidas del viewport como vw y vh. Si usamos 100vh sabemos que va a ocupar toda la vista de la pantalla a lo alto, incluyendo la barra de scroll; si usamos 100vw va a ocupar toda la pantalla pero a lo ancho. Pero el view port height no tiene en cuenta la barra de búsqueda de la web ni nada. Entonces ocupa un poco más que el 100% ya que hay otros elementos dentro de ese 100%. Esto lo viene a arreglar el small viewport height o svh. Pero claro, cuando des-expandimos se queda corto ya que deja de verse la barra de búsqueda y demás. Para ello se utiliza el large viewport height. Pero claro, si se expande y aparece la barra de búsqueda tenemos que es demasiado largo. Ahí tenemos un problema.
+
+Entonces, apareció la medida mágica que nos va a salvar que es dvh. Sería Dynamic viewport height. Se adapta. Nosotros en el tipo desktop/ ordenador no vamos a notar la diferencia. Pero si se nota en Mobile first.
+
+A PARTIR DE AHORA SIEMPRE SIEMPRE USAR DVH ANTES DE USAR VH. MUY IMPORTANTE. LOS NAVEGADORES NUEVOS YA TODOS SOPORTAN EL DVH. PERO HAY NAVEGADORES QUE NO LO SOPORTAN.
+
+Lo mismo se aplica para el viewport width. Mejor siempre usar el Dynamic viewport-width para los teléfonos móviles. Usarlo siempre y cuando utilicemos el teléfono veremos la diferencia.
+
+9. COLOR MIX
+--------------
+
+Mezcla dos colores de una manera predeterminada a través de la siguiente función:  background-color: color-mix(in srgb, color percentage, color percentage); Lo primero que pide, el in srgb, es el método. Tenemos la posibilidad del hsl, otra que es srgb (que nos permite trabajar con colores hexadecimales). 
+
+Por ejemplo: background-color: color-mix(in srgb, #48e 40%, #f44 80%); mezcla un azul al 40% con un rojo al 60%.
+
+Para hacer algo parecido a lo que hace la función color-mix() es hacer lo siguiente:
+
+.box2{
+    background-color: #f44;
+}
+
+.box2 p{
+    font-size: 30px;
+    padding: 320px;
+    background-color: #48e5;
+}
+
+Poner dos colores y reducirles la opacidad de dos elementos distintos. De esta forma es más difícil. Color-mix es una forma de mezclar colores sin tener que rebuscar tanto.
+
+Cómo podemos hacer para mezclar un color con un blanco. Tenemos un fondo negro y queremos que nuestra caja tenga color azul y se mezcle con blanco. Para ello tenemos que hacer lo siguiente:
+
+   background-color: color-mix(in srgb, #48e 100%, white 70%); Técnica para restarle intensidad al color.
+
+Esto se usa en casos muy específicos. Pero no se usa tanto. Con el hexadecimal y RGB se puede tirar de sobra.
+
+10. CLIP-PATH
+---------------
+
+Permite hacer recortes. Lo que está dentro del recorte se ve, lo que está fuera no se ve.
+
+Clip-path es una propiedad que acepta lo siguiente:
+
+	- circle(): función que convierte la imagen en un circulo. Se usan porcentajes y cuanto más porcentaje, más imagen se ve. Lo que hace es trazar un círculo a través de dibujar una linea que corta el medio hasta el 50%. El tamaño del RADIO. clip-path: circle(40% at 100px 100px); Con el primer 100px le decimos que se va a mover desde arriba 100px a la derecha. Los dos valores últimos es como si definieran puntos en un eje de coordenadas imaginario. 
+
+	- ellipse(): función que convierte la imagen en una elipse- Se usan porcentajes y le tenemos que dar la distancia del centro al ancho y la distancia del centro al largo. También podemos usar at para saber donde se muestra la elipse.
+
+	-polígonos()
+
+
+Con clip-path lo que hace una persona normal que empieza a usar la propiedad es buscar el clip-path generator. https://bennettfeely.com/clippy/
+
+Vamos que la teoría nos la podemos pasar por el forro. NO hace falta saber la teoría, mejor buscar el clip-path generator.

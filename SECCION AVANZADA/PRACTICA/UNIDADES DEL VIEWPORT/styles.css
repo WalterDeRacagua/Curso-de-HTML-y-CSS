@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: montserrat;
+}
+
+.box{
+    font-size: 30px;
+    padding: 0 40px;
+    border: 6px solid #f44;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+/*Vamos a jugar con el parrafo*/
+
+p::first-letter{
+    initial-letter: 2;
+    padding: 10px;
+    padding-bottom: 0;
+    color: #f44;
+    font-family: cursive;
+    padding-left: 0;
+}
