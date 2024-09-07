@@ -1,0 +1,4 @@
+MENU LATERAL
+------------------
+
+No podemos hacer el menú lateral para teléfonos móviles debido a que normalmente estos menús laterales están hechos para ordenadores.

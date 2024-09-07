@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vamios a hacer un menú lateral para futuras webs">
+    <meta name="keywords" content="Lateral menu,menu, menu lateral">
+    <meta name="robots" content="nosnippet">
+    <meta name="author" content="Sergio Sánchez Carrasco">
+    <meta name="title" content="MENU LATERAL">
+    <title>MENU LATERAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/Favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <!--NO LO VAMOS A HACER RESPONSIVE YA QUE LOS SIDE BAR MENUS SON PARA DESKTOPS-->
+    <aside class="sidebar">
+        <form class="sidebar__form">
+            <input type="checkbox" id="open-menu">
+            <label class="material-symbols-outlined" for="open-menu">
+                close
+            </label>
+            <label class="material-symbols-outlined open-button" for="open-menu" > open_in_full</label>
+        </form>
+        <picture class="sidebar__picture">
+            <source srcset="img/LOGO3.png" media="(max-width: 57.5rem)">
+            <img src="img/LOGO2.png" alt="Logo de Sergio & Ada">
+        </picture>
+        <nav class="sidebar__nav">
+            <ul>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        Notifications
+                    </span>
+                    <a href="#">Notifications</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        Mail
+                    </span>
+                    <a href="#">Messages</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                    </span>
+                    <a href="#">Cart</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        Account_balance
+                    </span>
+                    <a href="#">Balance</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        Settings
+                    </span>
+                    <a href="#">Settings</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar__profile">
+            <ul>
+                <li class="sidebar__item item-profile">
+                    <img src="img/s&a2.jpg" alt="Sergio y ada juntos">
+                    <span class="profile-option">PROFILE</span>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</body>
+</html>

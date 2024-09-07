@@ -1,0 +1,85 @@
+MENU LATERAL
+------------------
+
+No podemos hacer el menú lateral para teléfonos móviles debido a que normalmente estos menús laterales están hechos para ordenadores.
+
+Lo primero que vamos a hacer es aprender a integrar una librería de iconos. Si nosotros buscamos lo siguiente en Google: google material icons symbols outlined. Entramos en la página de Google y le damos al developer guide. Ahí nos explica cómo hacer los símbolos. Lo que tenemos que hacer es copiar esta etiqueta: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" /> Nos permite hacer lo siguiente:
+
+<span class="material-symbols-outlined">home</span> 
+
+Al poner esto en HTML, nos salta directamente el ícono de la casita que tiene guardado Google. Podemos poner: menú search favourite… Y nos saltarán esos iconos de manera directa. Ponemos el nombre que nos sale en la página de Google y con eso ya lo tenemos el icono. Importante poner la clase.
+
+Hay otra forma de hacerlo. Lo único malo de hacerlo de esta manera es que cuando no tenemos internet NO cargan los íconos. 
+
+Después, vamos a crear dentro de un aside, un form para que se pueda clickar sobre el menú. La mejor forma de conseguir esto es mediante JavaScript. Pero para hacerlo con CSS hacemos la técnica del checkbox que ya vimos cuando hicimos nuestra primera web con la barra de navegación.
+
+Lo siguiente que hacemos es que cargue una imagen en función de la resolución de la siguiente manera en HTML:
+
+  <picture>
+            <source srcset="img/LOGO3.png" media="(max-width: 57.5rem)">
+            <img src="img/LOGO2.png" alt="Logo de Sergio & Ada">
+        </picture>
+
+Donde media especificaba cual era la condición para que cargue la imagen.
+
+Después, todavía dentro del aside, creamos la barra de navegación:
+
+<nav class="sidebar__nav">
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">
+                        Notifications
+                    </span>
+                    <a href="#">Notifiations</a>
+                </li>
+            </ul>
+        </nav>
+
+El explica que podemos programar para que dependiendo ded si hay mensajes o no, si hay notificaciones o no haya un símbolo u otro.
+
+Después lo que hacemos es crear un div con otra parte de nuestro side-bar menú que va a ser la parte en la que se encuentra nuestro perfil:
+
+  <div class="sidebar__profile">
+            <ul>
+                <li>
+                    <img src="img/s&a2.jpg" alt="Sergio y ada juntos">
+                    <span>PROFILE</span>
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+Los primeros iconos deberían ser los que más dopamina te generan, los que más llaman la atención al usuario. Las que menos son usadas van al final.
+
+Ahora vamos a darle estilos en CSS. 
+body, div, ul,li,a,h1,h2,h3,h4{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    --bg-color: color-mix(in srgb, #3716 70%, #fff);
+    --sidebar-color: #fff;
+    --dark-color: #3716;
+    background-color: var(--bg-color);
+}
+
+/* ----- SIDEBAR STYLES ----- */
+
+.sidebar{
+    background-color: var(--sidebar-color);
+}
+
+
+Utilizamos las variables para dar colores iniciales a las cosas. Las podemos definir en el body, en la raíz :root o de la otra forma que vimos.
+
+Usamos variables porque, en el caso de que haya usuarios que tengan unas preferencias de modo oscuro, podemos definir otras variables y utilizar media-queries para el caso en el que el usuario tenga esas configuraciones. Así no necesitamos cambiar cada color.
+
+Algo muy importante es, para las barras de navegación, usar position:fixed, o position:sticky; fixed si queremos que quede fija, sticky si queremos que se pegue arriba poniendo top:0.
+
+Enfatiza mucho en el uso de clamp() 
