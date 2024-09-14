@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;   
+}
+
+body{
+    font-family: sans-serif;
+    --bg-color:#ff9464;
+    --text-color:#333;
+    --dark-color:#f62;
+}
+
+body,div,ul,li,a,h1,h2,h3,h4{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(img/Humo.gif);
+    background-position: center;
+    background-size: cover;
+    height: 200dvh;
+}
+
+
+header{
+    /* 100 dynamic viewport height */
+    display: flex;
+    justify-content: center;
+    mix-blend-mode: difference;
+}
+
+.text-container{
+    min-height: 100vh;
+    /* Para que permanezca siempre en el sitio */
+    position: fixed;
+    top: 0;
+    display: flex;
+    font-size: clamp(1rem, 6.5dvw,9rem);
+    color: var(--text-color);
+    font-weight: 700;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1dvw;
+    animation: aparecer-texto both;
+    animation-timeline: scroll();
+    animation-range-start:cover 20% ;
+    mix-blend-mode: difference;
+}
+
+.left-text{
+    color: var(--dark-color);
+    padding-left:1dvw;
+    mix-blend-mode: lighten;
+}
+
+.right-text{
+    mix-blend-mode: darken;
+}
+
+
+img{
+    filter: hue-rotate(90deg) grayscale(100%);
+    /* Modo pantalla este efecto es muy bonito*/
+    position: fixed;
+    top: 0;
+    animation: aparecer both;
+    animation-timeline: scroll();
+    max-height: 100dvh;
+    mix-blend-mode:darken;
+}
+
+
+@keyframes aparecer{
+    0%{
+        opacity: 0;
+        filter: grayscale(0%);
+        translate: 0 -20%;
+        scale: .7;
+    }
+
+    50%{
+        opacity: 0.5;
+        filter: grayscale(50%);
+        translate: 0 -10%;
+        scale: .85;
+    }
+
+    100%{
+        opacity: 1;
+        filter: grayscale(100%);
+        translate: 0 0;
+        scale: 1;
+    }
+}
+
+@keyframes aparecer-texto{
+    0%{
+        opacity: 0;
+        filter: drop-shadow(0px 0px 15px #0006);
+        translate: 0 20%;
+        scale: 2;
+    }
+
+    50%{
+        opacity: 0.5;
+        filter: drop-shadow(0px 0px 15px #0006);
+        translate: 0 -10%;
+        scale: 1.4;
+    }
+
+    100%{
+        opacity: 1;
+        filter: drop-shadow(0px 0px 15px #0006);
+        translate: 0 0;
+        scale: .8;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .text-container{
+        justify-content: space-evenly;
+    }
+}
