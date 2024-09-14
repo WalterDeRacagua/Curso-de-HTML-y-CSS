@@ -1,0 +1,118 @@
+*{
+    box-sizing: border-box;
+}
+
+body, div, ul, li, a, h1,h2,h3,h4,p{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    --bg-color: color-mix(in srgb, #f62 70%,#fff);
+    --card-color:#fff;
+    --card-bg-color:#fff6;
+    --dark-color:#f62;
+    --text-color: #444;
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+
+.card{
+    max-width: clamp(160px, 50%, 320px);
+    background-color: var(--card-bg-color);
+    margin: 50px auto;
+    position: relative;
+    border-radius: 20px;
+}
+
+.card__back, .card__front{
+    /* ESTO ES PARA QUE NO SE VEA LO QUE HAY DADO LA VUELTA, EN ESTE CASO LO QUE ESTA A */
+    backface-visibility: hidden;
+    transition: transform 1s;
+    background-color: var(--card-color) ;
+    border-radius: 20px;
+    padding-bottom: 9px;
+}
+
+.card:hover .card__front{
+    transform: perspective(1200px) rotateY(180deg);
+}
+
+.card:hover .card__back{
+    /* Para poder ver la tarjeta */
+    /* La perspectiva nos ayuda a alejar la animación de la pantalla, para hacerla desde más lejos. */
+    transform: perspective(1200px) rotateY(360deg);
+}
+
+.card__front{
+    transform: perspective(1200px) rotateY(0deg);
+}
+
+.card__back{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    /* Vamos a hacer que se aleje 900px y que rote sobre el eje Y*/
+    transform: perspective(900px) rotateY(180deg);   
+}
+
+.card__back span{
+    font-size: 1.5rem;
+    margin: 6px 0;
+}
+
+.card__worker{
+    max-height: 150px;
+    display: block;
+    overflow: hidden;
+}
+
+.card__worker img{
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.card__data{
+    padding: 12px;
+}
+
+.card__data span{
+    font-size: 1.4rem;
+    margin: 12px 0;
+    display: block;
+}
+
+.skill-bar{
+    border: 3px solid var(--bg-color);
+    margin: 12px;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.skill-bar div{
+    background-color: var(--bg-color);
+    padding: 9px;
+    color: var(--card-color);
+}
+
+.skill-bar:nth-child(2) div{
+    width: 60%;
+    background-color: #f62;
+}
+
+.skill-bar:nth-child(3) div{
+    width: 40%;
+    background-color: #48e;
+}
+
+.skill-bar:nth-child(4) div{
+    width: 80%;
+    background-color: #892;
+}
+
+.skill-bar:last-child div{
+    width: 90%;
+    background-color: #f07;
+}

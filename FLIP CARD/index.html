@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flip card en web, responsive">
+    <meta name="keywords" content="Flip card, flip, card">
+    <meta name="robots" content="nosnippet">
+    <meta name="author" content="Sergio Sánchez Carrasco">
+    <meta name="title" content="FLIP CARD">
+    <title>FLIP CARD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="card">
+        <!-- PARTE DELANTERA DE LA TARJETA GIRATORIA -->
+        <div class="card__front">
+            <picture class="card__worker">
+                <!-- DEBERÍAMOS DE HACER UNA VERSIÓN SMALL MEDIUM Y BIG DE LA IMAGEN. -->
+                <source srcset="img/s&a_small.jpg" media="(max-width:600px)">
+                <img src="img/s&a.jpg" alt="Sergiada chillindrina">
+            </picture>
+            <div class="card__data">
+                <span>SERGIO SANCHEZ</span>
+                <p>Sergio sánchez es una de las personas más trabajadoras del sector IT. Estudia ingenieria de software y además se está preparando en sectores como el de gestionar proyectos, IA y le encantaría aprender blockchain.</p>               
+            </div>
+        </div>
+        <div class="card__back">
+            <span>SKILLS</span>
+            <div class="skill-bar">
+                <div>HTML</div>
+            </div>
+            <div class="skill-bar">
+                <div>CSS</div>
+            </div>
+            <div class="skill-bar">
+                <div>C++</div>
+            </div>
+            <div class="skill-bar">
+                <div>JAVA</div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
